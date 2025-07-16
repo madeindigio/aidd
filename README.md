@@ -11,3 +11,13 @@ Build the mdbook from the source files.
 ```bash
 mdbook build
 ```
+
+### set-main
+
+Move git to main from jj change. Push the changes to the main branch.
+
+```bash
+jj b s main
+git push origin main
+```
+

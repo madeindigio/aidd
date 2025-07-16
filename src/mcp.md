@@ -89,4 +89,40 @@ The configuration in your agent would look like this:
 
 ## Mycommandmcp
 
-TODO: Add info
+MyCommandMCP is a versatile MCP server written in Rust that allows you to execute system commands as MCP tools. It's highly configurable and can be adapted to a wide range of use cases.
+
+### Installation
+
+You can install MyCommandMCP by downloading the binary from the [releases page](https://github.com/sevir/mycommandmcp/releases) or by building it from source.
+
+To install the binary, download the appropriate version for your system, uncompress it, and place the executable in a directory included in your system's `PATH`.
+
+
+### Configuration
+
+MyCommandMCP is configured using a YAML file. By default, it looks for a file named `mycommand-tools.yaml` in the current directory. You can also specify a custom configuration file using the `--config` flag.
+
+The configuration file has three main sections: `prompts`, `tools`, and `resources`.
+
+Here is an example of a `tools` configuration:
+
+```yaml
+tools:
+  - name: "list_files"
+    description: "Lists files in a specific directory"
+    command: "ls"
+    path: "/"
+    accepts_args: true
+    accept_input: false
+    default_args: "-l"
+  - name: "get_date"
+    description: "Gets the current system date and time"
+    command: "date"
+    path: "/"
+    accepts_args: false
+    accept_input: false
+```
+
+This configuration defines two tools: `list_files`, which executes the `ls -l` command, and `get_date`, which executes the `date` command.
+
+You can find more detailed information about the configuration options in the [official documentation](https://github.com/sevir/mycommandmcp/blob/main/README.md).
