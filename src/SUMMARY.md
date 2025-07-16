@@ -1,6 +1,17 @@
 # Summary
 
 - [Getting started](./getting_started.md)
-- [Best practices for Github Copilot](./copilot.md)
-- [Best practices for Kilo Assistant](./kilocode.md)
-- [Best utils in MCP](./mcp.md)
+
+# AI Assistants
+- [Copilot](./copilot.md)
+- [Kilo Assistant](./kilocode.md)
+
+# Tools
+- [MCP Servers](./mcp.md)
+    - [Hyper-MCP](./hyper-mcp.md)
+    - [MCP-Link](./mcp-link.md)
+    - [MyCommandCMD](./mycommandcmd.md)
+
+# Resources
+
+- [Agents prompts](./agents_prompts.md)

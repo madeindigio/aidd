@@ -17,7 +17,7 @@ mdbook build
 Move git to main from jj change. Push the changes to the main branch.
 
 ```bash
-jj b s main
+jj b s main --revision=@
 git push origin main
 ```
 
