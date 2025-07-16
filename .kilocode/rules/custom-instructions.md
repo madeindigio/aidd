@@ -1,1 +1,1 @@
-/www/digio-aidd/.ai/main-prompt.sh
+/www/digio-aidd/.ai/custom-instructions.md
