@@ -2,13 +2,56 @@
 
 ## Customizing GitHub Copilot
 
-To customize GitHub Copilot, you can use the `custom-instructions.md` file in your repository. This file allows you to define specific behaviors and preferences for Copilot's suggestions. Key steps include:
+Custom instructions allow you to provide specific guidelines to GitHub Copilot to tailor its responses to your coding practices and project requirements. Instead of repeatedly providing the same instructions, you can store them in files that are automatically included in each chat request.
 
-1. **Create the File**: Add a `custom-instructions.md` file to your repository's root directory.
-2. **Define Preferences**: Specify rules, coding styles, or other instructions to tailor Copilot's responses.
-3. **Apply Changes**: Save the file and ensure it is accessible to Copilot during its operation.
+There are three main ways to customize AI responses:
+
+- **Custom instructions**: Define common guidelines for tasks like generating code, code reviews, or commit messages.
+- **Prompt files**: Create reusable prompts for common tasks.
+- **Custom chat modes**: Define how chat operates, which tools it can use, and how it interacts with the codebase.
+
+### Custom Instructions
+
+You can define custom instructions in several ways:
+
+- **`.github/copilot-instructions.md`**: A single file in your workspace that contains general coding practices and project requirements. These instructions are automatically included in every chat request.
+- **`.instructions.md` files**: Multiple files that can be stored in your workspace or user profile. You can use glob patterns to apply them to specific files or include them in all requests.
+- **VS Code settings**: Define instructions directly in your user or workspace settings for tasks like code generation, test generation, and commit messages.
+
+### Prompt Files
+
+Prompt files are reusable prompts for common tasks, such as generating code or performing a code review. They are standalone prompts that you can run directly in chat.
+
+Key features of prompt files include:
+
+- **Reusability**: Define a prompt once and reuse it across your projects.
+- **Structure**: Prompt files are Markdown files with a `.prompt.md` extension and can include a header with metadata (e.g., `mode`, `model`, `tools`) and a body with the prompt content.
+- **Variables**: Use variables like `${workspaceFolder}` and `${selection}` to make your prompts more dynamic.
 
 For more details, visit the official [GitHub Copilot Customization documentation](https://code.visualstudio.com/docs/copilot/copilot-customization).
+
+### Chat Modes
+
+Chat modes in VS Code allow you to tailor the AI chat behavior for specific tasks. You can switch between different modes depending on your needs.
+
+#### Built-in chat modes
+
+VS Code comes with three built-in chat modes:
+
+- **Ask mode**: Optimized for answering questions about your codebase and general technology concepts.
+- **Edit mode**: Optimized for making code edits across multiple files.
+- **Agent mode**: Optimized for making autonomous edits across multiple files, especially for complex tasks that may require running terminal commands and tools.
+
+#### Agent Mode
+
+Agent mode is particularly useful for complex tasks that require autonomous reasoning and planning. It can:
+
+- Refactor parts of your codebase.
+- Plan and implement new features.
+- Migrate your codebase to a new framework.
+- Generate implementation plans for complex tasks.
+
+For more details, visit the official documentation on [Chat Modes](https://code.visualstudio.com/docs/copilot/chat/chat-modes) and [Agent Mode](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode).
 
 ## Configuring MCP Servers
 
