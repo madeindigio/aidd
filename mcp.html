@@ -137,7 +137,76 @@
                         <h1 id="best-utils-in-mcp"><a class="header" href="#best-utils-in-mcp">Best utils in MCP</a></h1>
 <p>In this section, we help you configure the most common MCP utilities so you can maximize their potential.</p>
 <h2 id="hyper-mcp"><a class="header" href="#hyper-mcp">Hyper-MCP</a></h2>
-<p>TODO: Add info</p>
+<p>Hyper-MCP is a fast and secure MCP server that extends its functionality through WebAssembly (WASM) plugins. It allows developers to add AI capabilities to their applications by integrating with tools like Claude Desktop and Cursor IDE.</p>
+<h3 id="key-features"><a class="header" href="#key-features">Key Features</a></h3>
+<ul>
+<li><strong>Extensible with WebAssembly:</strong> Write plugins in any language that compiles to WASM.</li>
+<li><strong>Secure:</strong> Plugins run in a sandboxed environment with fine-grained access control.</li>
+<li><strong>OCI Registry Support:</strong> Distribute and manage plugins using standard OCI registries like Docker Hub.</li>
+<li><strong>Lightweight and Portable:</strong> Suitable for various environments, from cloud to edge devices.</li>
+<li><strong>Cross-platform:</strong> Compatible with Linux, macOS, and Windows.</li>
+</ul>
+<h3 id="configuration"><a class="header" href="#configuration">Configuration</a></h3>
+<p>To get started with Hyper-MCP, you need to create a <code>config.json</code> file in the appropriate directory for your operating system:</p>
+<ul>
+<li><strong>Linux:</strong> <code>$HOME/.config/hyper-mcp/config.json</code></li>
+<li><strong>macOS:</strong> <code>$HOME/Library/Application Support/hyper-mcp/config.json</code></li>
+<li><strong>Windows:</strong> <code>{FOLDERID_RoamingAppData}\hyper-mcp\config.json</code></li>
+</ul>
+<p>Below is an example configuration that includes several useful plugins:</p>
+<pre><code class="language-json">{
+  &quot;plugins&quot;: [
+    {
+      &quot;name&quot;: &quot;time&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/time-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;think&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/think-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;hash&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/hash-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;fetch&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/fetch-plugin:latest&quot;,
+      &quot;runtime_config&quot;: {
+        &quot;allowed_hosts&quot;: [&quot;*&quot;],
+        &quot;memory_limit&quot;: &quot;100 MB&quot;
+      }
+    },
+    {
+      &quot;name&quot;: &quot;context7&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/context7-plugin:nightly&quot;,
+      &quot;runtime_config&quot;: {
+        &quot;allowed_hosts&quot;: [&quot;context7.com&quot;]
+      }
+    },
+    {
+      &quot;name&quot;: &quot;sequentialthinking&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/sevir/sequentialthinking-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;serper&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/serper-plugin:latest&quot;,
+      &quot;runtime_config&quot;: {
+        &quot;env_vars&quot;: {
+          &quot;SERPER_API_KEY&quot;: &quot;YOUR_SERPER_API_KEY&quot;
+        },
+        &quot;allowed_hosts&quot;: [&quot;google.serper.dev&quot;]
+      }
+    }
+  ]
+}
+</code></pre>
+<p>In this configuration:</p>
+<ul>
+<li>Each object in the <code>plugins</code> array defines a new tool for the MCP server.</li>
+<li><code>&quot;name&quot;</code>: The name of the tool that will be exposed.</li>
+<li><code>&quot;path&quot;</code>: The OCI path to the plugin image.</li>
+<li><code>&quot;runtime_config&quot;</code>: (Optional) Allows you to configure the plugin's runtime environment, such as setting environment variables (<code>env_vars</code>), restricting network access (<code>allowed_hosts</code>), or limiting memory usage. For the <code>serper</code> plugin, you should replace <code>&quot;YOUR_SERPER_API_KEY&quot;</code> with your actual Serper API key.</li>
+</ul>
 <h2 id="mcp-link"><a class="header" href="#mcp-link">MCP-Link</a></h2>
 <p>At <strong>digio</strong>, we have deployed an instance of MCP-Link at <a href="https://mcplink.madeindigio.com">mcplink.madeindigio.com</a> for you to use.</p>
 <p>MCP-Link is a tool that automatically converts any API with an OpenAPI v3 specification into a complete MCP server. This allows AI agents to interact with existing RESTful APIs without needing to modify the original API code.</p>
@@ -203,7 +272,7 @@
 <h3 id="installation"><a class="header" href="#installation">Installation</a></h3>
 <p>You can install MyCommandMCP by downloading the binary from the <a href="https://github.com/sevir/mycommandmcp/releases">releases page</a> or by building it from source.</p>
 <p>To install the binary, download the appropriate version for your system, uncompress it, and place the executable in a directory included in your system's <code>PATH</code>.</p>
-<h3 id="configuration"><a class="header" href="#configuration">Configuration</a></h3>
+<h3 id="configuration-1"><a class="header" href="#configuration-1">Configuration</a></h3>
 <p>MyCommandMCP is configured using a YAML file. By default, it looks for a file named <code>mycommand-tools.yaml</code> in the current directory. You can also specify a custom configuration file using the <code>--config</code> flag.</p>
 <p>The configuration file has three main sections: <code>prompts</code>, <code>tools</code>, and <code>resources</code>.</p>
 <p>Here is an example of a <code>tools</code> configuration:</p>
