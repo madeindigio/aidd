@@ -15,7 +15,7 @@ MCP-Link generates an MCP-compatible interface from an OpenAPI specification URL
 
 ### Use MCP-Link Configurator
 
-[MCP-Link digio Configurator](/mcplink-assistant/index.html) is a web interface that allows you to easily configure MCP-Link parameters. It provides a user-friendly way to set up the OpenAPI specification URL, base URL, authentication headers, and route filters.
+[MCP-Link digio Configurator](./mcplink-assistant/index.html) is a web interface that allows you to easily configure MCP-Link parameters. It provides a user-friendly way to set up the OpenAPI specification URL, base URL, authentication headers, and route filters.
 
 ### Example usage in an AI Agent
 
