@@ -15,3 +15,4 @@
 # Resources
 
 - [Agents prompts](./agents_prompts.md)
+- [MCP-Link Assistant](mcplink-assistant/index.html)

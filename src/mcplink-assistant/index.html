@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP-Link URL Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>MCP-Link URL Generator</h1>
+        <p>Enter the details of the API you want to connect to.</p>
+
+        <div class="card">
+            <h2>Load from URL</h2>
+            <p>Paste a full MCP-Link URL to fill the form automatically.</p>
+            <div class="form-group">
+                <input type="text" id="full-url-input" placeholder="Paste full MCP-Link URL here">
+                <button id="load-from-url-btn">Load</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Configuration</h2>
+            <form id="mcp-link-form">
+                <div class="form-group">
+                    <label for="openapi-spec-url">OpenAPI Specification URL</label>
+                    <input type="text" id="openapi-spec-url" placeholder="https://example.com/openapi.yaml">
+                    <small>URL to the OpenAPI specification (YAML/JSON)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="api-base-url">API Base URL</label>
+                    <input type="text" id="api-base-url" placeholder="https://api.example.com">
+                    <small>Base URL of the target service where API requests will be forwarded</small>
+                </div>
+
+                <div class="form-group">
+                    <label>HTTP Headers</label>
+                    <div class="headers-container" id="headers-container">
+                        <!-- Headers will be added here by JavaScript -->
+                    </div>
+                    <button type="button" id="add-header-btn">Add Header</button>
+                </div>
+
+                <div class="form-group">
+                    <label>Path Filters</label>
+                    <div class="filters-container" id="filters-container">
+                        <div class="filter-item">
+                            <input type="text" class="filter-input" value="+/**">
+                            <button type="button" class="remove-filter-btn">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" id="add-filter-btn">Add Filter</button>
+                    <small>
+                        Filter Format Examples:
+                        <ul>
+                            <li><code>+/path/**</code> - Include all endpoints under /path/</li>
+                            <li><code>-/path/**</code> - Exclude all endpoints under /path/</li>
+                            <li><code>+/users/*:GET</code> - Include GET endpoints for /users/{id}</li>
+                        </ul>
+                    </small>
+                </div>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Generated URL</h2>
+            <div class="generated-url-container">
+                <textarea id="generated-url" readonly></textarea>
+                <button id="copy-url-btn">Copy</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
