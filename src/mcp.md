@@ -13,6 +13,9 @@ Remote MCP servers are useful for interacting with external APIs, such as the Fi
 Here we highlight three particularly useful tools as they allow you to implement multiple tools in a single MCP process:
 
 * **Hyper-MCP**: A fast MCP server built in Rust (uses very little memory) that allows adding WASM plugins to extend its functionality.
+  * Especially useful enable Conect7 plugin to connect to the Context7 API, which allows you to use the Context7 platform as a tool in your AI agents. This service provides to the all versions of documentation of a big amount of libraries and frameworks, such as React, Angular, Node.js, etc. It is a very useful tool to have in your MCP server.
+  
+  * Other useful plugin is `serper`, provides access to Google Search results. You can register free and get 2.5k requests. 
 
 * **MCP-Link**: An MCP server that enables connecting any API with an OpenAPI specification to an MCP agent, turning it into an interface compatible with AI agents.
 

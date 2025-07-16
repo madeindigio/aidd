@@ -8,6 +8,8 @@ This public book contains the best practices and guidelines for using DIGIO AI D
 
 Build the mdbook from the source files.
 
+interactive: true
+
 ```bash
 mdbook build
 ```
@@ -16,8 +18,24 @@ mdbook build
 
 Move git to main from jj change. Push the changes to the main branch.
 
+interactive: true
+
 ```bash
 jj b s main --revision=@
-git push origin main
+# check if push with git, prompt to the user
+if jj git push; then
+  echo "Push successful"
+else
+  echo "Push failed"
+fi
 ```
 
+### jj:desc
+
+Add description to the current change
+
+Inputs: TEXT
+
+```bash
+jj desc -m "$TEXT"
+```
