@@ -1,0 +1,1 @@
+/www/digio-aidd/.ai/main-prompt.sh
