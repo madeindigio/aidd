@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting started</a></li><li class="chapter-item expanded "><a href="copilot.html"><strong aria-hidden="true">2.</strong> Best practices for Github Copilot</a></li><li class="chapter-item expanded "><a href="kilocode.html"><strong aria-hidden="true">3.</strong> Best practices for Kilo Assistant</a></li><li class="chapter-item expanded "><a href="mcp.html"><strong aria-hidden="true">4.</strong> Best utils in MCP</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting started</a></li><li class="chapter-item expanded affix "><li class="part-title">AI Assistants</li><li class="chapter-item expanded "><a href="copilot.html"><strong aria-hidden="true">2.</strong> Copilot</a></li><li class="chapter-item expanded "><a href="kilocode.html"><strong aria-hidden="true">3.</strong> Kilo Assistant</a></li><li class="chapter-item expanded affix "><li class="part-title">Tools</li><li class="chapter-item expanded "><a href="mcp.html"><strong aria-hidden="true">4.</strong> MCP Servers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hyper-mcp.html"><strong aria-hidden="true">4.1.</strong> Hyper-MCP</a></li><li class="chapter-item expanded "><a href="mcp-link.html"><strong aria-hidden="true">4.2.</strong> MCP-Link</a></li><li class="chapter-item expanded "><a href="mycommandcmd.html"><strong aria-hidden="true">4.3.</strong> MyCommandCMD</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Resources</li><li class="chapter-item expanded "><a href="agents_prompts.html"><strong aria-hidden="true">5.</strong> Agents prompts</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -251,7 +251,27 @@
 <p>For more details, see the <a href="https://kilocode.ai/docs/features/model-temperature">Model Temperature documentation</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="best-utils-in-mcp"><a class="header" href="#best-utils-in-mcp">Best utils in MCP</a></h1>
 <p>In this section, we help you configure the most common MCP utilities so you can maximize their potential.</p>
-<h2 id="hyper-mcp"><a class="header" href="#hyper-mcp">Hyper-MCP</a></h2>
+<p>MCP servers allow AI to use tools to gather more contextual information or perform actions in the real world. These servers can be configured to interact with external APIs, execute commands, or even connect to databases.</p>
+<p>There are two types of MCP servers: those that run on the client (on your computer) and therefore need to be installed, and those that run in the cloud and are accessible via a URL. The latter can use SSE or HTTPS protocols. It is important to know that if the server runs on the client, you need to install and configure it on your computer, whereas if it is a remote server, you need to configure the server's URL in your agent.</p>
+<p>Client-installed MCP servers can interact with your computer, execute commands within it, or read parts of your system. They are useful for reading files, connecting to local databases, or systems accessed via a VPN from your computer.</p>
+<p>Remote MCP servers are useful for interacting with external APIs, such as the Figma API or the YouTrack API, and do not require local installation.</p>
+<p>Here we highlight three particularly useful tools as they allow you to implement multiple tools in a single MCP process:</p>
+<ul>
+<li>
+<p><strong>Hyper-MCP</strong>: A fast MCP server built in Rust (uses very little memory) that allows adding WASM plugins to extend its functionality.</p>
+</li>
+<li>
+<p><strong>MCP-Link</strong>: An MCP server that enables connecting any API with an OpenAPI specification to an MCP agent, turning it into an interface compatible with AI agents.</p>
+</li>
+<li>
+<p><strong>MyCommandMCP</strong>: A versatile MCP server written in Rust that allows executing system commands as MCP tools. It is highly configurable and can be adapted to a wide range of use cases.</p>
+</li>
+</ul>
+<h2 id="mcp-server-catalogs"><a class="header" href="#mcp-server-catalogs">MCP Server Catalogs</a></h2>
+<p>If you use VSCode with Copilot or any other tool, there are MCP marketplaces that are usually installed locally. You download the project and execute it, but you must be especially careful because you don't know what kind of code it might execute.</p>
+<p>There are other marketplaces like <a href="https://smithery.ai/">Smithery</a> that can deploy the code on their infrastructure instead of yours, making it safer and allowing you to pass configuration parameters as environment variables. For all servers that can run without needing data from your system, it is recommended to execute them on a remote server rather than your local machine. This reduces the risk of a malicious plugin accessing your personal data or executing unwanted commands on your system.</p>
+<p>Docker has also released its own MCP catalog, <a href="https://hub.docker.com/mcp">Docker Hub MCP</a>, where you can find plugins that can be executed in containers and are safe to use.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hyper-mcp"><a class="header" href="#hyper-mcp">Hyper-MCP</a></h1>
 <p>Hyper-MCP is a fast and secure MCP server that extends its functionality through WebAssembly (WASM) plugins. It allows developers to add AI capabilities to their applications by integrating with tools like Claude Desktop and Cursor IDE.</p>
 <h3 id="key-features"><a class="header" href="#key-features">Key Features</a></h3>
 <ul>
@@ -322,7 +342,7 @@
 <li><code>&quot;path&quot;</code>: The OCI path to the plugin image.</li>
 <li><code>&quot;runtime_config&quot;</code>: (Optional) Allows you to configure the plugin's runtime environment, such as setting environment variables (<code>env_vars</code>), restricting network access (<code>allowed_hosts</code>), or limiting memory usage. For the <code>serper</code> plugin, you should replace <code>&quot;YOUR_SERPER_API_KEY&quot;</code> with your actual Serper API key.</li>
 </ul>
-<h2 id="mcp-link"><a class="header" href="#mcp-link">MCP-Link</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mcp-link"><a class="header" href="#mcp-link">MCP-Link</a></h1>
 <p>At <strong>digio</strong>, we have deployed an instance of MCP-Link at <a href="https://mcplink.madeindigio.com">mcplink.madeindigio.com</a> for you to use.</p>
 <p>MCP-Link is a tool that automatically converts any API with an OpenAPI v3 specification into a complete MCP server. This allows AI agents to interact with existing RESTful APIs without needing to modify the original API code.</p>
 <h3 id="how-does-it-work"><a class="header" href="#how-does-it-work">How does it work?</a></h3>
@@ -382,7 +402,7 @@
   }
 }
 </code></pre>
-<h2 id="mycommandmcp"><a class="header" href="#mycommandmcp">Mycommandmcp</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mycommandmcp"><a class="header" href="#mycommandmcp">Mycommandmcp</a></h1>
 <p>MyCommandMCP is a versatile MCP server written in Rust that allows you to execute system commands as MCP tools. It's highly configurable and can be adapted to a wide range of use cases.</p>
 <h3 id="installation"><a class="header" href="#installation">Installation</a></h3>
 <p>You can install MyCommandMCP by downloading the binary from the <a href="https://github.com/sevir/mycommandmcp/releases">releases page</a> or by building it from source.</p>
@@ -408,6 +428,326 @@
 </code></pre>
 <p>This configuration defines two tools: <code>list_files</code>, which executes the <code>ls -l</code> command, and <code>get_date</code>, which executes the <code>date</code> command.</p>
 <p>You can find more detailed information about the configuration options in the <a href="https://github.com/sevir/mycommandmcp/blob/main/README.md">official documentation</a>.</p>
+<p>This is a full example of a <strong>real dev</strong> <code>mycommand-tools.yaml</code>:</p>
+<pre><code class="language-yaml">tools:
+  - name: &quot;get_date&quot;
+    description: &quot;Displays the current system date and time in various formats. Can show UTC time, format output, or display specific timezones, the tool accepts the same arguments of the `date` linux command&quot;
+    command: &quot;date&quot;
+    path: &quot;/&quot;
+    accepts_args: true
+    accept_input: false
+
+  - name: &quot;process_list&quot;
+    description: &quot;Displays information about running processes&quot;
+    command: &quot;ps&quot;
+    path: &quot;/&quot;
+    accepts_args: true
+    accept_input: false
+    default_args: &quot;auxef&quot;
+
+  - name: &quot;network_info&quot;
+    description: &quot;Shows the network interfaces, routing, devices, and tunnels. This tools accepts the same arguments of the `ip` linux command&quot;
+    command: &quot;ip&quot;
+    path: &quot;/&quot;
+    accepts_args: true
+    accept_input: false
+    default_args: &quot;addr&quot;
+
+  - name: &quot;curl&quot;
+    description: &quot;Downloads any resource from a URL using `curl` command. Use this tool for run any `curl` command what you want&quot;
+    command: &quot;curl&quot;
+    path: &quot;/tmp&quot;
+    accepts_args: true
+    accept_input: false
+
+  - name: &quot;vscode&quot;
+    description: &quot;Call always to open VSCode in the path specified in the argument. Use this tool when you write or edit code&quot;
+    command: &quot;vscode&quot;
+    path: &quot;/www&quot;
+    accepts_args: true
+    accept_input: false
+
+
+prompts:
+  - name: &quot;summarize&quot;
+    description: &quot;Summarize a given text&quot;
+    content: |
+      Please summarize the following text in 3 sentences or less.
+      Consider the main points and key details.
+      Maintain a clear and concise style.
+
+  - name: &quot;translate&quot;
+    description: &quot;Translate text to Spanish&quot;
+    content: |
+      Translate the following text to Spanish.
+      Preserve the original meaning and tone.
+      Use natural and fluent Spanish language.
+
+  - name: &quot;code_review&quot;
+    description: &quot;🔍 Comprehensive code review with security and performance analysis&quot;
+    content: |
+      🔍 **Code Review Request**
+
+      Please perform a comprehensive code review of: `{file_path}`
+
+      **Focus Areas:** {focus_areas}
+
+      **Review Criteria:**
+      - 🛡️ Security vulnerabilities and best practices
+      - ⚡ Performance implications and optimizations
+      - 📝 Code clarity and maintainability
+      - 🦀 Language-specific idioms and patterns
+      - 🧪 Testability and error handling
+      - 📚 Documentation and comments
+
+      **Deliverables:**
+      1. Summary assessment with severity levels
+      2. Specific issues with line references
+      3. Actionable improvement suggestions
+      4. Positive highlights and well-implemented patterns
+
+      Please use file operations to read the code and provide detailed feedback.
+
+  - name: &quot;rust_optimization&quot;
+    description: &quot;🦀 Rust-specific optimization suggestions and idiomatic patterns&quot;
+    content: |
+      🦀 **Rust Optimization Analysis**
+
+      **Target:** {optimization_goal}
+
+      **Code to Optimize:**
+      ```rust
+      {code_snippet}
+      ```
+
+      **Analysis Framework:**
+      - 🚀 Performance: Zero-cost abstractions, allocation patterns
+      - 💾 Memory: Ownership, borrowing, lifetime optimizations
+      - 📖 Readability: Idiomatic Rust patterns, clarity
+      - 🛡️ Safety: Memory safety, thread safety, error handling
+
+      **Deliverables:**
+      1. Optimized code with explanations
+      2. Performance impact analysis
+      3. Trade-offs and alternatives
+      4. Benchmark suggestions if applicable
+
+      Focus on modern Rust idioms and zero-cost abstractions.
+
+  - name: &quot;debug_assistance&quot;
+    description: &quot;🐛 Debug analysis with error investigation and fix suggestions&quot;
+    content: |
+      🐛 **Debug Assistance Request**
+
+      **Error Message:**
+      ```
+      {error_message}
+      ```
+
+      **Context:**
+      {context}
+
+      **Debug Strategy:**
+      1. 🔍 Error Analysis: Root cause identification
+      2. 🛠️ Fix Suggestions: Step-by-step resolution
+      3. 🧪 Verification: Testing approach for the fix
+      4. 🚀 Prevention: How to avoid similar issues
+
+      **Investigation Tools:**
+      - Use file operations to examine related code
+      - Search for similar patterns in the codebase
+      - Check dependencies and configurations
+
+      Please provide actionable debugging steps and fix recommendations.
+
+  - name: &quot;architecture_design&quot;
+    description: &quot;🏗️ Software architecture analysis and design recommendations&quot;
+    content: |
+      🏗️ **Architecture Design Consultation**
+
+      **Project:** {project_description}
+
+      **Constraints:** {constraints}
+
+      **Design Framework:**
+      - 🎯 Requirements Analysis: Functional and non-functional
+      - 🏛️ Architectural Patterns: Suitable design patterns
+      - 🔧 Technology Stack: Language, frameworks, databases
+      - 📊 Scalability: Growth and performance considerations
+      - 🛡️ Security: Security architecture and threat model
+      - 🧪 Testing: Testing strategy and quality assurance
+
+      **Deliverables:**
+      1. High-level architecture diagram (text-based)
+      2. Component breakdown with responsibilities
+      3. Data flow and interface definitions
+      4. Technology recommendations with rationale
+      5. Implementation roadmap with priorities
+
+      Focus on maintainable, scalable, and robust design principles.
+
+  - name: &quot;rag_query_optimization&quot;
+    description: &quot;🧠 Optimize RAG queries for better semantic search results&quot;
+    content: |
+      🧠 **RAG Query Optimization**
+
+      **Current Query:** {query}
+      **Domain:** {domain}
+
+      **Optimization Strategy:**
+      - 🎯 Semantic Enhancement: Improve query semantics
+      - 🔍 Keyword Expansion: Add relevant synonyms and terms
+      - 📊 Query Structuring: Optimize for vector similarity
+      - 🎛️ Parameter Tuning: Suggest search parameters
+
+      **Analysis Areas:**
+      1. Query intent and information need
+      2. Domain-specific terminology
+      3. Semantic similarity patterns
+      4. Chunk retrieval effectiveness
+
+      **Deliverables:**
+      - Optimized query variations
+      - Search strategy recommendations
+      - RAG parameter suggestions
+      - Expected retrieval improvements
+
+      Use RAG tools to test query effectiveness if helpful.
+
+  - name: &quot;documentation_generator&quot;
+    description: &quot;📚 Generate comprehensive documentation from code&quot;
+    content: |
+      📚 **Documentation Generation**
+
+      **Target File:** {code_file}
+      **Documentation Type:** {doc_type}
+
+      **Documentation Framework:**
+      - 📋 API Documentation: Function signatures and usage
+      - 💡 Examples: Practical usage examples
+      - 🏗️ Architecture: Module structure and relationships
+      - 🚀 Getting Started: Quick start guides
+      - ⚠️ Edge Cases: Error handling and limitations
+
+      **Output Requirements:**
+      1. Clear, concise descriptions
+      2. Code examples with explanations
+      3. Proper markdown formatting
+      4. Cross-references and links
+      5. Maintainable documentation structure
+
+      Please read the code file and generate appropriate documentation.
+      Include inline doc comments and external documentation as needed.
+
+  - name: &quot;test_strategy&quot;
+    description: &quot;🧪 Test planning and strategy recommendations&quot;
+    content: |
+      🧪 **Test Strategy Development**
+
+      **Component:** {component}
+      **Test Types:** {test_types}
+
+      **Testing Framework:**
+      - 🔬 Unit Tests: Individual function testing
+      - 🔗 Integration Tests: Component interaction testing
+      - ⚡ Performance Tests: Load and stress testing
+      - 🛡️ Security Tests: Vulnerability and penetration testing
+      - 👤 User Acceptance: End-to-end workflow testing
+
+      **Deliverables:**
+      1. Test plan with coverage targets
+      2. Test case specifications
+      3. Testing infrastructure requirements
+      4. Automation strategy
+      5. Quality gates and success criteria
+
+      **Implementation Guidance:**
+      - Rust-specific testing patterns
+      - Mocking and test doubles
+      - Continuous integration setup
+
+      Analyze the component and provide a comprehensive testing strategy.
+
+  - name: &quot;refactoring_plan&quot;
+    description: &quot;♻️ Systematic refactoring strategy with risk assessment&quot;
+    content: |
+      ♻️ **Refactoring Strategy**
+
+      **Target Code:** {target_code}
+      **Goals:** {goals}
+
+      **Refactoring Process:**
+      - 🔍 Analysis: Current state assessment
+      - 🎯 Objectives: Clear refactoring goals
+      - 📋 Plan: Step-by-step refactoring plan
+      - ⚠️ Risk Assessment: Potential breaking changes
+      - 🧪 Validation: Testing strategy for changes
+
+      **Key Considerations:**
+      1. Backward compatibility requirements
+      2. Performance impact analysis
+      3. Team coordination and communication
+      4. Incremental delivery approach
+      5. Rollback strategies
+
+      **Deliverables:**
+      - Detailed refactoring roadmap
+      - Risk mitigation strategies
+      - Before/after code comparisons
+      - Testing and validation plan
+
+      Provide a safe, systematic approach to code improvement.
+
+  - name: &quot;security_audit&quot;
+    description: &quot;🛡️ Security vulnerability assessment and mitigation strategies&quot;
+    content: |
+      🛡️ **Security Audit Request**
+
+      **Audit Scope:** {scope}
+      **Threat Model:** {threat_model}
+
+      **Security Assessment Framework:**
+      - 🔒 Authentication: Identity verification
+      - 🚪 Authorization: Access control mechanisms
+      - 🛡️ Input Validation: Data sanitization and validation
+      - 🔐 Cryptography: Encryption and key management
+      - 📊 Data Protection: Privacy and data handling
+      - 🌐 Network Security: Communication security
+
+      **Vulnerability Categories:**
+      1. OWASP Top 10 compliance
+      2. Memory safety issues (Rust-specific)
+      3. Dependency vulnerabilities
+      4. Configuration security
+      5. Business logic flaws
+
+      **Deliverables:**
+      - Security vulnerability report
+      - Risk assessment with severity levels
+      - Remediation recommendations
+      - Security best practices guide
+
+      Perform thorough security analysis using file operations and search tools.
+
+
+
+resources:
+  - name: &quot;mcp_server_prompts&quot;
+    description: &quot;Specification of Prompts for MCP Servers&quot;
+    path: &quot;https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/refs/heads/main/docs/specification/2024-11-05/server/prompts.mdx&quot;
+
+  - name: &quot;mcp_server_tools&quot;
+    description: &quot;Specification of Tools for MCP Servers&quot;
+    path: &quot;https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/refs/heads/main/docs/specification/2024-11-05/server/tools.mdx&quot;
+
+  - name: &quot;mcp_server_resources&quot;
+    description: &quot;Specification of Resources for MCP Servers&quot;
+    path: &quot;https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/refs/heads/main/docs/specification/2024-11-05/server/resources.mdx&quot;
+
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="agents-prompts"><a class="header" href="#agents-prompts">Agents prompts</a></h1>
+<p>In the repository <a href="https://github.com/madeindigio/aidd/tree/main/agent-prompts">digio-aidd</a>, you can find a series of prompts designed to effectively interact with AI agents. These prompts are organized into different categories based on their purpose and functionality.</p>
+<p>In progress....: Teams are adding their own prompts, and the most useful ones will be incorporated into the repository over time.</p>
 
                     </main>
 

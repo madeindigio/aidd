@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Kilo Assistant - Digio AI Driven Development</title>
+        <title>MCP-Link - Digio AI Driven Development</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting started</a></li><li class="chapter-item expanded affix "><li class="part-title">AI Assistants</li><li class="chapter-item expanded "><a href="copilot.html"><strong aria-hidden="true">2.</strong> Copilot</a></li><li class="chapter-item expanded "><a href="kilocode.html" class="active"><strong aria-hidden="true">3.</strong> Kilo Assistant</a></li><li class="chapter-item expanded affix "><li class="part-title">Tools</li><li class="chapter-item expanded "><a href="mcp.html"><strong aria-hidden="true">4.</strong> MCP Servers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hyper-mcp.html"><strong aria-hidden="true">4.1.</strong> Hyper-MCP</a></li><li class="chapter-item expanded "><a href="mcp-link.html"><strong aria-hidden="true">4.2.</strong> MCP-Link</a></li><li class="chapter-item expanded "><a href="mycommandcmd.html"><strong aria-hidden="true">4.3.</strong> MyCommandCMD</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Resources</li><li class="chapter-item expanded "><a href="agents_prompts.html"><strong aria-hidden="true">5.</strong> Agents prompts</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting started</a></li><li class="chapter-item expanded affix "><li class="part-title">AI Assistants</li><li class="chapter-item expanded "><a href="copilot.html"><strong aria-hidden="true">2.</strong> Copilot</a></li><li class="chapter-item expanded "><a href="kilocode.html"><strong aria-hidden="true">3.</strong> Kilo Assistant</a></li><li class="chapter-item expanded affix "><li class="part-title">Tools</li><li class="chapter-item expanded "><a href="mcp.html"><strong aria-hidden="true">4.</strong> MCP Servers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hyper-mcp.html"><strong aria-hidden="true">4.1.</strong> Hyper-MCP</a></li><li class="chapter-item expanded "><a href="mcp-link.html" class="active"><strong aria-hidden="true">4.2.</strong> MCP-Link</a></li><li class="chapter-item expanded "><a href="mycommandcmd.html"><strong aria-hidden="true">4.3.</strong> MyCommandCMD</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Resources</li><li class="chapter-item expanded "><a href="agents_prompts.html"><strong aria-hidden="true">5.</strong> Agents prompts</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,66 +134,75 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="best-practices-for-kilo-assistant"><a class="header" href="#best-practices-for-kilo-assistant">Best practices for Kilo Assistant</a></h1>
-<p>This document provides a summary of best practices for using Kilo Assistant, with links to the official documentation for more detailed information.</p>
-<h2 id="using-modes"><a class="header" href="#using-modes">Using Modes</a></h2>
-<p>Modes in Kilo Code are specialized personas that tailor the assistant's behavior to your current task. Each mode offers different capabilities, expertise, and access levels to help you accomplish specific goals.</p>
+                        <h1 id="mcp-link"><a class="header" href="#mcp-link">MCP-Link</a></h1>
+<p>At <strong>digio</strong>, we have deployed an instance of MCP-Link at <a href="https://mcplink.madeindigio.com">mcplink.madeindigio.com</a> for you to use.</p>
+<p>MCP-Link is a tool that automatically converts any API with an OpenAPI v3 specification into a complete MCP server. This allows AI agents to interact with existing RESTful APIs without needing to modify the original API code.</p>
+<h3 id="how-does-it-work"><a class="header" href="#how-does-it-work">How does it work?</a></h3>
+<p>MCP-Link generates an MCP-compatible interface from an OpenAPI specification URL. You can configure the conversion using the following parameters in the URL:</p>
 <ul>
-<li><strong>Code Mode:</strong> For writing code, implementing features, debugging, and general development.</li>
-<li><strong>Ask Mode:</strong> For code explanation, concept exploration, and technical learning.</li>
-<li><strong>Architect Mode:</strong> For system design, high-level planning, and architecture discussions.</li>
-<li><strong>Debug Mode:</strong> For tracking down bugs, diagnosing errors, and resolving complex issues.</li>
-<li><strong>Orchestrator Mode:</strong> For breaking down complex projects into manageable subtasks.</li>
+<li><code>s=</code>: The URL of the OpenAPI specification file.</li>
+<li><code>u=</code>: The base URL of the target API.</li>
+<li><code>h=</code>: The format of the authentication header (e.g., <code>Authorization:Bearer</code>).</li>
+<li><code>f=</code>: Expressions to filter the API routes to include or exclude.</li>
 </ul>
-<p>For more details, see the <a href="https://kilocode.ai/docs/basic-usage/using-modes">Using Modes documentation</a>.</p>
-<h2 id="context-mentions"><a class="header" href="#context-mentions">Context Mentions</a></h2>
-<p>Context mentions are a powerful way to provide Kilo Code with specific information about your project. Use the <code>@</code> symbol to refer to files, folders, problems, and Git commits.</p>
+<h3 id="example-usage-in-an-ai-agent"><a class="header" href="#example-usage-in-an-ai-agent">Example usage in an AI Agent</a></h3>
+<p>To connect an agent to an API via MCP-Link, configure it as follows in the MCP server configuration file:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;@service-name&quot;: {
+      &quot;url&quot;: &quot;https://mcplink.madeindigio.com/sse?s=[OpenAPI-specification-URL]&amp;u=[API-base-URL]&quot;
+    }
+  }
+}
+</code></pre>
+<p>This allows any API with an OpenAPI specification to be immediately converted into an MCP-compatible interface accessible to AI agents.</p>
+<h3 id="example-with-figma"><a class="header" href="#example-with-figma">Example with Figma</a></h3>
+<p>To illustrate a real use case, let's see how to configure MCP-Link for the Figma API. The URL to connect with Figma through our MCP-Link instance would be:</p>
+<p><code>https://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fraw.githubusercontent.com%2Ffigma%2Frest-api-spec%2Frefs%2Fheads%2Fmain%2Fopenapi%2Fopenapi.yaml&amp;u=https%3A%2F%2Fapi.figma.com&amp;h=%7B%22X-Figma-Token%22%3A%22YOUR_FIGMA_TOKEN%22%7D&amp;f=%2B%2F**</code></p>
+<p>Breaking down the parameters:</p>
 <ul>
-<li><strong>File:</strong> <code>@/path/to/file.ts</code></li>
-<li><strong>Folder:</strong> <code>@/path/to/folder/</code></li>
-<li><strong>Problems:</strong> <code>@problems</code></li>
-<li><strong>Terminal:</strong> <code>@terminal</code></li>
-<li><strong>Git Commit:</strong> <code>@a1b2c3d</code></li>
-<li><strong>Git Changes:</strong> <code>@git-changes</code></li>
-<li><strong>URL:</strong> <code>@https://example.com</code></li>
+<li><strong>s</strong>: <code>https://raw.githubusercontent.com/figma/rest-api-spec/refs/heads/main/openapi/openapi.yaml</code> - The OpenAPI specification of the Figma API.</li>
+<li><strong>u</strong>: <code>https://api.figma.com</code> - The base URL of the Figma API.</li>
+<li><strong>h</strong>: <code>{&quot;X-Figma-Token&quot;:&quot;YOUR_FIGMA_TOKEN&quot;}</code> - The authentication header. A JSON object (URL-encoded) specifies that the <code>X-Figma-Token</code> header should be sent with your personal Figma token. Replace <code>YOUR_FIGMA_TOKEN</code> with your actual token.</li>
+<li><strong>f</strong>: <code>+/**</code> - Includes all API routes.</li>
 </ul>
-<p>For more details, see the <a href="https://kilocode.ai/docs/basic-usage/context-mentions">Context Mentions documentation</a>.</p>
-<h2 id="auto-approving-actions"><a class="header" href="#auto-approving-actions">Auto-Approving Actions</a></h2>
-<p>Auto-approve settings speed up your workflow by eliminating repetitive confirmation prompts, but they significantly increase security risks. Only enable auto-approval for actions you fully trust.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/features/auto-approving-actions">Auto-Approving Actions documentation</a>.</p>
-<h2 id="how-tools-work"><a class="header" href="#how-tools-work">How Tools Work</a></h2>
-<p>Kilo Code uses tools to interact with your code and environment. These specialized helpers perform specific actions like reading files, making edits, running commands, or searching your codebase.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/basic-usage/how-tools-work">How Tools Work documentation</a>.</p>
-<h2 id="enhance-prompt"><a class="header" href="#enhance-prompt">Enhance Prompt</a></h2>
-<p>The &quot;Enhance Prompt&quot; feature helps you improve the quality and effectiveness of your prompts before sending them to the AI model.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/features/enhance-prompt">Enhance Prompt documentation</a>.</p>
-<h2 id="prompt-engineering"><a class="header" href="#prompt-engineering">Prompt Engineering</a></h2>
-<p>Prompt engineering is the art of crafting effective instructions for AI models. Well-written prompts lead to better results, fewer errors, and a more efficient workflow.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/advanced-usage/prompt-engineering">Prompt Engineering Tips documentation</a>.</p>
-<h2 id="custom-rules"><a class="header" href="#custom-rules">Custom Rules</a></h2>
-<p>Custom rules provide a powerful way to define project-specific and global behaviors and constraints for the Kilo Code AI agent.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/advanced-usage/custom-rules">Custom Rules documentation</a>.</p>
-<h2 id="custom-instructions"><a class="header" href="#custom-instructions">Custom Instructions</a></h2>
-<p>Custom Instructions allow you to personalize how Kilo Code behaves, providing specific guidance that shapes responses, coding style, and decision-making processes.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/advanced-usage/custom-instructions">Custom Instructions documentation</a>.</p>
-<h2 id="memory-bank"><a class="header" href="#memory-bank">Memory Bank</a></h2>
-<p>Memory Bank is a system of structured documentation that enables Kilo Code to better understand your project and maintain context across coding sessions.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/advanced-usage/memory-bank">Memory Bank documentation</a>.</p>
-<h2 id="working-with-large-projects"><a class="header" href="#working-with-large-projects">Working with Large Projects</a></h2>
-<p>Large projects require some extra care to manage context effectively. Use specific file paths, break down tasks, and summarize large amounts of code.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/advanced-usage/large-projects">Working with Large Projects documentation</a>.</p>
-<h2 id="model-temperature"><a class="header" href="#model-temperature">Model Temperature</a></h2>
-<p>Temperature controls the randomness of AI model outputs. Adjusting this setting optimizes results for different tasks.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/features/model-temperature">Model Temperature documentation</a>.</p>
+<p>The configuration in your agent would look like this:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;@figma&quot;: {
+      &quot;url&quot;: &quot;https://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fraw.githubusercontent.com%2Ffigma%2Frest-api-spec%2Frefs%2Fheads%2Fmain%2Fopenapi%2Fopenapi.yaml&amp;u=https%3A%2F%2Fapi.figma.com&amp;h=%7B%22X-Figma-Token%22%3A%22YOUR_FIGMA_TOKEN%22%7D&amp;f=%2B%2F**&quot;
+    }
+  }
+}
+</code></pre>
+<h3 id="example-with-youtrack"><a class="header" href="#example-with-youtrack">Example with YouTrack</a></h3>
+<p>Similarly, to connect with YouTrack, the MCP-Link URL would be:</p>
+<p><code>http://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fdigio.youtrack.cloud%2Fapi%2Fopenapi.json&amp;u=https%3A%2F%2Fdigio.youtrack.cloud%2Fapi&amp;h=%7B%22Authorization%22%3A%22Bearer%20TOKEN_YOUTRACK%22%7D&amp;f=%2B%2F**</code></p>
+<p>Breaking down the parameters:</p>
+<ul>
+<li><strong>s</strong>: <code>https://digio.youtrack.cloud/api/openapi.json</code> - The OpenAPI specification of the YouTrack API.</li>
+<li><strong>u</strong>: <code>https://digio.youtrack.cloud/api</code> - The base URL of the YouTrack API.</li>
+<li><strong>h</strong>: <code>{&quot;Authorization&quot;:&quot;Bearer TOKEN_YOUTRACK&quot;}</code> - The authentication header. A Bearer authorization token is used. Replace <code>TOKEN_YOUTRACK</code> with your permanent YouTrack token.</li>
+<li><strong>f</strong>: <code>+/**</code> - Includes all API routes.</li>
+</ul>
+<p>The configuration in your agent would look like this:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;@youtrack&quot;: {
+      &quot;url&quot;: &quot;http://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fdigio.youtrack.cloud%2Fapi%2Fopenapi.json&amp;u=https%3A%2F%2Fdigio.youtrack.cloud%2Fapi&amp;h=%7B%22Authorization%22%3A%22Bearer%20TOKEN_YOUTRACK%22%7D&amp;f=%2B%2F**&quot;
+    }
+  }
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="copilot.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="hyper-mcp.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="mcp.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="mycommandcmd.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -202,10 +211,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="copilot.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="hyper-mcp.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="mcp.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="mycommandcmd.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

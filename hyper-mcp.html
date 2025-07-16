@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Kilo Assistant - Digio AI Driven Development</title>
+        <title>Hyper-MCP - Digio AI Driven Development</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting started</a></li><li class="chapter-item expanded affix "><li class="part-title">AI Assistants</li><li class="chapter-item expanded "><a href="copilot.html"><strong aria-hidden="true">2.</strong> Copilot</a></li><li class="chapter-item expanded "><a href="kilocode.html" class="active"><strong aria-hidden="true">3.</strong> Kilo Assistant</a></li><li class="chapter-item expanded affix "><li class="part-title">Tools</li><li class="chapter-item expanded "><a href="mcp.html"><strong aria-hidden="true">4.</strong> MCP Servers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hyper-mcp.html"><strong aria-hidden="true">4.1.</strong> Hyper-MCP</a></li><li class="chapter-item expanded "><a href="mcp-link.html"><strong aria-hidden="true">4.2.</strong> MCP-Link</a></li><li class="chapter-item expanded "><a href="mycommandcmd.html"><strong aria-hidden="true">4.3.</strong> MyCommandCMD</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Resources</li><li class="chapter-item expanded "><a href="agents_prompts.html"><strong aria-hidden="true">5.</strong> Agents prompts</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting started</a></li><li class="chapter-item expanded affix "><li class="part-title">AI Assistants</li><li class="chapter-item expanded "><a href="copilot.html"><strong aria-hidden="true">2.</strong> Copilot</a></li><li class="chapter-item expanded "><a href="kilocode.html"><strong aria-hidden="true">3.</strong> Kilo Assistant</a></li><li class="chapter-item expanded affix "><li class="part-title">Tools</li><li class="chapter-item expanded "><a href="mcp.html"><strong aria-hidden="true">4.</strong> MCP Servers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hyper-mcp.html" class="active"><strong aria-hidden="true">4.1.</strong> Hyper-MCP</a></li><li class="chapter-item expanded "><a href="mcp-link.html"><strong aria-hidden="true">4.2.</strong> MCP-Link</a></li><li class="chapter-item expanded "><a href="mycommandcmd.html"><strong aria-hidden="true">4.3.</strong> MyCommandCMD</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Resources</li><li class="chapter-item expanded "><a href="agents_prompts.html"><strong aria-hidden="true">5.</strong> Agents prompts</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,66 +134,86 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="best-practices-for-kilo-assistant"><a class="header" href="#best-practices-for-kilo-assistant">Best practices for Kilo Assistant</a></h1>
-<p>This document provides a summary of best practices for using Kilo Assistant, with links to the official documentation for more detailed information.</p>
-<h2 id="using-modes"><a class="header" href="#using-modes">Using Modes</a></h2>
-<p>Modes in Kilo Code are specialized personas that tailor the assistant's behavior to your current task. Each mode offers different capabilities, expertise, and access levels to help you accomplish specific goals.</p>
+                        <h1 id="hyper-mcp"><a class="header" href="#hyper-mcp">Hyper-MCP</a></h1>
+<p>Hyper-MCP is a fast and secure MCP server that extends its functionality through WebAssembly (WASM) plugins. It allows developers to add AI capabilities to their applications by integrating with tools like Claude Desktop and Cursor IDE.</p>
+<h3 id="key-features"><a class="header" href="#key-features">Key Features</a></h3>
 <ul>
-<li><strong>Code Mode:</strong> For writing code, implementing features, debugging, and general development.</li>
-<li><strong>Ask Mode:</strong> For code explanation, concept exploration, and technical learning.</li>
-<li><strong>Architect Mode:</strong> For system design, high-level planning, and architecture discussions.</li>
-<li><strong>Debug Mode:</strong> For tracking down bugs, diagnosing errors, and resolving complex issues.</li>
-<li><strong>Orchestrator Mode:</strong> For breaking down complex projects into manageable subtasks.</li>
+<li><strong>Extensible with WebAssembly:</strong> Write plugins in any language that compiles to WASM.</li>
+<li><strong>Secure:</strong> Plugins run in a sandboxed environment with fine-grained access control.</li>
+<li><strong>OCI Registry Support:</strong> Distribute and manage plugins using standard OCI registries like Docker Hub.</li>
+<li><strong>Lightweight and Portable:</strong> Suitable for various environments, from cloud to edge devices.</li>
+<li><strong>Cross-platform:</strong> Compatible with Linux, macOS, and Windows.</li>
 </ul>
-<p>For more details, see the <a href="https://kilocode.ai/docs/basic-usage/using-modes">Using Modes documentation</a>.</p>
-<h2 id="context-mentions"><a class="header" href="#context-mentions">Context Mentions</a></h2>
-<p>Context mentions are a powerful way to provide Kilo Code with specific information about your project. Use the <code>@</code> symbol to refer to files, folders, problems, and Git commits.</p>
+<h3 id="configuration"><a class="header" href="#configuration">Configuration</a></h3>
+<p>To get started with Hyper-MCP, you need to create a <code>config.json</code> file in the appropriate directory for your operating system:</p>
 <ul>
-<li><strong>File:</strong> <code>@/path/to/file.ts</code></li>
-<li><strong>Folder:</strong> <code>@/path/to/folder/</code></li>
-<li><strong>Problems:</strong> <code>@problems</code></li>
-<li><strong>Terminal:</strong> <code>@terminal</code></li>
-<li><strong>Git Commit:</strong> <code>@a1b2c3d</code></li>
-<li><strong>Git Changes:</strong> <code>@git-changes</code></li>
-<li><strong>URL:</strong> <code>@https://example.com</code></li>
+<li><strong>Linux:</strong> <code>$HOME/.config/hyper-mcp/config.json</code></li>
+<li><strong>macOS:</strong> <code>$HOME/Library/Application Support/hyper-mcp/config.json</code></li>
+<li><strong>Windows:</strong> <code>{FOLDERID_RoamingAppData}\hyper-mcp\config.json</code></li>
 </ul>
-<p>For more details, see the <a href="https://kilocode.ai/docs/basic-usage/context-mentions">Context Mentions documentation</a>.</p>
-<h2 id="auto-approving-actions"><a class="header" href="#auto-approving-actions">Auto-Approving Actions</a></h2>
-<p>Auto-approve settings speed up your workflow by eliminating repetitive confirmation prompts, but they significantly increase security risks. Only enable auto-approval for actions you fully trust.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/features/auto-approving-actions">Auto-Approving Actions documentation</a>.</p>
-<h2 id="how-tools-work"><a class="header" href="#how-tools-work">How Tools Work</a></h2>
-<p>Kilo Code uses tools to interact with your code and environment. These specialized helpers perform specific actions like reading files, making edits, running commands, or searching your codebase.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/basic-usage/how-tools-work">How Tools Work documentation</a>.</p>
-<h2 id="enhance-prompt"><a class="header" href="#enhance-prompt">Enhance Prompt</a></h2>
-<p>The &quot;Enhance Prompt&quot; feature helps you improve the quality and effectiveness of your prompts before sending them to the AI model.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/features/enhance-prompt">Enhance Prompt documentation</a>.</p>
-<h2 id="prompt-engineering"><a class="header" href="#prompt-engineering">Prompt Engineering</a></h2>
-<p>Prompt engineering is the art of crafting effective instructions for AI models. Well-written prompts lead to better results, fewer errors, and a more efficient workflow.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/advanced-usage/prompt-engineering">Prompt Engineering Tips documentation</a>.</p>
-<h2 id="custom-rules"><a class="header" href="#custom-rules">Custom Rules</a></h2>
-<p>Custom rules provide a powerful way to define project-specific and global behaviors and constraints for the Kilo Code AI agent.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/advanced-usage/custom-rules">Custom Rules documentation</a>.</p>
-<h2 id="custom-instructions"><a class="header" href="#custom-instructions">Custom Instructions</a></h2>
-<p>Custom Instructions allow you to personalize how Kilo Code behaves, providing specific guidance that shapes responses, coding style, and decision-making processes.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/advanced-usage/custom-instructions">Custom Instructions documentation</a>.</p>
-<h2 id="memory-bank"><a class="header" href="#memory-bank">Memory Bank</a></h2>
-<p>Memory Bank is a system of structured documentation that enables Kilo Code to better understand your project and maintain context across coding sessions.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/advanced-usage/memory-bank">Memory Bank documentation</a>.</p>
-<h2 id="working-with-large-projects"><a class="header" href="#working-with-large-projects">Working with Large Projects</a></h2>
-<p>Large projects require some extra care to manage context effectively. Use specific file paths, break down tasks, and summarize large amounts of code.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/advanced-usage/large-projects">Working with Large Projects documentation</a>.</p>
-<h2 id="model-temperature"><a class="header" href="#model-temperature">Model Temperature</a></h2>
-<p>Temperature controls the randomness of AI model outputs. Adjusting this setting optimizes results for different tasks.</p>
-<p>For more details, see the <a href="https://kilocode.ai/docs/features/model-temperature">Model Temperature documentation</a>.</p>
+<p>Below is an example configuration that includes several useful plugins:</p>
+<pre><code class="language-json">{
+  &quot;plugins&quot;: [
+    {
+      &quot;name&quot;: &quot;time&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/time-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;think&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/think-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;hash&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/hash-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;fetch&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/fetch-plugin:latest&quot;,
+      &quot;runtime_config&quot;: {
+        &quot;allowed_hosts&quot;: [&quot;*&quot;],
+        &quot;memory_limit&quot;: &quot;100 MB&quot;
+      }
+    },
+    {
+      &quot;name&quot;: &quot;context7&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/context7-plugin:nightly&quot;,
+      &quot;runtime_config&quot;: {
+        &quot;allowed_hosts&quot;: [&quot;context7.com&quot;]
+      }
+    },
+    {
+      &quot;name&quot;: &quot;sequentialthinking&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/sevir/sequentialthinking-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;serper&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/serper-plugin:latest&quot;,
+      &quot;runtime_config&quot;: {
+        &quot;env_vars&quot;: {
+          &quot;SERPER_API_KEY&quot;: &quot;YOUR_SERPER_API_KEY&quot;
+        },
+        &quot;allowed_hosts&quot;: [&quot;google.serper.dev&quot;]
+      }
+    }
+  ]
+}
+</code></pre>
+<p>In this configuration:</p>
+<ul>
+<li>Each object in the <code>plugins</code> array defines a new tool for the MCP server.</li>
+<li><code>&quot;name&quot;</code>: The name of the tool that will be exposed.</li>
+<li><code>&quot;path&quot;</code>: The OCI path to the plugin image.</li>
+<li><code>&quot;runtime_config&quot;</code>: (Optional) Allows you to configure the plugin's runtime environment, such as setting environment variables (<code>env_vars</code>), restricting network access (<code>allowed_hosts</code>), or limiting memory usage. For the <code>serper</code> plugin, you should replace <code>&quot;YOUR_SERPER_API_KEY&quot;</code> with your actual Serper API key.</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="copilot.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="mcp.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="mcp.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="mcp-link.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -202,10 +222,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="copilot.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="mcp.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="mcp.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="mcp-link.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
