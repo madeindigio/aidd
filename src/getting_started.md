@@ -10,3 +10,7 @@ I suppose you have the following prerequisites:
 
 * A OS with a terminal (Linux, macOS, or Windows with WSL)
 * A code editor (VSCode, IntelliJ based IDE: PHPStorm, PyCharm, etc., Xcode)
+
+## Best practices for Github Copilot
+
+Read this section [Best practices for Github Copilot](./copilot.md) to learn how to use GitHub Copilot effectively.
