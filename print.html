@@ -275,6 +275,32 @@
 <p><strong>MyCommandMCP</strong>: A versatile MCP server written in Rust that allows executing system commands as MCP tools. It is highly configurable and can be adapted to a wide range of use cases.</p>
 </li>
 </ul>
+<p>This is a sample of mcp.json</p>
+<pre><code class="language-json">
+{
+  &quot;mcpServers&quot;: {
+    &quot;@brave&quot;: {
+      &quot;url&quot;: &quot;http://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fgithub.com%2Fautomation-ai-labs%2Fmcp-link%2Fraw%2Frefs%2Fheads%2Fmain%2Fexamples%2Fbrave.yaml&amp;u=https%3A%2F%2Fapi.search.brave.com%2Fres%2Fv1&amp;h=%7B%22X-Subscription-Token%22%3A%22BSAfPg0fhEKKX5sV-Tc2XCVD-qEfyI-%22%8J&amp;f=%2B%2F**&quot;
+    },
+    &quot;@hyper-mcp&quot;: {
+      &quot;command&quot;: &quot;hyper-mcp&quot;,
+      &quot;args&quot;: [
+        &quot;--config-file&quot;,
+        &quot;/home/sevir/.config/hyper-mcp/kilo.json&quot;
+      ]
+    },
+    &quot;@mycommandmcp&quot;: {
+      &quot;command&quot;: &quot;mycommandmcp&quot;,
+      &quot;args&quot;: [
+        &quot;--config&quot;,
+        &quot;/home/sevir/.config/mc-mcp/optimized.yaml&quot;,
+        &quot;--log-file&quot;,
+        &quot;/www/MCP/MyCommandMCP/mycommandmcp/mcp.log&quot;
+      ]
+    }
+  }
+}
+</code></pre>
 <h2 id="mcp-server-catalogs"><a class="header" href="#mcp-server-catalogs">MCP Server Catalogs</a></h2>
 <p>If you use VSCode with Copilot or any other tool, there are MCP marketplaces that are usually installed locally. You download the project and execute it, but you must be especially careful because you don't know what kind of code it might execute.</p>
 <p>There are other marketplaces like <a href="https://smithery.ai/">Smithery</a> that can deploy the code on their infrastructure instead of yours, making it safer and allowing you to pass configuration parameters as environment variables. For all servers that can run without needing data from your system, it is recommended to execute them on a remote server rather than your local machine. This reduces the risk of a malicious plugin accessing your personal data or executing unwanted commands on your system.</p>
