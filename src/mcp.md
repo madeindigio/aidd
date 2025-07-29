@@ -21,6 +21,34 @@ Here we highlight three particularly useful tools as they allow you to implement
 
 * **MyCommandMCP**: A versatile MCP server written in Rust that allows executing system commands as MCP tools. It is highly configurable and can be adapted to a wide range of use cases.
 
+This is a sample of mcp.json
+```json
+
+{
+  "mcpServers": {
+    "@brave": {
+      "url": "http://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fgithub.com%2Fautomation-ai-labs%2Fmcp-link%2Fraw%2Frefs%2Fheads%2Fmain%2Fexamples%2Fbrave.yaml&u=https%3A%2F%2Fapi.search.brave.com%2Fres%2Fv1&h=%7B%22X-Subscription-Token%22%3A%22BSAfPg0fhEKKX5sV-Tc2XCVD-qEfyI-%22%8J&f=%2B%2F**"
+    },
+    "@hyper-mcp": {
+      "command": "hyper-mcp",
+      "args": [
+        "--config-file",
+        "/home/sevir/.config/hyper-mcp/kilo.json"
+      ]
+    },
+    "@mycommandmcp": {
+      "command": "mycommandmcp",
+      "args": [
+        "--config",
+        "/home/sevir/.config/mc-mcp/optimized.yaml",
+        "--log-file",
+        "/www/MCP/MyCommandMCP/mycommandmcp/mcp.log"
+      ]
+    }
+  }
+}
+```
+
 ## MCP Server Catalogs
 
 If you use VSCode with Copilot or any other tool, there are MCP marketplaces that are usually installed locally. You download the project and execute it, but you must be especially careful because you don't know what kind of code it might execute.
