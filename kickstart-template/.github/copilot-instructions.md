@@ -1,23 +1,23 @@
-# {{project-name}}
+# {{ project_name }}
 
 ## Project Overview
 
-{{project_overview}}
+{{ project_overview }}
 
 ## Technology Stack
 
-- **Language**: {{programming-language}}
-- **Framework**: {{programming-framework}}
-- **Database**: {{database}}
+- **Language**: {{ programming_language }}
+- **Framework**: {{ programming_framework }}
+- **Database**: {{ database }}
 
 ## Development Guidelines
 
 ### Code Style
 
-- Use {{programming-language}} for all code
-- Follow {{programming-framework}} conventions for server/client component separation
-- Ensure consistent use of {{programming-language}} features and idioms
-- Search in Google (Serper) if it is necessary
+- Use {{ programming_language }} for all code
+- Follow {{ programming_framework }} conventions for server/client component separation
+- Ensure consistent use of {{ programming_language }} features and idioms
+- Search in Google (Serper) if it is necessary for more information about general concepts.
 - Check with Context7 the documentation for any specific guidelines.
 - Ask for help if you are stuck.
 - Use Serena tools for search symbols, edit code or refactor.
@@ -26,20 +26,27 @@
 - If you have a complex task, break it down into smaller steps, use Sequential thinking and steps list for the process
 - Fetch any relevant information from urls of the context task for updated context
 - If you need build or running tests use Terminal.
+- Always add tests for any new functionality.
+
+{% if has_tests %}
 
 ### Testing
 
-- Run `xc tests` for linting and type checking and launching tests
+- Run `{{ has_tests }}` for linting and type checking and launching tests
+  {% endif %}
+
+{% if has_build_system %}
 
 ### Deployment
 
-- Build with `xc build`
+- Run `{{ has_build_system }}` for building the project and review the output for any errors.
+  {% endif %}
 
 ## Troubleshooting
 
 ### Common Issues
 
-- **Type Errors**: Check readonly props and proper {{programming-language}} types
+- **Type Errors**: Check readonly props and proper {{ programming_language }} types
 
 ### Debug Tips
 

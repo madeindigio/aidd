@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 mkdir -p .kilocode
-ln -s .vscode/mcp.json .kilocode/mcp.json
+ln -s $PWD/.vscode/mcp.json $PWD/.kilocode/mcp.json

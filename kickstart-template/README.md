@@ -7,3 +7,7 @@ Install the template into any project by running the following command:
 ```bash
 kickstart https://github.com/madeindigio/aidd -s kickstart-template
 ```
+
+## Troubleshooting
+
+For rust, install rust-analyzer for working symbols in Serena https://github.com/rust-lang/rust-analyzer/releases

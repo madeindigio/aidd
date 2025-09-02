@@ -28,7 +28,7 @@
 				"--context",
 				"ide-assistant",
 				"--project",
-				"{{ get_env("PWD", "./") }}"
+				"./"
 			]
 		},
 		"remembrances": {
@@ -42,9 +42,9 @@
 				"--ollama-model",
 				"nomic-embed-text:latest",
 				"--knowledge-base",
-				"{{ get_env("PWD", "./")}}/.serena/memories",
+				".serena/memories",
 				"--surrealdb-start-cmd",
-				"surreal start --user root --pass root surrealkv://{{ get_env("REMEMBRANCES_DB", "/www/Remembrances/programming") }}"
+				"surreal start --user root --pass root surrealkv://{{ get_env(name='REMEMBRANCES_DB', default='remembrances_db') }}"
 			]
 		}
 	},

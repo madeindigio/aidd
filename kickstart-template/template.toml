@@ -6,6 +6,15 @@ ignore = [
 kickstart_version = 1
 name = "AI"
 
+copy_without_render = [
+  "*.sh",
+]
+
+post_gen_hooks = [
+  {name = "setting up Serena", path = ".ai/hooks/index-serena.sh"},
+  {name = "setting up Kilocode", path = ".ai/hooks/kilocode-symbolic-links.sh", only_if = {name = "include_kilocode", value = true}},
+]
+
 [[variables]]
 default = "some-project"
 name = "project_name"
@@ -19,16 +28,41 @@ prompt = "What is the project overview?"
 
 [[variables]]
 default = "Typescript"
-name = "programming-language"
+name = "programming_language"
 prompt = "What is the programming language do you want to use?"
 
 [[variables]]
 default = "Deno"
-name = "programming-framework"
+name = "programming_framework"
 prompt = "What is the programming framework do you want to use?"
 
 [[variables]]
 choices = ["none", "postgres", "mysql", "sqlite", "mongodb"]
-default = "postgres"
+default = "none"
 name = "database"
 prompt = "Which database do you want to use?"
+
+[[variables]]
+default = "./remembrances_data"
+name = "remembrances_db"
+prompt = "Where is the Remembrances database? (enter if you set REMEMBRANCES_DB env variable)"
+
+[[variables]]
+default = true
+name = "include_serena"
+prompt = "Do you want to include Serena AI MCP assistance?"
+
+[[variables]]
+default = true
+name = "include_kilocode"
+prompt = "Do you want to include Kilocode configuration?"
+
+[[variables]]
+default = ""
+name = "has_build_system"
+prompt = "Has your project a build system?. Write the command to run it."
+
+[[variables]]
+default = ""
+name = "has_tests"
+prompt = "Has your project tests? If so, write the command to run them."
