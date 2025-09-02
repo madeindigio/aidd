@@ -1,0 +1,52 @@
+{
+	"servers": {
+		"hyper-mcp": {
+			"type": "stdio",
+			"command": "hyper-mcp",
+			"args": [
+				"--config-file",
+				".ai/hyper-mcp.json"
+			]
+		},
+		"mycommandmcp": {
+			"type": "stdio",
+			"command": "mycommandmcp",
+			"args": [
+				"--config",
+				".ai/mycommand-mcp.yaml"
+			]
+		},
+		"serena": {
+			"type": "stdio",
+			"command": "pkgx",
+			"args": [
+				"uvx",
+				"--from",
+				"git+https://github.com/oraios/serena",
+				"serena",
+				"start-mcp-server",
+				"--context",
+				"ide-assistant",
+				"--project",
+				"{{get_env('PWD', './')}}"
+			]
+		},
+		"remembrances": {
+			"type": "stdio",
+			"command": "/www/MCP/remembrances-mcp/dist/remembrances-mcp",
+			"args": [
+				"--surrealdb-url",
+				"ws://localhost:8000",
+				"--ollama-url",
+				"http://localhost:11434",
+				"--ollama-model",
+				"nomic-embed-text:latest",
+				"--knowledge-base",
+				"{{get_env('PWD', './')}}/.serena/memories",
+				"--surrealdb-start-cmd",
+				"surreal start --user root --pass root surrealkv://{{get_env('REMEMBRANCES_DB', '/www/Remembrances/programming')}}"
+			]
+		}
+	},
+	"inputs": []
+}
