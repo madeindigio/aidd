@@ -210,6 +210,7 @@ tools:
   - name: "get_date"
     description: "Displays the current system date and time in various formats. Can show UTC time, format output, or display specific timezones, the tool accepts the same arguments of the `date` linux command"
     command: "date"
+    path: "./"
     accepts_args: true
     accept_input: false
 
@@ -223,6 +224,7 @@ tools:
   - name: "terminal"
     description: "Call to Bash terminal, send all commands to run into input argument"
     command: "bash"
+    path: "./"
     accepts_args: true
     accept_input: true
 
