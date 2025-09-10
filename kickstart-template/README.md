@@ -5,7 +5,7 @@ Download the last release of kickstart [here](https://github.com/Keats/kickstart
 Install the template into any project by running the following command:
 
 ```bash
-kickstart https://github.com/madeindigio/aidd -s kickstart-template
+kickstart https://github.com/madeindigio/aidd -d kickstart-template -o .
 ```
 
 ## Troubleshooting

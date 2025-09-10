@@ -50,6 +50,7 @@ prompt = "Do you want to include Remembrances AI memory system?"
 [[variables]]
 default = "./remembrances_data"
 name = "remembrances_db"
+only_if = {name = "include_remembrances", value = true}
 prompt = "Where is the Remembrances database? (enter if you set REMEMBRANCES_DB env variable)"
 
 [[variables]]

@@ -33,7 +33,7 @@
 		},
 		"remembrances": {
 			"type": "stdio",
-			"command": "remembrances-mcp",
+			"command": "/www/MCP/remembrances-mcp/dist/remembrances-mcp",
 			"args": [
 				"--surrealdb-url",
 				"ws://localhost:8000",

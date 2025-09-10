@@ -205,6 +205,7 @@ prompts:
 
       Perform thorough security analysis using file operations and search tools.
 
+
 tools:
   - name: "get_date"
     description: "Displays the current system date and time in various formats. Can show UTC time, format output, or display specific timezones, the tool accepts the same arguments of the `date` linux command"
@@ -220,11 +221,11 @@ tools:
     accepts_args: true
     accept_input: false
 
-  - name: "run_terminal"
+  - name: "terminal"
     description: "Call to Bash terminal, send all commands to run into input argument"
     command: "bash"
     path: "./"
-    accepts_args: false
+    accepts_args: true
     accept_input: true
 
 

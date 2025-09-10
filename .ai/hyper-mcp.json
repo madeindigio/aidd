@@ -36,7 +36,7 @@
       "path": "oci://ghcr.io/tuananh/serper-plugin:latest",
       "runtime_config": {
         "env_vars": {
-          "SERPER_API_KEY": "${SERPER_API_KEY}"
+          "SERPER_API_KEY": "d2ab856bac4b9c819ebbdbf5d33e9b29d369a3c3"
         },
         "allowed_hosts": ["google.serper.dev"]
       }
