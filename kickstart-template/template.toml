@@ -43,12 +43,17 @@ name = "database"
 prompt = "Which database do you want to use?"
 
 [[variables]]
+default = false
+name = "include_remembrances"
+prompt = "Do you want to include Remembrances AI memory system?"
+
+[[variables]]
 default = "./remembrances_data"
 name = "remembrances_db"
 prompt = "Where is the Remembrances database? (enter if you set REMEMBRANCES_DB env variable)"
 
 [[variables]]
-default = true
+default = false
 name = "include_serena"
 prompt = "Do you want to include Serena AI MCP assistance?"
 
