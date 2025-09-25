@@ -1,0 +1,2 @@
+Review the files changed into `mdbook/es/src/` use the command `jj status` to see the status of the working copy and the files changed.
+Then for each markdown file changed, translate the original text into English as the same name of file into `mdbook/en/src/`, preserving the markdown formatting and any links.
