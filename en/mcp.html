@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting started</a></li><li class="chapter-item expanded affix "><li class="part-title">AI Assistants</li><li class="chapter-item expanded "><a href="copilot.html"><strong aria-hidden="true">2.</strong> Copilot</a></li><li class="chapter-item expanded "><a href="kilocode.html"><strong aria-hidden="true">3.</strong> Kilo Assistant</a></li><li class="chapter-item expanded affix "><li class="part-title">Tools</li><li class="chapter-item expanded "><a href="mcp.html" class="active"><strong aria-hidden="true">4.</strong> MCP Servers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hyper-mcp.html"><strong aria-hidden="true">4.1.</strong> Hyper-MCP</a></li><li class="chapter-item expanded "><a href="mcp-link.html"><strong aria-hidden="true">4.2.</strong> MCP-Link</a></li><li class="chapter-item expanded "><a href="mycommandcmd.html"><strong aria-hidden="true">4.3.</strong> MyCommandCMD</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Resources</li><li class="chapter-item expanded "><a href="agents_prompts.html"><strong aria-hidden="true">5.</strong> Agents prompts</a></li><li class="chapter-item expanded "><a href="mcplink-assistant/index.html"><strong aria-hidden="true">6.</strong> MCP-Link Assistant</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded affix "><li class="part-title">AI Assistants</li><li class="chapter-item expanded "><a href="copilot.html"><strong aria-hidden="true">2.</strong> Copilot</a></li><li class="chapter-item expanded "><a href="kilocode.html"><strong aria-hidden="true">3.</strong> Kilo Assistant</a></li><li class="chapter-item expanded affix "><li class="part-title">Effective Development</li><li class="chapter-item expanded "><a href="effective_development.html"><strong aria-hidden="true">4.</strong> Effective Development Guide</a></li><li class="chapter-item expanded "><a href="mcp.html" class="active"><strong aria-hidden="true">5.</strong> MCP Servers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hyper-mcp.html"><strong aria-hidden="true">5.1.</strong> Hyper-MCP</a></li><li class="chapter-item expanded "><a href="mcp-link.html"><strong aria-hidden="true">5.2.</strong> MCP-Link</a></li><li class="chapter-item expanded "><a href="mycommandcmd.html"><strong aria-hidden="true">5.3.</strong> MyCommandCMD</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Resources</li><li class="chapter-item expanded "><a href="agents_prompts.html"><strong aria-hidden="true">6.</strong> Agent Prompts</a></li><li class="chapter-item expanded "><a href="mcplink-assistant/index.html"><strong aria-hidden="true">7.</strong> MCP-Link Assistant</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,22 +134,34 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="best-utils-in-mcp"><a class="header" href="#best-utils-in-mcp">Best utils in MCP</a></h1>
+                        <h1 id="best-utilities-in-mcp"><a class="header" href="#best-utilities-in-mcp">Best Utilities in MCP</a></h1>
 <p>In this section, we help you configure the most common MCP utilities so you can maximize their potential.</p>
 <p>MCP servers allow AI to use tools to gather more contextual information or perform actions in the real world. These servers can be configured to interact with external APIs, execute commands, or even connect to databases.</p>
 <p>There are two types of MCP servers: those that run on the client (on your computer) and therefore need to be installed, and those that run in the cloud and are accessible via a URL. The latter can use SSE or HTTPS protocols. It is important to know that if the server runs on the client, you need to install and configure it on your computer, whereas if it is a remote server, you need to configure the server's URL in your agent.</p>
 <p>Client-installed MCP servers can interact with your computer, execute commands within it, or read parts of your system. They are useful for reading files, connecting to local databases, or systems accessed via a VPN from your computer.</p>
 <p>Remote MCP servers are useful for interacting with external APIs, such as the Figma API or the YouTrack API, and do not require local installation.</p>
-<p>Here we highlight three particularly useful tools as they allow you to implement multiple tools in a single MCP process:</p>
+<p>Here we highlight a few particularly useful tools as they allow you to implement multiple tools in a single MCP process:</p>
 <ul>
+<li>
+<p><strong>Serena</strong>: It is a server mainly aimed at indexing our code project through specific parsers for each programming language, generates an index of classes, methods, functions and variables, and allows semantic searches in the code. It is very useful for AI agents to better understand our code and answer questions about it.</p>
+<ul>
+<li>You can find more information in its <a href="https://github.com/oraios/serena">GitHub repository</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Remembrances</strong>: A server designed to help AI agents remember relevant information from previous conversations, it is an open source project created internally at DIGIO and that we will improve with the latest information storage techniques for use in AI Agents. It uses information retrieval techniques to provide context and improve the quality of responses.</p>
+<ul>
+<li>You can find more information in its <a href="https://github.com/madeindigio/remembrances-mcp">GitHub repository</a></li>
+</ul>
+</li>
 <li>
 <p><strong>Hyper-MCP</strong>: A fast MCP server built in Rust (uses very little memory) that allows adding WASM plugins to extend its functionality.</p>
 <ul>
 <li>
-<p>Especially useful enable <strong>Conect7</strong> plugin to connect to the Context7 API, which allows you to use the Context7 platform as a tool in your AI agents. This service provides to the all versions of documentation of a big amount of libraries and frameworks, such as React, Angular, Node.js, etc. It is a very useful tool to have in your MCP server.</p>
+<p>Especially useful to enable the <strong>Conect7</strong> plugin to connect to the Context7 API, which allows you to use the Context7 platform as a tool in your AI agents. This service provides all versions of documentation of a big amount of libraries and frameworks, such as React, Angular, Node.js, etc. It is a very useful tool to have in your MCP server.</p>
 </li>
 <li>
-<p>Other useful plugin is <code>serper</code>, provides access to Google Search results. You can register free and get 2.5k requests. </p>
+<p>Another useful plugin is <code>serper</code>, provides access to Google Search results. You can register free and get 2.5k requests. </p>
 </li>
 </ul>
 </li>
@@ -195,7 +207,7 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="kilocode.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="effective_development.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                             <a rel="next" href="hyper-mcp.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
@@ -207,7 +219,7 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="kilocode.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="effective_development.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                     <a rel="next" href="hyper-mcp.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">

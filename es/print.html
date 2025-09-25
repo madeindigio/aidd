@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Empezando</a></li><li class="chapter-item expanded affix "><li class="part-title">Asistentes de IA</li><li class="chapter-item expanded "><a href="copilot.html"><strong aria-hidden="true">2.</strong> Copilot</a></li><li class="chapter-item expanded "><a href="kilocode.html"><strong aria-hidden="true">3.</strong> Kilo Assistant</a></li><li class="chapter-item expanded affix "><li class="part-title">Herramientas</li><li class="chapter-item expanded "><a href="mcp.html"><strong aria-hidden="true">4.</strong> Servidores MCP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hyper-mcp.html"><strong aria-hidden="true">4.1.</strong> Hyper-MCP</a></li><li class="chapter-item expanded "><a href="mcp-link.html"><strong aria-hidden="true">4.2.</strong> MCP-Link</a></li><li class="chapter-item expanded "><a href="mycommandcmd.html"><strong aria-hidden="true">4.3.</strong> MyCommandCMD</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Recursos</li><li class="chapter-item expanded "><a href="agents_prompts.html"><strong aria-hidden="true">5.</strong> Prompts de agentes</a></li><li class="chapter-item expanded "><a href="mcplink-assistant/index.html"><strong aria-hidden="true">6.</strong> Asistente MCP-Link</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Empezando</a></li><li class="chapter-item expanded affix "><li class="part-title">Asistentes de IA</li><li class="chapter-item expanded "><a href="copilot.html"><strong aria-hidden="true">2.</strong> Copilot</a></li><li class="chapter-item expanded "><a href="kilocode.html"><strong aria-hidden="true">3.</strong> Kilo Assistant</a></li><li class="chapter-item expanded affix "><li class="part-title">Desarrollo efectivo</li><li class="chapter-item expanded "><a href="effective_development.html"><strong aria-hidden="true">4.</strong> Guía de desarrollo efectivo</a></li><li class="chapter-item expanded "><a href="mcp.html"><strong aria-hidden="true">5.</strong> Servidores MCP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hyper-mcp.html"><strong aria-hidden="true">5.1.</strong> Hyper-MCP</a></li><li class="chapter-item expanded "><a href="mcp-link.html"><strong aria-hidden="true">5.2.</strong> MCP-Link</a></li><li class="chapter-item expanded "><a href="mycommandcmd.html"><strong aria-hidden="true">5.3.</strong> MyCommandCMD</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Recursos</li><li class="chapter-item expanded "><a href="agents_prompts.html"><strong aria-hidden="true">6.</strong> Prompts de agentes</a></li><li class="chapter-item expanded "><a href="mcplink-assistant/index.html"><strong aria-hidden="true">7.</strong> Asistente MCP-Link</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -249,14 +249,73 @@
 <h2 id="temperatura-del-modelo"><a class="header" href="#temperatura-del-modelo">Temperatura del modelo</a></h2>
 <p>La temperatura controla la aleatoriedad de las salidas del modelo de IA. Ajustar esta configuración optimiza los resultados para diferentes tareas.</p>
 <p>Para más detalles, consulta la <a href="https://kilocode.ai/docs/features/model-temperature">documentación de Model Temperature</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="guía-de-desarrollo-efectivo-dirigido-por-ai"><a class="header" href="#guía-de-desarrollo-efectivo-dirigido-por-ai">Guía de desarrollo efectivo dirigido por AI</a></h1>
+<p>Muchos habéis experimentado que los asistentes de IA pueden ser increíblemente útiles para acelerar el desarrollo, pero a veces pueden generar código incorrecto o ineficiente. Esta guía te ayudará a aprovechar al máximo los asistentes de IA como GitHub Copilot y Kilo Assistant, asegurando que produzcan código de alta calidad y eficiente.</p>
+<p>Aquí indico algunas prácticas recomendadas para trabajar con asistentes de IA en tu flujo de trabajo de desarrollo:</p>
+<ol>
+<li>
+<p>Configura tu proyecto con la configuración AI. En este repo dispones de una template para <a href="https://github.com/madeindigio/aidd/tree/main/kickstart-template">Kickstart</a> que incluye configuraciones recomendadas para Copilot y VSCode utilizando los servidores MCP más importantes para acelerar y optimizar el desarrollo (ver sección de Servidores MCP).</p>
+</li>
+<li>
+<p>Una vez usada la plantilla usarás tools de &quot;recuerdos&quot; como Serena o Remembrances para almacenar todo aquello importante en tu desarrollo o tareas que la AI esté realizando, normalmente se habrá configurado con la plantilla instrucciones para que la AI lo use de forma autónoma guardando recuerdos relevantes y consultando antes de cada tarea los recuerdos relacionados que pueden ser relevantes para la tarea. <strong>Si en algún momento ves que al finalizar una tarea, no ha guardado en recuerdos algo que consideras importante, indícaselo en el chat y pídele que lo guarde.</strong></p>
+</li>
+<li>
+<p>Utiliza un fichero plan.md, si usas Serena MCP, puedes usar la carpeta <code>.serena/memories/plan.md</code> ya que esta carpeta guardará cualquier información que sirva como base de conocimiento en formato markdown, tanto Serena como  Remembrances usarán estos ficheros como base de conocimiento para responder a tus preguntas y generar código. La diferencia es que Remembrances también dispone de mecanismos para guardar relaciones, entidades con metadatos y otros elementos relacionados en un grafo de conocimiento que pueden ser muy útiles para proyectos complejos. </p>
+</li>
+</ol>
+<p>El plan.md debe de indicar, que es el archivo de planificación de tareas del proyecto, tendrás tareas ya realizadas y otras no, puedes usar la sintaxis de markdown para organizar las tareas, por ejemplo:</p>
+<pre><code class="language-markdown"># Plan de desarrollo del proyecto X
+
+- [x] Tarea 1: Configurar el entorno de desarrollo
+- [x] Tarea 2: Implementar la funcionalidad de autenticación
+- [ ] Tarea 3: Desarrollar la API REST para la gestión de usuarios
+- [ ] Tarea 4: Crear la interfaz de usuario con React
+- [ ] Tarea 5: Integrar la API con la interfaz de usuario
+</code></pre>
+<ol start="4">
+<li>Si eres suficiéntemente específico en la definición de cada tarea, indicando qué herramientas usar, qué usar para buscar información de una librería, o qué parte de código quieres revisar en cada tarea, la AI podrá realizar las tareas de forma autónoma sin que tengas que indicarle nada más. Si no es así, te pedirá más información o te indicará qué necesita para completar la tarea. Tu prompt podrá ser algo tan sencillo como:</li>
+</ol>
+<blockquote>
+<p><em>&quot;teniendo en cuenta el plan.md continua con las tareas pendientes teniendo en cuenta las tareas realizadas anteriormente por si son relevantes para tu trabajo actual.&quot;</em></p>
+</blockquote>
+<ol start="5">
+<li>
+<p>Si estás trabajando con un proyecto de código existente, asegúrate de haber generado una base de conocimiento inicial de todo el proyecto, te explico ahora cómo hacerlo:</p>
+<ul>
+<li>Usa Serena MCP para indexar todo el código del proyecto. Puedes usar el comando <code>serena index</code> para crear un índice semántico de todo el código, lo que permitirá a la IA entender mejor la estructura y las relaciones dentro del código.</li>
+<li>Si el proyecto es muy grande, puedes usar Remembrances MCP para crear recuerdos específicos de partes importantes del proyecto, como módulos clave, funciones críticas o cualquier otra información relevante que pueda ayudar a la IA a comprender mejor el contexto.</li>
+<li>Asegúrate de que ambos servidores MCP estén configurados correctamente en tu entorno de desarrollo y que la IA pueda acceder a ellos.</li>
+<li>Empieza a interactuar con la AI en modo agente, pidiéndole que revise el código existente, y documente usando Serena o Remembrances la estructura del proyecto, las funciones principales, todos aquellos detalles que conozcas que existen, y que consideres relevantes para otros programadores o la propia AI en el futuro, por ejemplo:</li>
+<li><em>&quot;Revisa el código del proyecto y crea un resumen de las funciones principales, módulos y cualquier otra información relevante que pueda ayudar a entender la estructura del proyecto. Usa Serena para indexar el código y Remembrances para crear recuerdos específicos de partes importantes del proyecto.&quot;</em></li>
+<li><em>&quot;Revisa las migraciones de bbdd y los esquemas que generan los modelos y crea un resumen de la estructura de la base de datos, incluyendo tablas, relaciones y cualquier otra información relevante. También genera un diagrama en mermaid de la estructura de la base de datos.&quot;</em></li>
+<li><em>&quot;Revisa los endpoints de la API y crea un resumen de los mismos, incluyendo rutas, métodos HTTP, parámetros y cualquier otra información relevante. Usa este resumen para generar documentación de la API en formato OpenAPI.&quot;</em></li>
+<li><em>&quot;Revisa los componentes de la interfaz de usuario y crea un resumen de los mismos, incluyendo su estructura, props y cualquier otra información relevante. Usa este resumen para generar documentación de los componentes en formato Storybook.&quot;</em></li>
+</ul>
+</li>
+<li>
+<p>En ocasiones será interesante que la AI pueda leer los logs de alguna carpeta, logs de compilación o errores en los tests, para ello puedes usar MyCommandMCP para crear comandos que lean los logs y los guarden en recuerdos de Remembrances o en ficheros markdown en la carpeta <code>.serena/memories/</code> para que Serena pueda indexarlos y usarlos como base de conocimiento.</p>
+</li>
+</ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="mejores-utilidades-en-mcp"><a class="header" href="#mejores-utilidades-en-mcp">Mejores utilidades en MCP</a></h1>
 <p>En esta sección, te ayudamos a configurar las utilidades MCP más comunes para que puedas maximizar su potencial.</p>
 <p>Los servidores MCP permiten a la IA usar herramientas para recopilar más información contextual o realizar acciones en el mundo real. Estos servidores pueden configurarse para interactuar con APIs externas, ejecutar comandos o incluso conectarse a bases de datos.</p>
 <p>Hay dos tipos de servidores MCP: aquellos que se ejecutan en el cliente (en tu computadora) y por lo tanto necesitan instalarse, y aquellos que se ejecutan en la nube y son accesibles vía URL. Estos últimos pueden usar protocolos SSE o HTTPS. Es importante saber que si el servidor se ejecuta en el cliente, necesitas instalarlo y configurarlo en tu computadora, mientras que si es un servidor remoto, necesitas configurar la URL del servidor en tu agente.</p>
 <p>Los servidores MCP instalados en el cliente pueden interactuar con tu computadora, ejecutar comandos dentro de ella o leer partes de tu sistema. Son útiles para leer archivos, conectarse a bases de datos locales o sistemas accedidos vía VPN desde tu computadora.</p>
 <p>Los servidores MCP remotos son útiles para interactuar con APIs externas, como la API de Figma o la API de YouTrack, y no requieren instalación local.</p>
-<p>Aquí destacamos tres herramientas particularmente útiles ya que permiten implementar múltiples herramientas en un solo proceso MCP:</p>
+<p>Aquí destacamos unas pocas herramientas particularmente útiles ya que permiten implementar múltiples herramientas en un solo proceso MCP:</p>
 <ul>
+<li>
+<p><strong>Serena</strong>: Es un servidor dirigido principalmente a indexar nuestro proyecto de código a través de parseadores específicos para cada lenguaje de programación, genera un índice de clases, métodos, funciones y variables, y permite hacer búsquedas semánticas en el código. Es muy útil para que los agentes de IA puedan entender mejor nuestro código y responder preguntas sobre él.</p>
+<ul>
+<li>Puedes encontrar más información en su <a href="https://github.com/oraios/serena">repositorio de GitHub</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Remembrances</strong>: Un servidor diseñado para ayudar a los agentes de IA a recordar información relevante de conversaciones anteriores, se trata de un proyecto de código abierto creado internamente en DIGIO y que mejoraremos con las últimas técnicas de almacenamiento de información para uso en Agentes AI. Utiliza técnicas de recuperación de información para proporcionar contexto y mejorar la calidad de las respuestas.</p>
+<ul>
+<li>Puedes encontrar más información en su <a href="https://github.com/madeindigio/remembrances-mcp">repositorio de GitHub</a></li>
+</ul>
+</li>
 <li>
 <p><strong>Hyper-MCP</strong>: Un servidor MCP rápido construido en Rust (usa muy poca memoria) que permite agregar plugins WASM para extender su funcionalidad.</p>
 <ul>
