@@ -1,0 +1,10 @@
+[book]
+authors = ["Jose F. Rives Lirola"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Digio AI Driven Development"
+
+[build]
+build-dir = "../../book"
+create-missing = true

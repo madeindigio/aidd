@@ -11,6 +11,11 @@ Build the mdbook from the source files.
 interactive: true
 
 ```bash
+cd mdbook/index
+mdbook build
+cd ../../mdbook/en
+mdbook build
+cd ../../mdbook/es
 mdbook build
 ```
 
