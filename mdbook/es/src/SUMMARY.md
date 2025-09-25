@@ -1,6 +1,7 @@
 # Resumen
 
 - [Empezando](./getting_started.md)
+- [Modelos y ventanas de Contexto](./models_and_context_windows.md)
 
 # Asistentes de IA
 - [Copilot](./copilot.md)
