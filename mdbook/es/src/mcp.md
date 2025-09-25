@@ -10,8 +10,14 @@ Los servidores MCP instalados en el cliente pueden interactuar con tu computador
 
 Los servidores MCP remotos son útiles para interactuar con APIs externas, como la API de Figma o la API de YouTrack, y no requieren instalación local.
 
-Aquí destacamos tres herramientas particularmente útiles ya que permiten implementar múltiples herramientas en un solo proceso MCP:
+Aquí destacamos unas pocas herramientas particularmente útiles ya que permiten implementar múltiples herramientas en un solo proceso MCP:
 
+* **Serena**: Es un servidor dirigido principalmente a indexar nuestro proyecto de código a través de parseadores específicos para cada lenguaje de programación, genera un índice de clases, métodos, funciones y variables, y permite hacer búsquedas semánticas en el código. Es muy útil para que los agentes de IA puedan entender mejor nuestro código y responder preguntas sobre él.
+  * Puedes encontrar más información en su [repositorio de GitHub](https://github.com/oraios/serena)
+
+* **Remembrances**: Un servidor diseñado para ayudar a los agentes de IA a recordar información relevante de conversaciones anteriores, se trata de un proyecto de código abierto creado internamente en DIGIO y que mejoraremos con las últimas técnicas de almacenamiento de información para uso en Agentes AI. Utiliza técnicas de recuperación de información para proporcionar contexto y mejorar la calidad de las respuestas.
+  * Puedes encontrar más información en su [repositorio de GitHub](https://github.com/madeindigio/remembrances-mcp)
+  
 * **Hyper-MCP**: Un servidor MCP rápido construido en Rust (usa muy poca memoria) que permite agregar plugins WASM para extender su funcionalidad.
   * Especialmente útil habilitar el plugin **Conect7** para conectarse a la API de Context7, lo que permite usar la plataforma Context7 como herramienta en tus agentes de IA. Este servicio proporciona todas las versiones de documentación de una gran cantidad de librerías y frameworks, como React, Angular, Node.js, etc. Es una herramienta muy útil para tener en tu servidor MCP.
 

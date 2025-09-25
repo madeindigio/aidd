@@ -18,6 +18,16 @@ mdbook build
 cd ../../mdbook/es
 mdbook build
 ```
+### serve
+
+Serve the mdbook locally for preview.
+
+interactive: true
+
+```bash
+cd mdbook/es
+mdbook serve 
+```
 
 ### set-main
 

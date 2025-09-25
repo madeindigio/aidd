@@ -6,7 +6,8 @@
 - [Copilot](./copilot.md)
 - [Kilo Assistant](./kilocode.md)
 
-# Herramientas
+# Desarrollo efectivo
+- [Guía de desarrollo efectivo](./effective_development.md)
 - [Servidores MCP](./mcp.md)
     - [Hyper-MCP](./hyper-mcp.md)
     - [MCP-Link](./mcp-link.md)

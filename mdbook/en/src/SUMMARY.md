@@ -1,12 +1,13 @@
 # Summary
 
-- [Getting started](./getting_started.md)
+- [Getting Started](./getting_started.md)
 
 # AI Assistants
 - [Copilot](./copilot.md)
 - [Kilo Assistant](./kilocode.md)
 
-# Tools
+# Effective Development
+- [Effective Development Guide](./effective_development.md)
 - [MCP Servers](./mcp.md)
     - [Hyper-MCP](./hyper-mcp.md)
     - [MCP-Link](./mcp-link.md)
@@ -14,5 +15,5 @@
 
 # Resources
 
-- [Agents prompts](./agents_prompts.md)
+- [Agent Prompts](./agents_prompts.md)
 - [MCP-Link Assistant](mcplink-assistant/index.html)

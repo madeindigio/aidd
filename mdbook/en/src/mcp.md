@@ -1,4 +1,4 @@
-# Best utils in MCP
+# Best Utilities in MCP
 
 In this section, we help you configure the most common MCP utilities so you can maximize their potential.
 
@@ -10,12 +10,18 @@ Client-installed MCP servers can interact with your computer, execute commands w
 
 Remote MCP servers are useful for interacting with external APIs, such as the Figma API or the YouTrack API, and do not require local installation.
 
-Here we highlight three particularly useful tools as they allow you to implement multiple tools in a single MCP process:
+Here we highlight a few particularly useful tools as they allow you to implement multiple tools in a single MCP process:
 
+* **Serena**: It is a server mainly aimed at indexing our code project through specific parsers for each programming language, generates an index of classes, methods, functions and variables, and allows semantic searches in the code. It is very useful for AI agents to better understand our code and answer questions about it.
+  * You can find more information in its [GitHub repository](https://github.com/oraios/serena)
+
+* **Remembrances**: A server designed to help AI agents remember relevant information from previous conversations, it is an open source project created internally at DIGIO and that we will improve with the latest information storage techniques for use in AI Agents. It uses information retrieval techniques to provide context and improve the quality of responses.
+  * You can find more information in its [GitHub repository](https://github.com/madeindigio/remembrances-mcp)
+  
 * **Hyper-MCP**: A fast MCP server built in Rust (uses very little memory) that allows adding WASM plugins to extend its functionality.
-  * Especially useful enable **Conect7** plugin to connect to the Context7 API, which allows you to use the Context7 platform as a tool in your AI agents. This service provides to the all versions of documentation of a big amount of libraries and frameworks, such as React, Angular, Node.js, etc. It is a very useful tool to have in your MCP server.
+  * Especially useful to enable the **Conect7** plugin to connect to the Context7 API, which allows you to use the Context7 platform as a tool in your AI agents. This service provides all versions of documentation of a big amount of libraries and frameworks, such as React, Angular, Node.js, etc. It is a very useful tool to have in your MCP server.
 
-  * Other useful plugin is `serper`, provides access to Google Search results. You can register free and get 2.5k requests. 
+  * Another useful plugin is `serper`, provides access to Google Search results. You can register free and get 2.5k requests. 
 
 * **MCP-Link**: An MCP server that enables connecting any API with an OpenAPI specification to an MCP agent, turning it into an interface compatible with AI agents.
 
