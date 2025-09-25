@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Digio AI Driven Development</title>
-        <meta name="robots" content="noindex" />
+        <title>MCP-Link - Digio AI Driven Development</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -76,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="language_selection.html"><strong aria-hidden="true">1.</strong> Version</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Empezando</a></li><li class="chapter-item expanded affix "><li class="part-title">Asistentes de IA</li><li class="chapter-item expanded "><a href="copilot.html"><strong aria-hidden="true">2.</strong> Copilot</a></li><li class="chapter-item expanded "><a href="kilocode.html"><strong aria-hidden="true">3.</strong> Kilo Assistant</a></li><li class="chapter-item expanded affix "><li class="part-title">Herramientas</li><li class="chapter-item expanded "><a href="mcp.html"><strong aria-hidden="true">4.</strong> Servidores MCP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hyper-mcp.html"><strong aria-hidden="true">4.1.</strong> Hyper-MCP</a></li><li class="chapter-item expanded "><a href="mcp-link.html" class="active"><strong aria-hidden="true">4.2.</strong> MCP-Link</a></li><li class="chapter-item expanded "><a href="mycommandcmd.html"><strong aria-hidden="true">4.3.</strong> MyCommandCMD</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Recursos</li><li class="chapter-item expanded "><a href="agents_prompts.html"><strong aria-hidden="true">5.</strong> Prompts de agentes</a></li><li class="chapter-item expanded "><a href="mcplink-assistant/index.html"><strong aria-hidden="true">6.</strong> Asistente MCP-Link</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -135,22 +134,91 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>This book is available in multiple languages. Please select your preferred language:</p>
+                        <h1 id="mcp-link"><a class="header" href="#mcp-link">MCP-Link</a></h1>
+<p>En <strong>digio</strong>, hemos desplegado una instancia de MCP-Link en <a href="https://mcplink.madeindigio.com">mcplink.madeindigio.com</a> para que la uses.</p>
+<p>MCP-Link es una herramienta que automáticamente convierte cualquier API con una especificación OpenAPI v3 en un servidor MCP completo. Esto permite a los agentes de IA interactuar con APIs RESTful existentes sin necesidad de modificar el código de la API original.</p>
+<h3 id="cómo-funciona"><a class="header" href="#cómo-funciona">¿Cómo funciona?</a></h3>
+<p>MCP-Link genera una interfaz compatible con MCP desde una URL de especificación OpenAPI. Puedes configurar la conversión usando los siguientes parámetros en la URL:</p>
 <ul>
-<li><a href="./en/index.html">English version</a></li>
-<li><a href="./es/index.html">Versión en español</a></li>
+<li><code>s=</code>: La URL del archivo de especificación OpenAPI.</li>
+<li><code>u=</code>: La URL base de la API objetivo.</li>
+<li><code>h=</code>: El formato del encabezado de autenticación (por ejemplo, <code>Authorization:Bearer</code>).</li>
+<li><code>f=</code>: Expresiones para filtrar las rutas de la API a incluir o excluir.</li>
 </ul>
+<h3 id="usar-el-configurador-de-mcp-link"><a class="header" href="#usar-el-configurador-de-mcp-link">Usar el Configurador de MCP-Link</a></h3>
+<p>El <a href="./mcplink-assistant/index.html">Configurador de MCP-Link digio</a> es una interfaz web que te permite configurar fácilmente los parámetros de MCP-Link. Proporciona una forma amigable de configurar la URL de especificación OpenAPI, URL base, encabezados de autenticación y filtros de rutas.</p>
+<h3 id="ejemplo-de-uso-en-un-agente-de-ia"><a class="header" href="#ejemplo-de-uso-en-un-agente-de-ia">Ejemplo de uso en un Agente de IA</a></h3>
+<p>Para conectar un agente a una API vía MCP-Link, configúralo de la siguiente manera en el archivo de configuración del servidor MCP:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;@service-name&quot;: {
+      &quot;url&quot;: &quot;https://mcplink.madeindigio.com/sse?s=[OpenAPI-specification-URL]&amp;u=[API-base-URL]&quot;
+    }
+  }
+}
+</code></pre>
+<p>Esto permite que cualquier API con una especificación OpenAPI se convierta inmediatamente en una interfaz compatible con MCP accesible para agentes de IA.</p>
+<h3 id="ejemplo-con-figma"><a class="header" href="#ejemplo-con-figma">Ejemplo con Figma</a></h3>
+<p>Para ilustrar un caso de uso real, veamos cómo configurar MCP-Link para la API de Figma. La URL para conectar con Figma a través de nuestra instancia de MCP-Link sería:</p>
+<p><code>https://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fraw.githubusercontent.com%2Ffigma%2Frest-api-spec%2Frefs%2Fheads%2Fmain%2Fopenapi%2Fopenapi.yaml&amp;u=https%3A%2F%2Fapi.figma.com&amp;h=%7B%22X-Figma-Token%22%3A%22YOUR_FIGMA_TOKEN%22%7D&amp;f=%2B%2F**</code></p>
+<p>Desglosando los parámetros:</p>
+<ul>
+<li><strong>s</strong>: <code>https://raw.githubusercontent.com/figma/rest-api-spec/refs/heads/main/openapi/openapi.yaml</code> - La especificación OpenAPI de la API de Figma.</li>
+<li><strong>u</strong>: <code>https://api.figma.com</code> - La URL base de la API de Figma.</li>
+<li><strong>h</strong>: <code>{&quot;X-Figma-Token&quot;:&quot;YOUR_FIGMA_TOKEN&quot;}</code> - El encabezado de autenticación. Un objeto JSON (codificado en URL) especifica que el encabezado <code>X-Figma-Token</code> debe enviarse con tu token personal de Figma. Reemplaza <code>YOUR_FIGMA_TOKEN</code> con tu token real.</li>
+<li><strong>f</strong>: <code>+/**</code> - Incluye todas las rutas de la API.</li>
+</ul>
+<p>La configuración en tu agente se vería así:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;@figma&quot;: {
+      &quot;url&quot;: &quot;https://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fraw.githubusercontent.com%2Ffigma%2Frest-api-spec%2Frefs%2Fheads%2Fmain%2Fopenapi%2Fopenapi.yaml&amp;u=https%3A%2F%2Fapi.figma.com&amp;h=%7B%22X-Figma-Token%22%3A%22YOUR_FIGMA_TOKEN%22%7D&amp;f=%2B%2F**&quot;
+    }
+  }
+}
+</code></pre>
+<h3 id="ejemplo-con-youtrack"><a class="header" href="#ejemplo-con-youtrack">Ejemplo con YouTrack</a></h3>
+<p>De manera similar, para conectar con YouTrack, la URL de MCP-Link sería:</p>
+<p><code>http://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fdigio.youtrack.cloud%2Fapi%2Fopenapi.json&amp;u=https%3A%2F%2Fdigio.youtrack.cloud%2Fapi&amp;h=%7B%22Authorization%22%3A%22Bearer%20TOKEN_YOUTRACK%22%7D&amp;f=%2B%2F**</code></p>
+<p>Desglosando los parámetros:</p>
+<ul>
+<li><strong>s</strong>: <code>https://digio.youtrack.cloud/api/openapi.json</code> - La especificación OpenAPI de la API de YouTrack.</li>
+<li><strong>u</strong>: <code>https://digio.youtrack.cloud/api</code> - La URL base de la API de YouTrack.</li>
+<li><strong>h</strong>: <code>{&quot;Authorization&quot;:&quot;Bearer TOKEN_YOUTRACK&quot;}</code> - El encabezado de autenticación. Se usa un token de autorización Bearer. Reemplaza <code>TOKEN_YOUTRACK</code> con tu token permanente de YouTrack.</li>
+<li><strong>f</strong>: <code>+/**</code> - Incluye todas las rutas de la API.</li>
+</ul>
+<p>La configuración en tu agente se vería así:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;@youtrack&quot;: {
+      &quot;url&quot;: &quot;http://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fdigio.youtrack.cloud%2Fapi%2Fopenapi.json&amp;u=https%3A%2F%2Fdigio.youtrack.cloud%2Fapi&amp;h=%7B%22Authorization%22%3A%22Bearer%20TOKEN_YOUTRACK%22%7D&amp;f=%2B%2F**&quot;
+    }
+  }
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="hyper-mcp.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="mycommandcmd.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="hyper-mcp.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="mycommandcmd.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
@@ -166,10 +234,5 @@
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        <script type="text/javascript">
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
     </body>
 </html>

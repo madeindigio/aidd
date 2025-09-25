@@ -1,0 +1,895 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Digio AI Driven Development</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting started</a></li><li class="chapter-item expanded affix "><li class="part-title">AI Assistants</li><li class="chapter-item expanded "><a href="copilot.html"><strong aria-hidden="true">2.</strong> Copilot</a></li><li class="chapter-item expanded "><a href="kilocode.html"><strong aria-hidden="true">3.</strong> Kilo Assistant</a></li><li class="chapter-item expanded affix "><li class="part-title">Tools</li><li class="chapter-item expanded "><a href="mcp.html"><strong aria-hidden="true">4.</strong> MCP Servers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hyper-mcp.html"><strong aria-hidden="true">4.1.</strong> Hyper-MCP</a></li><li class="chapter-item expanded "><a href="mcp-link.html"><strong aria-hidden="true">4.2.</strong> MCP-Link</a></li><li class="chapter-item expanded "><a href="mycommandcmd.html"><strong aria-hidden="true">4.3.</strong> MyCommandCMD</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Resources</li><li class="chapter-item expanded "><a href="agents_prompts.html"><strong aria-hidden="true">5.</strong> Agents prompts</a></li><li class="chapter-item expanded "><a href="mcplink-assistant/index.html"><strong aria-hidden="true">6.</strong> MCP-Link Assistant</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Digio AI Driven Development</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="getting-started"><a class="header" href="#getting-started">Getting started</a></h1>
+<p>Welcome to the Getting Started guide! This document will help you set up your environment and get familiar with the basics of our project.</p>
+<p>AI Assistants are powerful tools that can significantly enhance your development workflow. This guide will walk you through the initial steps to integrate AI into your development process.</p>
+<h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
+<p>I suppose you have the following prerequisites:</p>
+<ul>
+<li>A OS with a terminal (Linux, macOS, or Windows with WSL)</li>
+<li>A code editor (VSCode, IntelliJ based IDE: PHPStorm, PyCharm, etc., Xcode)</li>
+</ul>
+<h2 id="best-practices-for-github-copilot"><a class="header" href="#best-practices-for-github-copilot">Best practices for Github Copilot</a></h2>
+<p>Read this section <a href="./copilot.html">Best practices for Github Copilot</a> to learn how to use GitHub Copilot effectively.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="best-practices-for-github-copilot-1"><a class="header" href="#best-practices-for-github-copilot-1">Best practices for Github Copilot</a></h1>
+<h2 id="customizing-github-copilot"><a class="header" href="#customizing-github-copilot">Customizing GitHub Copilot</a></h2>
+<p>Custom instructions allow you to provide specific guidelines to GitHub Copilot to tailor its responses to your coding practices and project requirements. Instead of repeatedly providing the same instructions, you can store them in files that are automatically included in each chat request.</p>
+<p>There are three main ways to customize AI responses:</p>
+<ul>
+<li><strong>Custom instructions</strong>: Define common guidelines for tasks like generating code, code reviews, or commit messages.</li>
+<li><strong>Prompt files</strong>: Create reusable prompts for common tasks.</li>
+<li><strong>Custom chat modes</strong>: Define how chat operates, which tools it can use, and how it interacts with the codebase.</li>
+</ul>
+<h3 id="custom-instructions"><a class="header" href="#custom-instructions">Custom Instructions</a></h3>
+<p>You can define custom instructions in several ways:</p>
+<ul>
+<li><strong><code>.github/copilot-instructions.md</code></strong>: A single file in your workspace that contains general coding practices and project requirements. These instructions are automatically included in every chat request.</li>
+<li><strong><code>.instructions.md</code> files</strong>: Multiple files that can be stored in your workspace or user profile. You can use glob patterns to apply them to specific files or include them in all requests.</li>
+<li><strong>VS Code settings</strong>: Define instructions directly in your user or workspace settings for tasks like code generation, test generation, and commit messages.</li>
+</ul>
+<h3 id="prompt-files"><a class="header" href="#prompt-files">Prompt Files</a></h3>
+<p>Prompt files are reusable prompts for common tasks, such as generating code or performing a code review. They are standalone prompts that you can run directly in chat.</p>
+<p>Key features of prompt files include:</p>
+<ul>
+<li><strong>Reusability</strong>: Define a prompt once and reuse it across your projects.</li>
+<li><strong>Structure</strong>: Prompt files are Markdown files with a <code>.prompt.md</code> extension and can include a header with metadata (e.g., <code>mode</code>, <code>model</code>, <code>tools</code>) and a body with the prompt content.</li>
+<li><strong>Variables</strong>: Use variables like <code>${workspaceFolder}</code> and <code>${selection}</code> to make your prompts more dynamic.</li>
+</ul>
+<p>For more details, visit the official <a href="https://code.visualstudio.com/docs/copilot/copilot-customization">GitHub Copilot Customization documentation</a>.</p>
+<h3 id="chat-modes"><a class="header" href="#chat-modes">Chat Modes</a></h3>
+<p>Chat modes in VS Code allow you to tailor the AI chat behavior for specific tasks. You can switch between different modes depending on your needs.</p>
+<h4 id="built-in-chat-modes"><a class="header" href="#built-in-chat-modes">Built-in chat modes</a></h4>
+<p>VS Code comes with three built-in chat modes:</p>
+<ul>
+<li><strong>Ask mode</strong>: Optimized for answering questions about your codebase and general technology concepts.</li>
+<li><strong>Edit mode</strong>: Optimized for making code edits across multiple files.</li>
+<li><strong>Agent mode</strong>: Optimized for making autonomous edits across multiple files, especially for complex tasks that may require running terminal commands and tools.</li>
+</ul>
+<h4 id="agent-mode"><a class="header" href="#agent-mode">Agent Mode</a></h4>
+<p>Agent mode is particularly useful for complex tasks that require autonomous reasoning and planning. It can:</p>
+<ul>
+<li>Refactor parts of your codebase.</li>
+<li>Plan and implement new features.</li>
+<li>Migrate your codebase to a new framework.</li>
+<li>Generate implementation plans for complex tasks.</li>
+</ul>
+<p>For more details, visit the official documentation on <a href="https://code.visualstudio.com/docs/copilot/chat/chat-modes">Chat Modes</a> and <a href="https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode">Agent Mode</a>.</p>
+<h2 id="configuring-mcp-servers"><a class="header" href="#configuring-mcp-servers">Configuring MCP Servers</a></h2>
+<p>To set up MCP servers for GitHub Copilot, follow the guidelines provided in the <a href="https://code.visualstudio.com/docs/copilot/chat/mcp-servers">Visual Studio Code documentation</a>. The process involves:</p>
+<ol>
+<li><strong>Server Setup</strong>: Ensure your MCP server is properly configured to handle requests from GitHub Copilot.</li>
+<li><strong>Authentication</strong>: Implement secure authentication mechanisms to validate user access.</li>
+<li><strong>Integration</strong>: Connect the MCP server with your development environment to enable seamless communication.</li>
+<li><strong>Testing</strong>: Verify the server's functionality by running tests to ensure compatibility and performance.</li>
+</ol>
+<p>For detailed instructions, visit the official <a href="https://code.visualstudio.com/docs/copilot/chat/mcp-servers">documentation</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="best-practices-for-kilo-assistant"><a class="header" href="#best-practices-for-kilo-assistant">Best practices for Kilo Assistant</a></h1>
+<p>This document provides a summary of best practices for using Kilo Assistant, with links to the official documentation for more detailed information.</p>
+<h2 id="using-modes"><a class="header" href="#using-modes">Using Modes</a></h2>
+<p>Modes in Kilo Code are specialized personas that tailor the assistant's behavior to your current task. Each mode offers different capabilities, expertise, and access levels to help you accomplish specific goals.</p>
+<ul>
+<li><strong>Code Mode:</strong> For writing code, implementing features, debugging, and general development.</li>
+<li><strong>Ask Mode:</strong> For code explanation, concept exploration, and technical learning.</li>
+<li><strong>Architect Mode:</strong> For system design, high-level planning, and architecture discussions.</li>
+<li><strong>Debug Mode:</strong> For tracking down bugs, diagnosing errors, and resolving complex issues.</li>
+<li><strong>Orchestrator Mode:</strong> For breaking down complex projects into manageable subtasks.</li>
+</ul>
+<p>For more details, see the <a href="https://kilocode.ai/docs/basic-usage/using-modes">Using Modes documentation</a>.</p>
+<h2 id="context-mentions"><a class="header" href="#context-mentions">Context Mentions</a></h2>
+<p>Context mentions are a powerful way to provide Kilo Code with specific information about your project. Use the <code>@</code> symbol to refer to files, folders, problems, and Git commits.</p>
+<ul>
+<li><strong>File:</strong> <code>@/path/to/file.ts</code></li>
+<li><strong>Folder:</strong> <code>@/path/to/folder/</code></li>
+<li><strong>Problems:</strong> <code>@problems</code></li>
+<li><strong>Terminal:</strong> <code>@terminal</code></li>
+<li><strong>Git Commit:</strong> <code>@a1b2c3d</code></li>
+<li><strong>Git Changes:</strong> <code>@git-changes</code></li>
+<li><strong>URL:</strong> <code>@https://example.com</code></li>
+</ul>
+<p>For more details, see the <a href="https://kilocode.ai/docs/basic-usage/context-mentions">Context Mentions documentation</a>.</p>
+<h2 id="auto-approving-actions"><a class="header" href="#auto-approving-actions">Auto-Approving Actions</a></h2>
+<p>Auto-approve settings speed up your workflow by eliminating repetitive confirmation prompts, but they significantly increase security risks. Only enable auto-approval for actions you fully trust.</p>
+<p>For more details, see the <a href="https://kilocode.ai/docs/features/auto-approving-actions">Auto-Approving Actions documentation</a>.</p>
+<h2 id="how-tools-work"><a class="header" href="#how-tools-work">How Tools Work</a></h2>
+<p>Kilo Code uses tools to interact with your code and environment. These specialized helpers perform specific actions like reading files, making edits, running commands, or searching your codebase.</p>
+<p>For more details, see the <a href="https://kilocode.ai/docs/basic-usage/how-tools-work">How Tools Work documentation</a>.</p>
+<h2 id="enhance-prompt"><a class="header" href="#enhance-prompt">Enhance Prompt</a></h2>
+<p>The &quot;Enhance Prompt&quot; feature helps you improve the quality and effectiveness of your prompts before sending them to the AI model.</p>
+<p>For more details, see the <a href="https://kilocode.ai/docs/features/enhance-prompt">Enhance Prompt documentation</a>.</p>
+<h2 id="prompt-engineering"><a class="header" href="#prompt-engineering">Prompt Engineering</a></h2>
+<p>Prompt engineering is the art of crafting effective instructions for AI models. Well-written prompts lead to better results, fewer errors, and a more efficient workflow.</p>
+<p>For more details, see the <a href="https://kilocode.ai/docs/advanced-usage/prompt-engineering">Prompt Engineering Tips documentation</a>.</p>
+<h2 id="custom-rules"><a class="header" href="#custom-rules">Custom Rules</a></h2>
+<p>Custom rules provide a powerful way to define project-specific and global behaviors and constraints for the Kilo Code AI agent.</p>
+<p>For more details, see the <a href="https://kilocode.ai/docs/advanced-usage/custom-rules">Custom Rules documentation</a>.</p>
+<h2 id="custom-instructions-1"><a class="header" href="#custom-instructions-1">Custom Instructions</a></h2>
+<p>Custom Instructions allow you to personalize how Kilo Code behaves, providing specific guidance that shapes responses, coding style, and decision-making processes.</p>
+<p>For more details, see the <a href="https://kilocode.ai/docs/advanced-usage/custom-instructions">Custom Instructions documentation</a>.</p>
+<h2 id="memory-bank"><a class="header" href="#memory-bank">Memory Bank</a></h2>
+<p>Memory Bank is a system of structured documentation that enables Kilo Code to better understand your project and maintain context across coding sessions.</p>
+<p>For more details, see the <a href="https://kilocode.ai/docs/advanced-usage/memory-bank">Memory Bank documentation</a>.</p>
+<h2 id="working-with-large-projects"><a class="header" href="#working-with-large-projects">Working with Large Projects</a></h2>
+<p>Large projects require some extra care to manage context effectively. Use specific file paths, break down tasks, and summarize large amounts of code.</p>
+<p>For more details, see the <a href="https://kilocode.ai/docs/advanced-usage/large-projects">Working with Large Projects documentation</a>.</p>
+<h2 id="model-temperature"><a class="header" href="#model-temperature">Model Temperature</a></h2>
+<p>Temperature controls the randomness of AI model outputs. Adjusting this setting optimizes results for different tasks.</p>
+<p>For more details, see the <a href="https://kilocode.ai/docs/features/model-temperature">Model Temperature documentation</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="best-utils-in-mcp"><a class="header" href="#best-utils-in-mcp">Best utils in MCP</a></h1>
+<p>In this section, we help you configure the most common MCP utilities so you can maximize their potential.</p>
+<p>MCP servers allow AI to use tools to gather more contextual information or perform actions in the real world. These servers can be configured to interact with external APIs, execute commands, or even connect to databases.</p>
+<p>There are two types of MCP servers: those that run on the client (on your computer) and therefore need to be installed, and those that run in the cloud and are accessible via a URL. The latter can use SSE or HTTPS protocols. It is important to know that if the server runs on the client, you need to install and configure it on your computer, whereas if it is a remote server, you need to configure the server's URL in your agent.</p>
+<p>Client-installed MCP servers can interact with your computer, execute commands within it, or read parts of your system. They are useful for reading files, connecting to local databases, or systems accessed via a VPN from your computer.</p>
+<p>Remote MCP servers are useful for interacting with external APIs, such as the Figma API or the YouTrack API, and do not require local installation.</p>
+<p>Here we highlight three particularly useful tools as they allow you to implement multiple tools in a single MCP process:</p>
+<ul>
+<li>
+<p><strong>Hyper-MCP</strong>: A fast MCP server built in Rust (uses very little memory) that allows adding WASM plugins to extend its functionality.</p>
+<ul>
+<li>
+<p>Especially useful enable <strong>Conect7</strong> plugin to connect to the Context7 API, which allows you to use the Context7 platform as a tool in your AI agents. This service provides to the all versions of documentation of a big amount of libraries and frameworks, such as React, Angular, Node.js, etc. It is a very useful tool to have in your MCP server.</p>
+</li>
+<li>
+<p>Other useful plugin is <code>serper</code>, provides access to Google Search results. You can register free and get 2.5k requests. </p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>MCP-Link</strong>: An MCP server that enables connecting any API with an OpenAPI specification to an MCP agent, turning it into an interface compatible with AI agents.</p>
+</li>
+<li>
+<p><strong>MyCommandMCP</strong>: A versatile MCP server written in Rust that allows executing system commands as MCP tools. It is highly configurable and can be adapted to a wide range of use cases.</p>
+</li>
+</ul>
+<p>This is a sample of mcp.json</p>
+<pre><code class="language-json">
+{
+  &quot;mcpServers&quot;: {
+    &quot;@brave&quot;: {
+      &quot;url&quot;: &quot;http://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fgithub.com%2Fautomation-ai-labs%2Fmcp-link%2Fraw%2Frefs%2Fheads%2Fmain%2Fexamples%2Fbrave.yaml&amp;u=https%3A%2F%2Fapi.search.brave.com%2Fres%2Fv1&amp;h=%7B%22X-Subscription-Token%22%3A%22BSAfPg0fhEKKX5sV-Tc2XCVD-qEfyI-%22%8J&amp;f=%2B%2F**&quot;
+    },
+    &quot;@hyper-mcp&quot;: {
+      &quot;command&quot;: &quot;hyper-mcp&quot;,
+      &quot;args&quot;: [
+        &quot;--config-file&quot;,
+        &quot;/home/sevir/.config/hyper-mcp/kilo.json&quot;
+      ]
+    },
+    &quot;@mycommandmcp&quot;: {
+      &quot;command&quot;: &quot;mycommandmcp&quot;,
+      &quot;args&quot;: [
+        &quot;--config&quot;,
+        &quot;/home/sevir/.config/mc-mcp/optimized.yaml&quot;,
+        &quot;--log-file&quot;,
+        &quot;/www/MCP/MyCommandMCP/mycommandmcp/mcp.log&quot;
+      ]
+    }
+  }
+}
+</code></pre>
+<h2 id="mcp-server-catalogs"><a class="header" href="#mcp-server-catalogs">MCP Server Catalogs</a></h2>
+<p>If you use VSCode with Copilot or any other tool, there are MCP marketplaces that are usually installed locally. You download the project and execute it, but you must be especially careful because you don't know what kind of code it might execute.</p>
+<p>There are other marketplaces like <a href="https://smithery.ai/">Smithery</a> that can deploy the code on their infrastructure instead of yours, making it safer and allowing you to pass configuration parameters as environment variables. For all servers that can run without needing data from your system, it is recommended to execute them on a remote server rather than your local machine. This reduces the risk of a malicious plugin accessing your personal data or executing unwanted commands on your system.</p>
+<p>Docker has also released its own MCP catalog, <a href="https://hub.docker.com/mcp">Docker Hub MCP</a>, where you can find plugins that can be executed in containers and are safe to use.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hyper-mcp"><a class="header" href="#hyper-mcp">Hyper-MCP</a></h1>
+<p>Hyper-MCP is a fast and secure MCP server that extends its functionality through WebAssembly (WASM) plugins. It allows developers to add AI capabilities to their applications by integrating with tools like Claude Desktop and Cursor IDE.</p>
+<h3 id="key-features"><a class="header" href="#key-features">Key Features</a></h3>
+<ul>
+<li><strong>Extensible with WebAssembly:</strong> Write plugins in any language that compiles to WASM.</li>
+<li><strong>Secure:</strong> Plugins run in a sandboxed environment with fine-grained access control.</li>
+<li><strong>OCI Registry Support:</strong> Distribute and manage plugins using standard OCI registries like Docker Hub.</li>
+<li><strong>Lightweight and Portable:</strong> Suitable for various environments, from cloud to edge devices.</li>
+<li><strong>Cross-platform:</strong> Compatible with Linux, macOS, and Windows.</li>
+</ul>
+<h3 id="configuration"><a class="header" href="#configuration">Configuration</a></h3>
+<p>To get started with Hyper-MCP, you need to create a <code>config.json</code> file in the appropriate directory for your operating system:</p>
+<ul>
+<li><strong>Linux:</strong> <code>$HOME/.config/hyper-mcp/config.json</code></li>
+<li><strong>macOS:</strong> <code>$HOME/Library/Application Support/hyper-mcp/config.json</code></li>
+<li><strong>Windows:</strong> <code>{FOLDERID_RoamingAppData}\hyper-mcp\config.json</code></li>
+</ul>
+<p>Below is an example configuration that includes several useful plugins:</p>
+<pre><code class="language-json">{
+  &quot;plugins&quot;: [
+    {
+      &quot;name&quot;: &quot;time&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/time-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;think&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/think-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;hash&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/hash-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;fetch&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/fetch-plugin:latest&quot;,
+      &quot;runtime_config&quot;: {
+        &quot;allowed_hosts&quot;: [&quot;*&quot;],
+        &quot;memory_limit&quot;: &quot;100 MB&quot;
+      }
+    },
+    {
+      &quot;name&quot;: &quot;context7&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/context7-plugin:nightly&quot;,
+      &quot;runtime_config&quot;: {
+        &quot;allowed_hosts&quot;: [&quot;context7.com&quot;]
+      }
+    },
+    {
+      &quot;name&quot;: &quot;sequentialthinking&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/sevir/sequentialthinking-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;serper&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/serper-plugin:latest&quot;,
+      &quot;runtime_config&quot;: {
+        &quot;env_vars&quot;: {
+          &quot;SERPER_API_KEY&quot;: &quot;YOUR_SERPER_API_KEY&quot;
+        },
+        &quot;allowed_hosts&quot;: [&quot;google.serper.dev&quot;]
+      }
+    }
+  ]
+}
+</code></pre>
+<p>In this configuration:</p>
+<ul>
+<li>Each object in the <code>plugins</code> array defines a new tool for the MCP server.</li>
+<li><code>&quot;name&quot;</code>: The name of the tool that will be exposed.</li>
+<li><code>&quot;path&quot;</code>: The OCI path to the plugin image.</li>
+<li><code>&quot;runtime_config&quot;</code>: (Optional) Allows you to configure the plugin's runtime environment, such as setting environment variables (<code>env_vars</code>), restricting network access (<code>allowed_hosts</code>), or limiting memory usage. For the <code>serper</code> plugin, you should replace <code>&quot;YOUR_SERPER_API_KEY&quot;</code> with your actual Serper API key.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mcp-link"><a class="header" href="#mcp-link">MCP-Link</a></h1>
+<p>At <strong>digio</strong>, we have deployed an instance of MCP-Link at <a href="https://mcplink.madeindigio.com">mcplink.madeindigio.com</a> for you to use.</p>
+<p>MCP-Link is a tool that automatically converts any API with an OpenAPI v3 specification into a complete MCP server. This allows AI agents to interact with existing RESTful APIs without needing to modify the original API code.</p>
+<h3 id="how-does-it-work"><a class="header" href="#how-does-it-work">How does it work?</a></h3>
+<p>MCP-Link generates an MCP-compatible interface from an OpenAPI specification URL. You can configure the conversion using the following parameters in the URL:</p>
+<ul>
+<li><code>s=</code>: The URL of the OpenAPI specification file.</li>
+<li><code>u=</code>: The base URL of the target API.</li>
+<li><code>h=</code>: The format of the authentication header (e.g., <code>Authorization:Bearer</code>).</li>
+<li><code>f=</code>: Expressions to filter the API routes to include or exclude.</li>
+</ul>
+<h3 id="use-mcp-link-configurator"><a class="header" href="#use-mcp-link-configurator">Use MCP-Link Configurator</a></h3>
+<p><a href="./mcplink-assistant/index.html">MCP-Link digio Configurator</a> is a web interface that allows you to easily configure MCP-Link parameters. It provides a user-friendly way to set up the OpenAPI specification URL, base URL, authentication headers, and route filters.</p>
+<h3 id="example-usage-in-an-ai-agent"><a class="header" href="#example-usage-in-an-ai-agent">Example usage in an AI Agent</a></h3>
+<p>To connect an agent to an API via MCP-Link, configure it as follows in the MCP server configuration file:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;@service-name&quot;: {
+      &quot;url&quot;: &quot;https://mcplink.madeindigio.com/sse?s=[OpenAPI-specification-URL]&amp;u=[API-base-URL]&quot;
+    }
+  }
+}
+</code></pre>
+<p>This allows any API with an OpenAPI specification to be immediately converted into an MCP-compatible interface accessible to AI agents.</p>
+<h3 id="example-with-figma"><a class="header" href="#example-with-figma">Example with Figma</a></h3>
+<p>To illustrate a real use case, let's see how to configure MCP-Link for the Figma API. The URL to connect with Figma through our MCP-Link instance would be:</p>
+<p><code>https://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fraw.githubusercontent.com%2Ffigma%2Frest-api-spec%2Frefs%2Fheads%2Fmain%2Fopenapi%2Fopenapi.yaml&amp;u=https%3A%2F%2Fapi.figma.com&amp;h=%7B%22X-Figma-Token%22%3A%22YOUR_FIGMA_TOKEN%22%7D&amp;f=%2B%2F**</code></p>
+<p>Breaking down the parameters:</p>
+<ul>
+<li><strong>s</strong>: <code>https://raw.githubusercontent.com/figma/rest-api-spec/refs/heads/main/openapi/openapi.yaml</code> - The OpenAPI specification of the Figma API.</li>
+<li><strong>u</strong>: <code>https://api.figma.com</code> - The base URL of the Figma API.</li>
+<li><strong>h</strong>: <code>{&quot;X-Figma-Token&quot;:&quot;YOUR_FIGMA_TOKEN&quot;}</code> - The authentication header. A JSON object (URL-encoded) specifies that the <code>X-Figma-Token</code> header should be sent with your personal Figma token. Replace <code>YOUR_FIGMA_TOKEN</code> with your actual token.</li>
+<li><strong>f</strong>: <code>+/**</code> - Includes all API routes.</li>
+</ul>
+<p>The configuration in your agent would look like this:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;@figma&quot;: {
+      &quot;url&quot;: &quot;https://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fraw.githubusercontent.com%2Ffigma%2Frest-api-spec%2Frefs%2Fheads%2Fmain%2Fopenapi%2Fopenapi.yaml&amp;u=https%3A%2F%2Fapi.figma.com&amp;h=%7B%22X-Figma-Token%22%3A%22YOUR_FIGMA_TOKEN%22%7D&amp;f=%2B%2F**&quot;
+    }
+  }
+}
+</code></pre>
+<h3 id="example-with-youtrack"><a class="header" href="#example-with-youtrack">Example with YouTrack</a></h3>
+<p>Similarly, to connect with YouTrack, the MCP-Link URL would be:</p>
+<p><code>http://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fdigio.youtrack.cloud%2Fapi%2Fopenapi.json&amp;u=https%3A%2F%2Fdigio.youtrack.cloud%2Fapi&amp;h=%7B%22Authorization%22%3A%22Bearer%20TOKEN_YOUTRACK%22%7D&amp;f=%2B%2F**</code></p>
+<p>Breaking down the parameters:</p>
+<ul>
+<li><strong>s</strong>: <code>https://digio.youtrack.cloud/api/openapi.json</code> - The OpenAPI specification of the YouTrack API.</li>
+<li><strong>u</strong>: <code>https://digio.youtrack.cloud/api</code> - The base URL of the YouTrack API.</li>
+<li><strong>h</strong>: <code>{&quot;Authorization&quot;:&quot;Bearer TOKEN_YOUTRACK&quot;}</code> - The authentication header. A Bearer authorization token is used. Replace <code>TOKEN_YOUTRACK</code> with your permanent YouTrack token.</li>
+<li><strong>f</strong>: <code>+/**</code> - Includes all API routes.</li>
+</ul>
+<p>The configuration in your agent would look like this:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;@youtrack&quot;: {
+      &quot;url&quot;: &quot;http://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fdigio.youtrack.cloud%2Fapi%2Fopenapi.json&amp;u=https%3A%2F%2Fdigio.youtrack.cloud%2Fapi&amp;h=%7B%22Authorization%22%3A%22Bearer%20TOKEN_YOUTRACK%22%7D&amp;f=%2B%2F**&quot;
+    }
+  }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mycommandmcp"><a class="header" href="#mycommandmcp">Mycommandmcp</a></h1>
+<p>MyCommandMCP is a versatile MCP server written in Rust that allows you to execute system commands as MCP tools. It's highly configurable and can be adapted to a wide range of use cases.</p>
+<h3 id="installation"><a class="header" href="#installation">Installation</a></h3>
+<p>You can install MyCommandMCP by downloading the binary from the <a href="https://github.com/sevir/mycommandmcp/releases">releases page</a> or by building it from source.</p>
+<p>To install the binary, download the appropriate version for your system, uncompress it, and place the executable in a directory included in your system's <code>PATH</code>.</p>
+<h3 id="configuration-1"><a class="header" href="#configuration-1">Configuration</a></h3>
+<p>MyCommandMCP is configured using a YAML file. By default, it looks for a file named <code>mycommand-tools.yaml</code> in the current directory. You can also specify a custom configuration file using the <code>--config</code> flag.</p>
+<p>The configuration file has three main sections: <code>prompts</code>, <code>tools</code>, and <code>resources</code>.</p>
+<p>Here is an example of a <code>tools</code> configuration:</p>
+<pre><code class="language-yaml">tools:
+  - name: &quot;list_files&quot;
+    description: &quot;Lists files in a specific directory&quot;
+    command: &quot;ls&quot;
+    path: &quot;/&quot;
+    accepts_args: true
+    accept_input: false
+    default_args: &quot;-l&quot;
+  - name: &quot;get_date&quot;
+    description: &quot;Gets the current system date and time&quot;
+    command: &quot;date&quot;
+    path: &quot;/&quot;
+    accepts_args: false
+    accept_input: false
+</code></pre>
+<p>This configuration defines two tools: <code>list_files</code>, which executes the <code>ls -l</code> command, and <code>get_date</code>, which executes the <code>date</code> command.</p>
+<p>You can find more detailed information about the configuration options in the <a href="https://github.com/sevir/mycommandmcp/blob/main/README.md">official documentation</a>.</p>
+<p>This is a full example of a <strong>real dev</strong> <code>mycommand-tools.yaml</code>:</p>
+<pre><code class="language-yaml">tools:
+  - name: &quot;get_date&quot;
+    description: &quot;Displays the current system date and time in various formats. Can show UTC time, format output, or display specific timezones, the tool accepts the same arguments of the `date` linux command&quot;
+    command: &quot;date&quot;
+    path: &quot;/&quot;
+    accepts_args: true
+    accept_input: false
+
+  - name: &quot;process_list&quot;
+    description: &quot;Displays information about running processes&quot;
+    command: &quot;ps&quot;
+    path: &quot;/&quot;
+    accepts_args: true
+    accept_input: false
+    default_args: &quot;auxef&quot;
+
+  - name: &quot;network_info&quot;
+    description: &quot;Shows the network interfaces, routing, devices, and tunnels. This tools accepts the same arguments of the `ip` linux command&quot;
+    command: &quot;ip&quot;
+    path: &quot;/&quot;
+    accepts_args: true
+    accept_input: false
+    default_args: &quot;addr&quot;
+
+  - name: &quot;curl&quot;
+    description: &quot;Downloads any resource from a URL using `curl` command. Use this tool for run any `curl` command what you want&quot;
+    command: &quot;curl&quot;
+    path: &quot;/tmp&quot;
+    accepts_args: true
+    accept_input: false
+
+  - name: &quot;vscode&quot;
+    description: &quot;Call always to open VSCode in the path specified in the argument. Use this tool when you write or edit code&quot;
+    command: &quot;vscode&quot;
+    path: &quot;/www&quot;
+    accepts_args: true
+    accept_input: false
+
+
+prompts:
+  - name: &quot;summarize&quot;
+    description: &quot;Summarize a given text&quot;
+    content: |
+      Please summarize the following text in 3 sentences or less.
+      Consider the main points and key details.
+      Maintain a clear and concise style.
+
+  - name: &quot;translate&quot;
+    description: &quot;Translate text to Spanish&quot;
+    content: |
+      Translate the following text to Spanish.
+      Preserve the original meaning and tone.
+      Use natural and fluent Spanish language.
+
+  - name: &quot;code_review&quot;
+    description: &quot;🔍 Comprehensive code review with security and performance analysis&quot;
+    content: |
+      🔍 **Code Review Request**
+
+      Please perform a comprehensive code review of: `{file_path}`
+
+      **Focus Areas:** {focus_areas}
+
+      **Review Criteria:**
+      - 🛡️ Security vulnerabilities and best practices
+      - ⚡ Performance implications and optimizations
+      - 📝 Code clarity and maintainability
+      - 🦀 Language-specific idioms and patterns
+      - 🧪 Testability and error handling
+      - 📚 Documentation and comments
+
+      **Deliverables:**
+      1. Summary assessment with severity levels
+      2. Specific issues with line references
+      3. Actionable improvement suggestions
+      4. Positive highlights and well-implemented patterns
+
+      Please use file operations to read the code and provide detailed feedback.
+
+  - name: &quot;rust_optimization&quot;
+    description: &quot;🦀 Rust-specific optimization suggestions and idiomatic patterns&quot;
+    content: |
+      🦀 **Rust Optimization Analysis**
+
+      **Target:** {optimization_goal}
+
+      **Code to Optimize:**
+      ```rust
+      {code_snippet}
+      ```
+
+      **Analysis Framework:**
+      - 🚀 Performance: Zero-cost abstractions, allocation patterns
+      - 💾 Memory: Ownership, borrowing, lifetime optimizations
+      - 📖 Readability: Idiomatic Rust patterns, clarity
+      - 🛡️ Safety: Memory safety, thread safety, error handling
+
+      **Deliverables:**
+      1. Optimized code with explanations
+      2. Performance impact analysis
+      3. Trade-offs and alternatives
+      4. Benchmark suggestions if applicable
+
+      Focus on modern Rust idioms and zero-cost abstractions.
+
+  - name: &quot;debug_assistance&quot;
+    description: &quot;🐛 Debug analysis with error investigation and fix suggestions&quot;
+    content: |
+      🐛 **Debug Assistance Request**
+
+      **Error Message:**
+      ```
+      {error_message}
+      ```
+
+      **Context:**
+      {context}
+
+      **Debug Strategy:**
+      1. 🔍 Error Analysis: Root cause identification
+      2. 🛠️ Fix Suggestions: Step-by-step resolution
+      3. 🧪 Verification: Testing approach for the fix
+      4. 🚀 Prevention: How to avoid similar issues
+
+      **Investigation Tools:**
+      - Use file operations to examine related code
+      - Search for similar patterns in the codebase
+      - Check dependencies and configurations
+
+      Please provide actionable debugging steps and fix recommendations.
+
+  - name: &quot;architecture_design&quot;
+    description: &quot;🏗️ Software architecture analysis and design recommendations&quot;
+    content: |
+      🏗️ **Architecture Design Consultation**
+
+      **Project:** {project_description}
+
+      **Constraints:** {constraints}
+
+      **Design Framework:**
+      - 🎯 Requirements Analysis: Functional and non-functional
+      - 🏛️ Architectural Patterns: Suitable design patterns
+      - 🔧 Technology Stack: Language, frameworks, databases
+      - 📊 Scalability: Growth and performance considerations
+      - 🛡️ Security: Security architecture and threat model
+      - 🧪 Testing: Testing strategy and quality assurance
+
+      **Deliverables:**
+      1. High-level architecture diagram (text-based)
+      2. Component breakdown with responsibilities
+      3. Data flow and interface definitions
+      4. Technology recommendations with rationale
+      5. Implementation roadmap with priorities
+
+      Focus on maintainable, scalable, and robust design principles.
+
+  - name: &quot;rag_query_optimization&quot;
+    description: &quot;🧠 Optimize RAG queries for better semantic search results&quot;
+    content: |
+      🧠 **RAG Query Optimization**
+
+      **Current Query:** {query}
+      **Domain:** {domain}
+
+      **Optimization Strategy:**
+      - 🎯 Semantic Enhancement: Improve query semantics
+      - 🔍 Keyword Expansion: Add relevant synonyms and terms
+      - 📊 Query Structuring: Optimize for vector similarity
+      - 🎛️ Parameter Tuning: Suggest search parameters
+
+      **Analysis Areas:**
+      1. Query intent and information need
+      2. Domain-specific terminology
+      3. Semantic similarity patterns
+      4. Chunk retrieval effectiveness
+
+      **Deliverables:**
+      - Optimized query variations
+      - Search strategy recommendations
+      - RAG parameter suggestions
+      - Expected retrieval improvements
+
+      Use RAG tools to test query effectiveness if helpful.
+
+  - name: &quot;documentation_generator&quot;
+    description: &quot;📚 Generate comprehensive documentation from code&quot;
+    content: |
+      📚 **Documentation Generation**
+
+      **Target File:** {code_file}
+      **Documentation Type:** {doc_type}
+
+      **Documentation Framework:**
+      - 📋 API Documentation: Function signatures and usage
+      - 💡 Examples: Practical usage examples
+      - 🏗️ Architecture: Module structure and relationships
+      - 🚀 Getting Started: Quick start guides
+      - ⚠️ Edge Cases: Error handling and limitations
+
+      **Output Requirements:**
+      1. Clear, concise descriptions
+      2. Code examples with explanations
+      3. Proper markdown formatting
+      4. Cross-references and links
+      5. Maintainable documentation structure
+
+      Please read the code file and generate appropriate documentation.
+      Include inline doc comments and external documentation as needed.
+
+  - name: &quot;test_strategy&quot;
+    description: &quot;🧪 Test planning and strategy recommendations&quot;
+    content: |
+      🧪 **Test Strategy Development**
+
+      **Component:** {component}
+      **Test Types:** {test_types}
+
+      **Testing Framework:**
+      - 🔬 Unit Tests: Individual function testing
+      - 🔗 Integration Tests: Component interaction testing
+      - ⚡ Performance Tests: Load and stress testing
+      - 🛡️ Security Tests: Vulnerability and penetration testing
+      - 👤 User Acceptance: End-to-end workflow testing
+
+      **Deliverables:**
+      1. Test plan with coverage targets
+      2. Test case specifications
+      3. Testing infrastructure requirements
+      4. Automation strategy
+      5. Quality gates and success criteria
+
+      **Implementation Guidance:**
+      - Rust-specific testing patterns
+      - Mocking and test doubles
+      - Continuous integration setup
+
+      Analyze the component and provide a comprehensive testing strategy.
+
+  - name: &quot;refactoring_plan&quot;
+    description: &quot;♻️ Systematic refactoring strategy with risk assessment&quot;
+    content: |
+      ♻️ **Refactoring Strategy**
+
+      **Target Code:** {target_code}
+      **Goals:** {goals}
+
+      **Refactoring Process:**
+      - 🔍 Analysis: Current state assessment
+      - 🎯 Objectives: Clear refactoring goals
+      - 📋 Plan: Step-by-step refactoring plan
+      - ⚠️ Risk Assessment: Potential breaking changes
+      - 🧪 Validation: Testing strategy for changes
+
+      **Key Considerations:**
+      1. Backward compatibility requirements
+      2. Performance impact analysis
+      3. Team coordination and communication
+      4. Incremental delivery approach
+      5. Rollback strategies
+
+      **Deliverables:**
+      - Detailed refactoring roadmap
+      - Risk mitigation strategies
+      - Before/after code comparisons
+      - Testing and validation plan
+
+      Provide a safe, systematic approach to code improvement.
+
+  - name: &quot;security_audit&quot;
+    description: &quot;🛡️ Security vulnerability assessment and mitigation strategies&quot;
+    content: |
+      🛡️ **Security Audit Request**
+
+      **Audit Scope:** {scope}
+      **Threat Model:** {threat_model}
+
+      **Security Assessment Framework:**
+      - 🔒 Authentication: Identity verification
+      - 🚪 Authorization: Access control mechanisms
+      - 🛡️ Input Validation: Data sanitization and validation
+      - 🔐 Cryptography: Encryption and key management
+      - 📊 Data Protection: Privacy and data handling
+      - 🌐 Network Security: Communication security
+
+      **Vulnerability Categories:**
+      1. OWASP Top 10 compliance
+      2. Memory safety issues (Rust-specific)
+      3. Dependency vulnerabilities
+      4. Configuration security
+      5. Business logic flaws
+
+      **Deliverables:**
+      - Security vulnerability report
+      - Risk assessment with severity levels
+      - Remediation recommendations
+      - Security best practices guide
+
+      Perform thorough security analysis using file operations and search tools.
+
+
+
+resources:
+  - name: &quot;mcp_server_prompts&quot;
+    description: &quot;Specification of Prompts for MCP Servers&quot;
+    path: &quot;https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/refs/heads/main/docs/specification/2024-11-05/server/prompts.mdx&quot;
+
+  - name: &quot;mcp_server_tools&quot;
+    description: &quot;Specification of Tools for MCP Servers&quot;
+    path: &quot;https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/refs/heads/main/docs/specification/2024-11-05/server/tools.mdx&quot;
+
+  - name: &quot;mcp_server_resources&quot;
+    description: &quot;Specification of Resources for MCP Servers&quot;
+    path: &quot;https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/refs/heads/main/docs/specification/2024-11-05/server/resources.mdx&quot;
+
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="agents-prompts"><a class="header" href="#agents-prompts">Agents prompts</a></h1>
+<p>In the repository <a href="https://github.com/madeindigio/aidd/tree/main/agent-prompts">digio-aidd</a>, you can find a series of prompts designed to effectively interact with AI agents. These prompts are organized into different categories based on their purpose and functionality.</p>
+<p>In progress....: Teams are adding their own prompts, and the most useful ones will be incorporated into the repository over time.</p>
+<div style="break-before: page; page-break-before: always;"></div><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP-Link URL Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="mcp-link-url-generator"><a class="header" href="#mcp-link-url-generator">MCP-Link URL Generator</a></h1>
+        <p>Enter the details of the API you want to connect to.</p>
+<pre><code>    &lt;div class=&quot;card&quot;&gt;
+        &lt;h2&gt;Load from URL&lt;/h2&gt;
+        &lt;p&gt;Paste a full MCP-Link URL to fill the form automatically.&lt;/p&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;input type=&quot;text&quot; id=&quot;full-url-input&quot; placeholder=&quot;Paste full MCP-Link URL here&quot;&gt;
+            &lt;button id=&quot;load-from-url-btn&quot;&gt;Load&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;card&quot;&gt;
+        &lt;h2&gt;Configuration&lt;/h2&gt;
+        &lt;form id=&quot;mcp-link-form&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;openapi-spec-url&quot;&gt;OpenAPI Specification URL&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;openapi-spec-url&quot; placeholder=&quot;https://example.com/openapi.yaml&quot;&gt;
+                &lt;small&gt;URL to the OpenAPI specification (YAML/JSON)&lt;/small&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;api-base-url&quot;&gt;API Base URL&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;api-base-url&quot; placeholder=&quot;https://api.example.com&quot;&gt;
+                &lt;small&gt;Base URL of the target service where API requests will be forwarded&lt;/small&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;HTTP Headers&lt;/label&gt;
+                &lt;div class=&quot;headers-container&quot; id=&quot;headers-container&quot;&gt;
+                    &lt;!-- Headers will be added here by JavaScript --&gt;
+                &lt;/div&gt;
+                &lt;button type=&quot;button&quot; id=&quot;add-header-btn&quot;&gt;Add Header&lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Path Filters&lt;/label&gt;
+                &lt;div class=&quot;filters-container&quot; id=&quot;filters-container&quot;&gt;
+                    &lt;div class=&quot;filter-item&quot;&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;filter-input&quot; value=&quot;+/**&quot;&gt;
+                        &lt;button type=&quot;button&quot; class=&quot;remove-filter-btn&quot;&gt;Remove&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;button type=&quot;button&quot; id=&quot;add-filter-btn&quot;&gt;Add Filter&lt;/button&gt;
+                &lt;small&gt;
+                    Filter Format Examples:
+                    &lt;ul&gt;
+                        &lt;li&gt;&lt;code&gt;+/path/**&lt;/code&gt; - Include all endpoints under /path/&lt;/li&gt;
+                        &lt;li&gt;&lt;code&gt;-/path/**&lt;/code&gt; - Exclude all endpoints under /path/&lt;/li&gt;
+                        &lt;li&gt;&lt;code&gt;+/users/*:GET&lt;/code&gt; - Include GET endpoints for /users/{id}&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/small&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;card&quot;&gt;
+        &lt;h2&gt;Generated URL&lt;/h2&gt;
+        &lt;div class=&quot;generated-url-container&quot;&gt;
+            &lt;textarea id=&quot;generated-url&quot; readonly&gt;&lt;/textarea&gt;
+            &lt;button id=&quot;copy-url-btn&quot;&gt;Copy&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+</body>
+</html>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>

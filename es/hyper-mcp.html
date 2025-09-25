@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Digio AI Driven Development</title>
-        <meta name="robots" content="noindex" />
+        <title>Hyper-MCP - Digio AI Driven Development</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -76,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="language_selection.html"><strong aria-hidden="true">1.</strong> Version</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Empezando</a></li><li class="chapter-item expanded affix "><li class="part-title">Asistentes de IA</li><li class="chapter-item expanded "><a href="copilot.html"><strong aria-hidden="true">2.</strong> Copilot</a></li><li class="chapter-item expanded "><a href="kilocode.html"><strong aria-hidden="true">3.</strong> Kilo Assistant</a></li><li class="chapter-item expanded affix "><li class="part-title">Herramientas</li><li class="chapter-item expanded "><a href="mcp.html"><strong aria-hidden="true">4.</strong> Servidores MCP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hyper-mcp.html" class="active"><strong aria-hidden="true">4.1.</strong> Hyper-MCP</a></li><li class="chapter-item expanded "><a href="mcp-link.html"><strong aria-hidden="true">4.2.</strong> MCP-Link</a></li><li class="chapter-item expanded "><a href="mycommandcmd.html"><strong aria-hidden="true">4.3.</strong> MyCommandCMD</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Recursos</li><li class="chapter-item expanded "><a href="agents_prompts.html"><strong aria-hidden="true">5.</strong> Prompts de agentes</a></li><li class="chapter-item expanded "><a href="mcplink-assistant/index.html"><strong aria-hidden="true">6.</strong> Asistente MCP-Link</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -135,22 +134,100 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>This book is available in multiple languages. Please select your preferred language:</p>
+                        <h1 id="hyper-mcp"><a class="header" href="#hyper-mcp">Hyper-MCP</a></h1>
+<p>Hyper-MCP es un servidor MCP rápido y seguro que extiende su funcionalidad a través de plugins de WebAssembly (WASM). Permite a los desarrolladores agregar capacidades de IA a sus aplicaciones integrándose con herramientas como Claude Desktop y Cursor IDE.</p>
+<h3 id="características-clave"><a class="header" href="#características-clave">Características clave</a></h3>
 <ul>
-<li><a href="./en/index.html">English version</a></li>
-<li><a href="./es/index.html">Versión en español</a></li>
+<li><strong>Extensible con WebAssembly:</strong> Escribe plugins en cualquier lenguaje que compile a WASM.</li>
+<li><strong>Seguro:</strong> Los plugins se ejecutan en un entorno sandboxed con control de acceso granular.</li>
+<li><strong>Soporte de registro OCI:</strong> Distribuye y gestiona plugins usando registros OCI estándar como Docker Hub.</li>
+<li><strong>Ligero y portable:</strong> Adecuado para varios entornos, desde la nube hasta dispositivos edge.</li>
+<li><strong>Multiplataforma:</strong> Compatible con Linux, macOS y Windows.</li>
+</ul>
+<h3 id="configuración"><a class="header" href="#configuración">Configuración</a></h3>
+<p>Para comenzar con Hyper-MCP, necesitas crear un archivo <code>config.json</code> en el directorio apropiado para tu sistema operativo:</p>
+<ul>
+<li><strong>Linux:</strong> <code>$HOME/.config/hyper-mcp/config.json</code></li>
+<li><strong>macOS:</strong> <code>$HOME/Library/Application Support/hyper-mcp/config.json</code></li>
+<li><strong>Windows:</strong> <code>{FOLDERID_RoamingAppData}\hyper-mcp\config.json</code></li>
+</ul>
+<p>A continuación se muestra un ejemplo de configuración que incluye varios plugins útiles:</p>
+<pre><code class="language-json">{
+  &quot;plugins&quot;: [
+    {
+      &quot;name&quot;: &quot;time&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/time-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;think&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/think-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;hash&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/hash-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;fetch&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/fetch-plugin:latest&quot;,
+      &quot;runtime_config&quot;: {
+        &quot;allowed_hosts&quot;: [&quot;*&quot;],
+        &quot;memory_limit&quot;: &quot;100 MB&quot;
+      }
+    },
+    {
+      &quot;name&quot;: &quot;context7&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/context7-plugin:nightly&quot;,
+      &quot;runtime_config&quot;: {
+        &quot;allowed_hosts&quot;: [&quot;context7.com&quot;]
+      }
+    },
+    {
+      &quot;name&quot;: &quot;sequentialthinking&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/sevir/sequentialthinking-plugin:latest&quot;
+    },
+    {
+      &quot;name&quot;: &quot;serper&quot;,
+      &quot;path&quot;: &quot;oci://ghcr.io/tuananh/serper-plugin:latest&quot;,
+      &quot;runtime_config&quot;: {
+        &quot;env_vars&quot;: {
+          &quot;SERPER_API_KEY&quot;: &quot;YOUR_SERPER_API_KEY&quot;
+        },
+        &quot;allowed_hosts&quot;: [&quot;google.serper.dev&quot;]
+      }
+    }
+  ]
+}
+</code></pre>
+<p>En esta configuración:</p>
+<ul>
+<li>Cada objeto en el array <code>plugins</code> define una nueva herramienta para el servidor MCP.</li>
+<li><code>&quot;name&quot;</code>: El nombre de la herramienta que se expondrá.</li>
+<li><code>&quot;path&quot;</code>: La ruta OCI a la imagen del plugin.</li>
+<li><code>&quot;runtime_config&quot;</code>: (Opcional) Te permite configurar el entorno de ejecución del plugin, como establecer variables de entorno (<code>env_vars</code>), restringir el acceso a la red (<code>allowed_hosts</code>), o limitar el uso de memoria. Para el plugin <code>serper</code>, deberías reemplazar <code>&quot;YOUR_SERPER_API_KEY&quot;</code> con tu clave API real de Serper.</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="mcp.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="mcp-link.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="mcp.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="mcp-link.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
@@ -166,10 +243,5 @@
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        <script type="text/javascript">
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
     </body>
 </html>

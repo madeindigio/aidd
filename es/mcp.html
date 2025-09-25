@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Digio AI Driven Development</title>
-        <meta name="robots" content="noindex" />
+        <title>Servidores MCP - Digio AI Driven Development</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -76,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="language_selection.html"><strong aria-hidden="true">1.</strong> Version</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Empezando</a></li><li class="chapter-item expanded affix "><li class="part-title">Asistentes de IA</li><li class="chapter-item expanded "><a href="copilot.html"><strong aria-hidden="true">2.</strong> Copilot</a></li><li class="chapter-item expanded "><a href="kilocode.html"><strong aria-hidden="true">3.</strong> Kilo Assistant</a></li><li class="chapter-item expanded affix "><li class="part-title">Herramientas</li><li class="chapter-item expanded "><a href="mcp.html" class="active"><strong aria-hidden="true">4.</strong> Servidores MCP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hyper-mcp.html"><strong aria-hidden="true">4.1.</strong> Hyper-MCP</a></li><li class="chapter-item expanded "><a href="mcp-link.html"><strong aria-hidden="true">4.2.</strong> MCP-Link</a></li><li class="chapter-item expanded "><a href="mycommandcmd.html"><strong aria-hidden="true">4.3.</strong> MyCommandCMD</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Recursos</li><li class="chapter-item expanded "><a href="agents_prompts.html"><strong aria-hidden="true">5.</strong> Prompts de agentes</a></li><li class="chapter-item expanded "><a href="mcplink-assistant/index.html"><strong aria-hidden="true">6.</strong> Asistente MCP-Link</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -135,22 +134,85 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>This book is available in multiple languages. Please select your preferred language:</p>
+                        <h1 id="mejores-utilidades-en-mcp"><a class="header" href="#mejores-utilidades-en-mcp">Mejores utilidades en MCP</a></h1>
+<p>En esta sección, te ayudamos a configurar las utilidades MCP más comunes para que puedas maximizar su potencial.</p>
+<p>Los servidores MCP permiten a la IA usar herramientas para recopilar más información contextual o realizar acciones en el mundo real. Estos servidores pueden configurarse para interactuar con APIs externas, ejecutar comandos o incluso conectarse a bases de datos.</p>
+<p>Hay dos tipos de servidores MCP: aquellos que se ejecutan en el cliente (en tu computadora) y por lo tanto necesitan instalarse, y aquellos que se ejecutan en la nube y son accesibles vía URL. Estos últimos pueden usar protocolos SSE o HTTPS. Es importante saber que si el servidor se ejecuta en el cliente, necesitas instalarlo y configurarlo en tu computadora, mientras que si es un servidor remoto, necesitas configurar la URL del servidor en tu agente.</p>
+<p>Los servidores MCP instalados en el cliente pueden interactuar con tu computadora, ejecutar comandos dentro de ella o leer partes de tu sistema. Son útiles para leer archivos, conectarse a bases de datos locales o sistemas accedidos vía VPN desde tu computadora.</p>
+<p>Los servidores MCP remotos son útiles para interactuar con APIs externas, como la API de Figma o la API de YouTrack, y no requieren instalación local.</p>
+<p>Aquí destacamos tres herramientas particularmente útiles ya que permiten implementar múltiples herramientas en un solo proceso MCP:</p>
 <ul>
-<li><a href="./en/index.html">English version</a></li>
-<li><a href="./es/index.html">Versión en español</a></li>
+<li>
+<p><strong>Hyper-MCP</strong>: Un servidor MCP rápido construido en Rust (usa muy poca memoria) que permite agregar plugins WASM para extender su funcionalidad.</p>
+<ul>
+<li>
+<p>Especialmente útil habilitar el plugin <strong>Conect7</strong> para conectarse a la API de Context7, lo que permite usar la plataforma Context7 como herramienta en tus agentes de IA. Este servicio proporciona todas las versiones de documentación de una gran cantidad de librerías y frameworks, como React, Angular, Node.js, etc. Es una herramienta muy útil para tener en tu servidor MCP.</p>
+</li>
+<li>
+<p>Otro plugin útil es <code>serper</code>, proporciona acceso a resultados de búsqueda de Google. Puedes registrarte gratis y obtener 2.5k solicitudes.</p>
+</li>
 </ul>
+</li>
+<li>
+<p><strong>MCP-Link</strong>: Un servidor MCP que permite conectar cualquier API con una especificación OpenAPI a un agente MCP, convirtiéndola en una interfaz compatible con agentes de IA.</p>
+</li>
+<li>
+<p><strong>MyCommandMCP</strong>: Un servidor MCP versátil escrito en Rust que permite ejecutar comandos del sistema como herramientas MCP. Es altamente configurable y puede adaptarse a una amplia gama de casos de uso.</p>
+</li>
+</ul>
+<p>Este es un ejemplo de mcp.json</p>
+<pre><code class="language-json">
+{
+  &quot;mcpServers&quot;: {
+    &quot;@brave&quot;: {
+      &quot;url&quot;: &quot;http://mcplink.madeindigio.com/sse?s=https%3A%2F%2Fgithub.com%2Fautomation-ai-labs%2Fmcp-link%2Fraw%2Frefs%2Fheads%2Fmain%2Fexamples%2Fbrave.yaml&amp;u=https%3A%2F%2Fapi.search.brave.com%2Fres%2Fv1&amp;h=%7B%22X-Subscription-Token%22%3A%22BSAfPg0fhEKKX5sV-Tc2XCVD-qEfyI-%22%8J&amp;f=%2B%2F**&quot;
+    },
+    &quot;@hyper-mcp&quot;: {
+      &quot;command&quot;: &quot;hyper-mcp&quot;,
+      &quot;args&quot;: [
+        &quot;--config-file&quot;,
+        &quot;/home/sevir/.config/hyper-mcp/kilo.json&quot;
+      ]
+    },
+    &quot;@mycommandmcp&quot;: {
+      &quot;command&quot;: &quot;mycommandmcp&quot;,
+      &quot;args&quot;: [
+        &quot;--config&quot;,
+        &quot;/home/sevir/.config/mc-mcp/optimized.yaml&quot;,
+        &quot;--log-file&quot;,
+        &quot;/www/MCP/MyCommandMCP/mycommandmcp/mcp.log&quot;
+      ]
+    }
+  }
+}
+</code></pre>
+<h2 id="catálogos-de-servidores-mcp"><a class="header" href="#catálogos-de-servidores-mcp">Catálogos de Servidores MCP</a></h2>
+<p>Si usas VSCode con Copilot o cualquier otra herramienta, hay mercados MCP que usualmente se instalan localmente. Descargas el proyecto y lo ejecutas, pero debes ser especialmente cuidadoso porque no sabes qué tipo de código podría ejecutar.</p>
+<p>Hay otros mercados como <a href="https://smithery.ai/">Smithery</a> que pueden desplegar el código en su infraestructura en lugar de la tuya, haciéndolo más seguro y permitiéndote pasar parámetros de configuración como variables de entorno. Para todos los servidores que puedan ejecutarse sin needing datos de tu sistema, se recomienda ejecutarlos en un servidor remoto en lugar de tu máquina local. Esto reduce el riesgo de que un plugin malicioso acceda a tus datos personales o ejecute comandos no deseados en tu sistema.</p>
+<p>Docker también ha lanzado su propio catálogo MCP, <a href="https://hub.docker.com/mcp">Docker Hub MCP</a>, donde puedes encontrar plugins que pueden ejecutarse en contenedores y son seguros de usar.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="kilocode.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="hyper-mcp.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="kilocode.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="hyper-mcp.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
@@ -166,10 +228,5 @@
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        <script type="text/javascript">
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
     </body>
 </html>

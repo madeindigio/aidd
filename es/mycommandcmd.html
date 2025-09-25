@@ -1,0 +1,519 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>MyCommandCMD - Digio AI Driven Development</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Empezando</a></li><li class="chapter-item expanded affix "><li class="part-title">Asistentes de IA</li><li class="chapter-item expanded "><a href="copilot.html"><strong aria-hidden="true">2.</strong> Copilot</a></li><li class="chapter-item expanded "><a href="kilocode.html"><strong aria-hidden="true">3.</strong> Kilo Assistant</a></li><li class="chapter-item expanded affix "><li class="part-title">Herramientas</li><li class="chapter-item expanded "><a href="mcp.html"><strong aria-hidden="true">4.</strong> Servidores MCP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hyper-mcp.html"><strong aria-hidden="true">4.1.</strong> Hyper-MCP</a></li><li class="chapter-item expanded "><a href="mcp-link.html"><strong aria-hidden="true">4.2.</strong> MCP-Link</a></li><li class="chapter-item expanded "><a href="mycommandcmd.html" class="active"><strong aria-hidden="true">4.3.</strong> MyCommandCMD</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Recursos</li><li class="chapter-item expanded "><a href="agents_prompts.html"><strong aria-hidden="true">5.</strong> Prompts de agentes</a></li><li class="chapter-item expanded "><a href="mcplink-assistant/index.html"><strong aria-hidden="true">6.</strong> Asistente MCP-Link</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Digio AI Driven Development</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="mycommandmcp"><a class="header" href="#mycommandmcp">Mycommandmcp</a></h1>
+<p>MyCommandMCP es un servidor MCP versátil escrito en Rust que te permite ejecutar comandos del sistema como herramientas MCP. Es altamente configurable y puede adaptarse a una amplia gama de casos de uso.</p>
+<h3 id="instalación"><a class="header" href="#instalación">Instalación</a></h3>
+<p>Puedes instalar MyCommandMCP descargando el binario desde la <a href="https://github.com/sevir/mycommandmcp/releases">página de releases</a> o construyéndolo desde el código fuente.</p>
+<p>Para instalar el binario, descarga la versión apropiada para tu sistema, descomprímela y coloca el ejecutable en un directorio incluido en el <code>PATH</code> de tu sistema.</p>
+<h3 id="configuración"><a class="header" href="#configuración">Configuración</a></h3>
+<p>MyCommandMCP se configura usando un archivo YAML. Por defecto, busca un archivo llamado <code>mycommand-tools.yaml</code> en el directorio actual. También puedes especificar un archivo de configuración personalizado usando la bandera <code>--config</code>.</p>
+<p>El archivo de configuración tiene tres secciones principales: <code>prompts</code>, <code>tools</code>, y <code>resources</code>.</p>
+<p>Aquí hay un ejemplo de configuración de <code>tools</code>:</p>
+<pre><code class="language-yaml">tools:
+  - name: &quot;list_files&quot;
+    description: &quot;Lists files in a specific directory&quot;
+    command: &quot;ls&quot;
+    path: &quot;/&quot;
+    accepts_args: true
+    accept_input: false
+    default_args: &quot;-l&quot;
+  - name: &quot;get_date&quot;
+    description: &quot;Gets the current system date and time&quot;
+    command: &quot;date&quot;
+    path: &quot;/&quot;
+    accepts_args: false
+    accept_input: false
+</code></pre>
+<p>Esta configuración define dos herramientas: <code>list_files</code>, que ejecuta el comando <code>ls -l</code>, y <code>get_date</code>, que ejecuta el comando <code>date</code>.</p>
+<p>Puedes encontrar información más detallada sobre las opciones de configuración en la <a href="https://github.com/sevir/mycommandmcp/blob/main/README.md">documentación oficial</a>.</p>
+<p>Este es un ejemplo completo de un <code>mycommand-tools.yaml</code> de <strong>desarrollo real</strong>:</p>
+<pre><code class="language-yaml">tools:
+  - name: &quot;get_date&quot;
+    description: &quot;Displays the current system date and time in various formats. Can show UTC time, format output, or display specific timezones, the tool accepts the same arguments of the `date` linux command&quot;
+    command: &quot;date&quot;
+    path: &quot;/&quot;
+    accepts_args: true
+    accept_input: false
+
+  - name: &quot;process_list&quot;
+    description: &quot;Displays information about running processes&quot;
+    command: &quot;ps&quot;
+    path: &quot;/&quot;
+    accepts_args: true
+    accept_input: false
+    default_args: &quot;auxef&quot;
+
+  - name: &quot;network_info&quot;
+    description: &quot;Shows the network interfaces, routing, devices, and tunnels. This tools accepts the same arguments of the `ip` linux command&quot;
+    command: &quot;ip&quot;
+    path: &quot;/&quot;
+    accepts_args: true
+    accept_input: false
+    default_args: &quot;addr&quot;
+
+  - name: &quot;curl&quot;
+    description: &quot;Downloads any resource from a URL using `curl` command. Use this tool for run any `curl` command what you want&quot;
+    command: &quot;curl&quot;
+    path: &quot;/tmp&quot;
+    accepts_args: true
+    accept_input: false
+
+  - name: &quot;vscode&quot;
+    description: &quot;Call always to open VSCode in the path specified in the argument. Use this tool when you write or edit code&quot;
+    command: &quot;vscode&quot;
+    path: &quot;/www&quot;
+    accepts_args: true
+    accept_input: false
+
+
+prompts:
+  - name: &quot;summarize&quot;
+    description: &quot;Resume un texto dado&quot;
+    content: |
+      Por favor resume el siguiente texto en 3 oraciones o menos.
+      Considera los puntos principales y detalles clave.
+      Mantén un estilo claro y conciso.
+
+  - name: &quot;translate&quot;
+    description: &quot;Traduce texto a español&quot;
+    content: |
+      Traduce el siguiente texto a español.
+      Preserva el significado y tono original.
+      Usa lenguaje español natural y fluido.
+
+  - name: &quot;code_review&quot;
+    description: &quot;🔍 Revisión de código completa con análisis de seguridad y rendimiento&quot;
+    content: |
+      🔍 **Solicitud de Revisión de Código**
+
+      Por favor realiza una revisión completa de código de: `{file_path}`
+
+      **Áreas de Enfoque:** {focus_areas}
+
+      **Criterios de Revisión:**
+      - 🛡️ Vulnerabilidades de seguridad y mejores prácticas
+      - ⚡ Implicaciones de rendimiento y optimizaciones
+      - 📝 Claridad del código y mantenibilidad
+      - 🦀 Idiomas y patrones específicos del lenguaje
+      - 🧪 Capacidad de prueba y manejo de errores
+      - 📚 Documentación y comentarios
+
+      **Entregables:**
+      1. Evaluación resumida con niveles de severidad
+      2. Problemas específicos con referencias de línea
+      3. Sugerencias de mejora accionables
+      4. Aspectos positivos y patrones bien implementados
+
+      Por favor usa operaciones de archivo para leer el código y proporcionar retroalimentación detallada.
+
+  - name: &quot;rust_optimization&quot;
+    description: &quot;🦀 Sugerencias de optimización específicas de Rust y patrones idiomáticos&quot;
+    content: |
+      🦀 **Análisis de Optimización de Rust**
+
+      **Objetivo:** {optimization_goal}
+
+      **Código a Optimizar:**
+      ```rust
+      {code_snippet}
+      ```
+
+      **Marco de Análisis:**
+      - 🚀 Rendimiento: Abstracciones de costo cero, patrones de asignación
+      - 💾 Memoria: Propiedad, préstamo, optimizaciones de vida útil
+      - 📖 Legibilidad: Patrones idiomáticos de Rust, claridad
+      - 🛡️ Seguridad: Seguridad de memoria, seguridad de hilos, manejo de errores
+
+      **Entregables:**
+      1. Código optimizado con explicaciones
+      2. Análisis de impacto en rendimiento
+      3. Compensaciones y alternativas
+      4. Sugerencias de benchmark si aplicable
+
+      Enfócate en idiomas modernos de Rust y abstracciones de costo cero.
+
+  - name: &quot;debug_assistance&quot;
+    description: &quot;🐛 Análisis de debug con investigación de errores y sugerencias de corrección&quot;
+    content: |
+      🐛 **Solicitud de Asistencia de Debug**
+
+      **Mensaje de Error:**
+      ```
+      {error_message}
+      ```
+
+      **Contexto:**
+      {context}
+
+      **Estrategia de Debug:**
+      1. 🔍 Análisis de Error: Identificación de causa raíz
+      2. 🛠️ Sugerencias de Corrección: Resolución paso a paso
+      3. 🧪 Verificación: Enfoque de prueba para la corrección
+      4. 🚀 Prevención: Cómo evitar problemas similares
+
+      **Herramientas de Investigación:**
+      - Usa operaciones de archivo para examinar código relacionado
+      - Busca patrones similares en el código base
+      - Verifica dependencias y configuraciones
+
+      Por favor proporciona pasos de debug accionables y recomendaciones de corrección.
+
+  - name: &quot;architecture_design&quot;
+    description: &quot;🏗️ Análisis de arquitectura de software y recomendaciones de diseño&quot;
+    content: |
+      🏗️ **Consulta de Diseño de Arquitectura**
+
+      **Proyecto:** {project_description}
+
+      **Restricciones:** {constraints}
+
+      **Marco de Diseño:**
+      - 🎯 Análisis de Requisitos: Funcionales y no funcionales
+      - 🏛️ Patrones Arquitectónicos: Patrones de diseño adecuados
+      - 🔧 Pila Tecnológica: Lenguaje, frameworks, bases de datos
+      - 📊 Escalabilidad: Consideraciones de crecimiento y rendimiento
+      - 🛡️ Seguridad: Arquitectura de seguridad y modelo de amenazas
+      - 🧪 Pruebas: Estrategia de pruebas y aseguramiento de calidad
+
+      **Entregables:**
+      1. Diagrama de arquitectura de alto nivel (basado en texto)
+      2. Desglose de componentes con responsabilidades
+      3. Flujo de datos y definiciones de interfaz
+      4. Recomendaciones tecnológicas con justificación
+      5. Hoja de ruta de implementación con prioridades
+
+      Enfócate en principios de diseño mantenibles, escalables y robustos.
+
+  - name: &quot;rag_query_optimization&quot;
+    description: &quot;🧠 Optimiza consultas RAG para mejores resultados de búsqueda semántica&quot;
+    content: |
+      🧠 **Optimización de Consulta RAG**
+
+      **Consulta Actual:** {query}
+      **Dominio:** {domain}
+
+      **Estrategia de Optimización:**
+      - 🎯 Mejora Semántica: Mejora la semántica de la consulta
+      - 🔍 Expansión de Palabras Clave: Agrega sinónimos y términos relevantes
+      - 📊 Estructuración de Consulta: Optimiza para similitud vectorial
+      - 🎛️ Ajuste de Parámetros: Sugiere parámetros de búsqueda
+
+      **Áreas de Análisis:**
+      1. Intención de consulta y necesidad de información
+      2. Terminología específica del dominio
+      3. Patrones de similitud semántica
+      4. Efectividad de recuperación de fragmentos
+
+      **Entregables:**
+      - Variaciones de consulta optimizadas
+      - Recomendaciones de estrategia de búsqueda
+      - Sugerencias de parámetros RAG
+      - Mejoras esperadas en recuperación
+
+      Usa herramientas RAG para probar la efectividad de la consulta si es útil.
+
+  - name: &quot;documentation_generator&quot;
+    description: &quot;📚 Genera documentación completa desde código&quot;
+    content: |
+      📚 **Generación de Documentación**
+
+      **Archivo Objetivo:** {code_file}
+      **Tipo de Documentación:** {doc_type}
+
+      **Marco de Documentación:**
+      - 📋 Documentación de API: Firmas de función y uso
+      - 💡 Ejemplos: Ejemplos de uso prácticos
+      - 🏗️ Arquitectura: Estructura de módulos y relaciones
+      - 🚀 Guías de Inicio Rápido: Guías de inicio rápido
+      - ⚠️ Casos Límite: Manejo de errores y limitaciones
+
+      **Requisitos de Salida:**
+      1. Descripciones claras y concisas
+      2. Ejemplos de código con explicaciones
+      3. Formato markdown apropiado
+      4. Referencias cruzadas y enlaces
+      5. Estructura de documentación mantenible
+
+      Por favor lee el archivo de código y genera documentación apropiada.
+      Incluye comentarios de documentación en línea y documentación externa según sea necesario.
+
+  - name: &quot;test_strategy&quot;
+    description: &quot;🧪 Planificación de pruebas y recomendaciones de estrategia&quot;
+    content: |
+      🧪 **Desarrollo de Estrategia de Pruebas**
+
+      **Componente:** {component}
+      **Tipos de Prueba:** {test_types}
+
+      **Marco de Pruebas:**
+      - 🔬 Pruebas Unitarias: Pruebas de función individual
+      - 🔗 Pruebas de Integración: Pruebas de interacción de componentes
+      - ⚡ Pruebas de Rendimiento: Pruebas de carga y estrés
+      - 🛡️ Pruebas de Seguridad: Pruebas de vulnerabilidades y penetración
+      - 👤 Aceptación de Usuario: Pruebas de flujo de trabajo de extremo a extremo
+
+      **Entregables:**
+      1. Plan de pruebas con objetivos de cobertura
+      2. Especificaciones de casos de prueba
+      3. Requisitos de infraestructura de pruebas
+      4. Estrategia de automatización
+      5. Puertas de calidad y criterios de éxito
+
+      **Guía de Implementación:**
+      - Patrones de pruebas específicos de Rust
+      - Mocking y dobles de prueba
+      - Configuración de integración continua
+
+      Analiza el componente y proporciona una estrategia de pruebas completa.
+
+  - name: &quot;refactoring_plan&quot;
+    description: &quot;♻️ Estrategia de refactorización sistemática con evaluación de riesgos&quot;
+    content: |
+      ♻️ **Estrategia de Refactorización**
+
+      **Código Objetivo:** {target_code}
+      **Objetivos:** {goals}
+
+      **Proceso de Refactorización:**
+      - 🔍 Análisis: Evaluación del estado actual
+      - 🎯 Objetivos: Objetivos claros de refactorización
+      - 📋 Plan: Plan paso a paso de refactorización
+      - ⚠️ Evaluación de Riesgos: Cambios potencialmente disruptivos
+      - 🧪 Validación: Estrategia de pruebas para cambios
+
+      **Consideraciones Clave:**
+      1. Requisitos de compatibilidad hacia atrás
+      2. Análisis de impacto en rendimiento
+      3. Coordinación y comunicación del equipo
+      4. Enfoque de entrega incremental
+      5. Estrategias de rollback
+
+      **Entregables:**
+      - Hoja de ruta detallada de refactorización
+      - Estrategias de mitigación de riesgos
+      - Comparaciones antes/después del código
+      - Plan de pruebas y validación
+
+      Proporciona un enfoque seguro y sistemático para la mejora del código.
+
+  - name: &quot;security_audit&quot;
+    description: &quot;🛡️ Evaluación de vulnerabilidades de seguridad y estrategias de mitigación&quot;
+    content: |
+      🛡️ **Solicitud de Auditoría de Seguridad**
+
+      **Alcance de Auditoría:** {scope}
+      **Modelo de Amenazas:** {threat_model}
+
+      **Marco de Evaluación de Seguridad:**
+      - 🔒 Autenticación: Verificación de identidad
+      - 🚪 Autorización: Mecanismos de control de acceso
+      - 🛡️ Validación de Entrada: Saneamiento y validación de datos
+      - 🔐 Criptografía: Encriptación y gestión de claves
+      - 📊 Protección de Datos: Privacidad y manejo de datos
+      - 🌐 Seguridad de Red: Seguridad de comunicaciones
+
+      **Categorías de Vulnerabilidades:**
+      1. Cumplimiento con OWASP Top 10
+      2. Problemas de seguridad de memoria (específicos de Rust)
+      3. Vulnerabilidades de dependencias
+      4. Seguridad de configuración
+      5. Fallos en lógica de negocio
+
+      **Entregables:**
+      - Informe de vulnerabilidades de seguridad
+      - Evaluación de riesgos con niveles de severidad
+      - Recomendaciones de remediación
+      - Guía de mejores prácticas de seguridad
+
+      Realiza un análisis de seguridad exhaustivo usando operaciones de archivo y herramientas de búsqueda.
+
+
+
+resources:
+  - name: &quot;mcp_server_prompts&quot;
+    description: &quot;Especificación de Prompts para Servidores MCP&quot;
+    path: &quot;https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/refs/heads/main/docs/specification/2024-11-05/server/prompts.mdx&quot;
+
+  - name: &quot;mcp_server_tools&quot;
+    description: &quot;Especificación de Herramientas para Servidores MCP&quot;
+    path: &quot;https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/refs/heads/main/docs/specification/2024-11-05/server/tools.mdx&quot;
+
+  - name: &quot;mcp_server_resources&quot;
+    description: &quot;Especificación de Recursos para Servidores MCP&quot;
+    path: &quot;https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/refs/heads/main/docs/specification/2024-11-05/server/resources.mdx&quot;
+
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="mcp-link.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="agents_prompts.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="mcp-link.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="agents_prompts.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
