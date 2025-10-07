@@ -29,51 +29,51 @@ validation = "^([a-zA-Z][a-zA-Z0-9_-]+)$"
 [[variables]]
 default = "overview"
 name = "project_overview"
-prompt = "Whatistheprojectoverview?"
+prompt = "What is the project overview?"
 
 [[variables]]
 default = "Typescript"
 name = "programming_language"
-prompt = "Whatistheprogramminglanguagedoyouwanttouse?"
+prompt = "What is the programming language do you want to use?"
 
 [[variables]]
 default = "Deno"
 name = "programming_framework"
-prompt = "Whatistheprogrammingframeworkdoyouwanttouse?"
+prompt = "What is the programming framework do you want to use?"
 
 [[variables]]
 choices = ["none", "postgres", "mysql", "sqlite", "mongodb"]
 default = "none"
 name = "database"
-prompt = "Whichdatabasedoyouwanttouse?"
+prompt = "Which database do you want to use?"
 
 [[variables]]
 default = false
 name = "include_remembrances"
-prompt = "DoyouwanttoincludeRemembrancesAImemorysystem?"
+prompt = "Do you want to include Remembrances AI memory system?"
 
 [[variables]]
 default = "./remembrances_data"
 name = "remembrances_db"
 only_if = {name = "include_remembrances", value = true}
-prompt = "WhereistheRemembrancesdatabase?(enterifyousetREMEMBRANCES_DBenvvariable)"
+prompt = "Where is the Remembrances database? (enter if you set REMEMBRANCES_DB env variable)"
 
 [[variables]]
 default = false
 name = "include_serena"
-prompt = "DoyouwanttoincludeSerenaAIMCPassistance?"
+prompt = "Do you want to include Serena AI MCP Assistance?"
 
 [[variables]]
 default = true
 name = "include_kilocode"
-prompt = "DoyouwanttoincludeKilocodeconfiguration?"
+prompt = "Do you want to include Kilocode configuration?"
 
 [[variables]]
 default = ""
 name = "has_build_system"
-prompt = "Hasyourprojectabuildsystem?.Writethecommandtorunit."
+prompt = "Has your project a build system? Write the command to run it."
 
 [[variables]]
 default = ""
 name = "has_tests"
-prompt = "Hasyourprojecttests?Ifso,writethecommandtorunthem."
+prompt = "Has your project tests? If so, write the command to run them."
