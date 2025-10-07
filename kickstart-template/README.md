@@ -29,6 +29,20 @@ This MCP server use many tools for search, fetch and other processes automatized
 
   * Download the last release of hyper-mcp [here](https://github.com/tuananh/hyper-mcp/releases/latest).
 
+This template add the following tools plugins, please refer to each readme for more information about the authentication tokens and mcp configuration:
+
+* serper (google search) https://github.com/tuananh/hyper-mcp/tree/main/examples/plugins/serper
+* google search API (google search) https://github.com/sevir/hyper-mcp/tree/dev/examples/plugins/google-search
+* brave (brave search) https://github.com/sevir/hyper-mcp/tree/dev/examples/plugins/brave-search
+* perplexity (perplexity search) https://github.com/sevir/hyper-mcp/tree/dev/examples/plugins/perplexity-search
+* bing (bing search) https://github.com/sevir/hyper-mcp/tree/dev/examples/plugins/bing-search
+* youtrack (youtrack project management) https://github.com/sevir/hyper-mcp/tree/dev/examples/plugins/youtrack
+* logseq (logseq note taking) https://github.com/sevir/hyper-mcp/tree/dev/examples/plugins/logseq
+
+Other available plugins in:
+
+* https://github.com/tuananh/hyper-mcp/?tab=readme-ov-file#available-plugins
+
 ### mycommandmcp:
 
 This MCP server allow you to execute system commands as MCP tools. It's highly configurable and can be adapted to a wide range of use cases.
