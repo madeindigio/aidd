@@ -4,6 +4,8 @@ You have two options to install this template, either using the kickstart binary
 
 When you install the template, you will be requested to use docker for MCP server or not. If you don't want to use the binaries or use windows, use docker is recommended, for more performance, use the binaries version of MCP servers (respond "no" to the question "Do you want to use docker for MCP servers?").
 
+[![asciicast](https://asciinema.org/a/rTY0Ci9apMirU00nmdZKxqLLV.svg)](https://asciinema.org/a/rTY0Ci9apMirU00nmdZKxqLLV)
+
 ## 1. Using kickstart binary
 Download the last release of kickstart [here](https://github.com/Keats/kickstart/releases/latest).
 
