@@ -20,11 +20,15 @@
 - Use Serena tools for search symbols, edit code or refactor.
   {% endif %}
   {% if include_remembrances %}
+
 - Search in the knowledge base for relevant information, use mcp_remembrances tools for listing facts, entities and relationships, and getting the most relevant ones and search documents and getting the most relevant ones, preferently.
 - Use Remembrances tools always at the beginning of a task for searching any useful information and at the end for summarizing what you have learned.
 - Saves into knowledge base documents all relevant information about the project changes of interest for the future tasks.
 - Finally when the task is completed, use mcp_remembrances tools to save the relevant information for future tasks, in the knowledge base, facts, entities and relationships.
-  {% endif %}
+  {% else %}
+  - Use serena memories tools for listing memories, reading and writing relevant information about the project changes of interest for the future tasks.
+  - Saves into memories all relevant information about the project changes of interest for the future tasks.
+    {% endif %}
 - If you have a complex task, break it down into smaller steps, use Sequential thinking and steps list for the process
 - Fetch any relevant information from urls of the context task for updated context
 - If you need build or running tests use Terminal tool or runCommand tool.
@@ -64,12 +68,3 @@
 ### Debug Tips
 
 - Check terminal errors running tests or build
-
-## Contributing
-
-When making changes:
-
-1. Follow existing code patterns
-2. Update documentation as needed
-3. Test thoroughly before committing
-4. Consider performance and accessibility implications

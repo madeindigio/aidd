@@ -1,5 +1,65 @@
 {
 	"servers": {
+{% if use_docker %}
+		"hyper-mcp": {
+			"type": "stdio",
+			"command": "docker",
+			"args": [
+				"run",
+				"-i",
+				"--rm",
+				"-v",
+				"${PWD}.ai/hyper-mcp.json:/config.yaml",
+				"ghcr.io/sevir/hyper-mcp:latest",
+				"-c",
+				"/config.yaml"
+			],
+			"env": {
+				"SERPER_API_KEY": "${input:serper-api-key}",
+				"PERPLEXITY_API_KEY": "${input:perplexity-api-key}",
+				"GOOGLE_API_KEY": "${input:google-api-key}",
+				"GOOGLE_SEARCH_ENGINE_ID": "${input:google-search-engine-id}",
+				"BRAVE_API_KEY": "${input:brave-api-key}"
+			}
+		},
+		"mycommandmcp": {
+			"type": "stdio",
+			"command": "docker",
+			"args": [
+				"run",
+				"-i",
+				"--rm",
+				"-v${PWD}.ai/mycommand-mcp.yaml:/config.yaml",
+				"ghcr.io/sevir/mycommandmcp:latest",
+				"--config",
+				"/config.yaml"
+			]
+		},
+{% if include_serena %}
+		"serena": {
+			"type": "stdio",
+			"command": "docker",
+			"args": [
+				"run",
+				"--rm",
+				"-i",
+				"--network",
+				"host", 
+				"-v",
+				"${PWD}:/workspaces/projects",
+				"ghcr.io/oraios/serena:latest",
+				"serena",
+				"start-mcp-server",
+				"--transport",
+				"stdio"
+				"--context",
+				"ide-assistant",
+				"--project",
+				"/workspaces/projects"
+			]
+		},
+{% endif %}
+{% else %}
 		"hyper-mcp": {
 			"type": "stdio",
 			"command": "hyper-mcp",
@@ -23,6 +83,7 @@
 				".ai/mycommand-mcp.yaml"
 			]
 		},
+{% if include_serena %}
 		"serena": {
 			"type": "stdio",
 			"command": "pkgx",
@@ -38,9 +99,12 @@
 				"./"
 			]
 		},
+{% endif %}
+{% endif %}
+{% if include_remembrances %}
 		"remembrances": {
 			"type": "stdio",
-			"command": "/www/MCP/remembrances-mcp/dist/remembrances-mcp",
+			"command": "remembrances-mcp",
 			"args": [
 				"--surrealdb-url",
 				"ws://localhost:8000",
@@ -54,6 +118,7 @@
 				"surreal start --user root --pass root surrealkv://{{ get_env(name='REMEMBRANCES_DB', default='remembrances_db') }}"
 			]
 		}
+{% endif %}
 	},
 	"inputs": [
 		{

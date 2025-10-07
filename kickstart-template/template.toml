@@ -11,9 +11,14 @@ copy_without_render = [
 ]
 
 post_gen_hooks = [
-  {name = "setting up Serena", path = ".ai/hooks/index-serena.sh"},
+  {name = "setting up Serena", path = ".ai/hooks/index-serena.sh", only_if = {name = "use_docker", value = false}},
   {name = "setting up Kilocode", path = ".ai/hooks/kilocode-symbolic-links.sh", only_if = {name = "include_kilocode", value = true}},
 ]
+
+[[variables]]
+default = true
+name = "use_docker"
+prompt = "Do you want to use the Docker version of MCP's and you are running kickstart using docker?"
 
 [[variables]]
 default = "some-project"
@@ -24,51 +29,51 @@ validation = "^([a-zA-Z][a-zA-Z0-9_-]+)$"
 [[variables]]
 default = "overview"
 name = "project_overview"
-prompt = "What is the project overview?"
+prompt = "Whatistheprojectoverview?"
 
 [[variables]]
 default = "Typescript"
 name = "programming_language"
-prompt = "What is the programming language do you want to use?"
+prompt = "Whatistheprogramminglanguagedoyouwanttouse?"
 
 [[variables]]
 default = "Deno"
 name = "programming_framework"
-prompt = "What is the programming framework do you want to use?"
+prompt = "Whatistheprogrammingframeworkdoyouwanttouse?"
 
 [[variables]]
 choices = ["none", "postgres", "mysql", "sqlite", "mongodb"]
 default = "none"
 name = "database"
-prompt = "Which database do you want to use?"
+prompt = "Whichdatabasedoyouwanttouse?"
 
 [[variables]]
 default = false
 name = "include_remembrances"
-prompt = "Do you want to include Remembrances AI memory system?"
+prompt = "DoyouwanttoincludeRemembrancesAImemorysystem?"
 
 [[variables]]
 default = "./remembrances_data"
 name = "remembrances_db"
 only_if = {name = "include_remembrances", value = true}
-prompt = "Where is the Remembrances database? (enter if you set REMEMBRANCES_DB env variable)"
+prompt = "WhereistheRemembrancesdatabase?(enterifyousetREMEMBRANCES_DBenvvariable)"
 
 [[variables]]
 default = false
 name = "include_serena"
-prompt = "Do you want to include Serena AI MCP assistance?"
+prompt = "DoyouwanttoincludeSerenaAIMCPassistance?"
 
 [[variables]]
 default = true
 name = "include_kilocode"
-prompt = "Do you want to include Kilocode configuration?"
+prompt = "DoyouwanttoincludeKilocodeconfiguration?"
 
 [[variables]]
 default = ""
 name = "has_build_system"
-prompt = "Has your project a build system?. Write the command to run it."
+prompt = "Hasyourprojectabuildsystem?.Writethecommandtorunit."
 
 [[variables]]
 default = ""
 name = "has_tests"
-prompt = "Has your project tests? If so, write the command to run them."
+prompt = "Hasyourprojecttests?Ifso,writethecommandtorunthem."
