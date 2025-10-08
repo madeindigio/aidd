@@ -14,6 +14,13 @@ Install the template into any project by running the following command:
 ```bash
 kickstart https://github.com/madeindigio/aidd -d kickstart-template -o .
 ```
+
+In OSX you can install kickstart using homebrew:
+
+```bash
+brew install kickstart
+```
+
 ## 2. Using Docker
 If you don't want to use the binary of kickstart, you can also use docker:
 
@@ -30,6 +37,10 @@ Download the last release of the binaries and add them to your PATH.
 This MCP server use many tools for search, fetch and other processes automatized for AI Agents. Digio has developed some tools for different purposes like search with google, bing, perplexity or brave, and take note from logseq, youtrack and others...
 
   * Download the last release of hyper-mcp [here](https://github.com/tuananh/hyper-mcp/releases/latest).
+  * In OSX you can install hyper-mcp using homebrew:
+```bash
+brew install hyper-mcp
+```
 
 This template add the following tools plugins, please refer to each readme for more information about the authentication tokens and mcp configuration:
 

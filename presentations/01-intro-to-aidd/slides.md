@@ -57,6 +57,20 @@ Ahora desarrollar evolutivos o pruebas de concepto o herramientas de apoyo resul
 Documentar rápidamente proyectos, hacer un overview rápido y empezar a trabajar en ellos agilizando la entrada de nuevos desarrolladores.
 -->
 
+---
+transition: slide-up
+---
+
+# El desarrollador pasa a ser un arquitecto de soluciones
+
+Saber cómo se pone un ladrillo para hacer una pared ya no es tan importante como saber diseñar la pared y para qué sirve.
+
+* Pensar en alto nivel
+* Diseñar soluciones
+* Ayudar en la definición de requisitos y la documentación
+* Definir flujos de trabajo
+* Definir herramientas y procesos
+* Supervisar y revisar
 
 ---
 transition: slide-up
@@ -158,9 +172,25 @@ Una conversación larga necesita hacer resúmenes constantes para no perder el c
 transition: slide-left
 ---
 
+# Los modelos que muestran su razonamiento son más ilustrativos pero no siempre son mejores
+
+Algunos modelos muestran su razonamiento antes de comenzar una tarea (el modo thinking), lo que puede ayudar a entender cómo llegaron a una conclusión. 
+
+* Útiles para entender cómo han razonado ante nuestras instrucciones
+* Nos ayuda a reconocer si nuestra especificación era fácil de entender o tenemos que mejorarla
+* No siempre son mejores que los modelos que no muestran su razonamiento, hay estudios que indican que el modo thinking a veces genera menor rendimiento al realizar tareas específicas dando soluciones sobre elaboradas o incorrectas.
+
+
+
+---
+transition: slide-left
+---
+
 # Tools - Un modelo de AI no es nada sin sus herramientas
 
 Son funciones que el modelo puede utilizar de forma autónoma para hacer su trabajo. Son necesarias si quieres que el modelo produzca algo que funcione bien.
+
+> *YO* no sería nada sin Google o acceso a internet al alcance de la mano.
 
 Desde H1-2024 los modelos ya pueden utilizar herramientas de forma autónoma.
 
@@ -189,45 +219,28 @@ transition: slide-left
 Es un estandar definido por Anthropic para hacer la vida más fácil a Claude Desktop y que se ha expandido a otros agentes. Publicado en noviembre de 2024. Actualmente tenemos cientos de miles de servidores MCP, agrupados en catálogos.
 
 ```mermaid
-flowchart TB
-  subgraph Agent_Program
-    AGT[AI Agent] --> CLI[MCP Client / Connector]
-    CLI --> DISP[Tool Dispatcher]
+flowchart LR
+  subgraph AI_Assistant
+    AGENT[AI Agent]
+    CLIENT[MCP Client]
   end
 
-  subgraph MCP_Network
-    STD[MCP Server: stdio - local]
-    HTTP[MCP Server: streamable-http - remote]
-    WS[MCP Server: websocket - remote]
+  subgraph MCP_Server
+    SERVER[MCP Server]
+    TOOLS[Tools:<br/>• file-read<br/>• web-search<br/>• shell-exec<br/>• database-query]
   end
 
-  subgraph Server_Tools
-    FREAD[file-read]
-    FWRITE[file-write]
-    WEB[web-browsing / http]
-    DB[database-query]
-    SHELL[shell-exec]
-    CODE[code-exec]
-  end
-
-  CLI -->|discover & handshake - MCP| STD
-  CLI -->|discover & handshake - MCP| HTTP
-  CLI -->|discover & handshake - MCP| WS
-
-  STD --> FREAD
-  STD --> FWRITE
-  HTTP --> WEB
-  HTTP --> DB
-  WS --> SHELL
-  WS --> CODE
-
-  AGT -->|structured tool call - MCP| DISP
-  DISP -->|route request| CLI
-  CLI -->|invoke tool| HTTP
-  HTTP -->|streamed response / events| CLI
-  CLI -->|deliver result| DISP
-  DISP -->|return result| AGT
+  AGENT -->|1. User request| CLIENT
+  CLIENT -->|2. Tool call via MCP| SERVER
+  SERVER -->|3. Execute| TOOLS
+  TOOLS -->|4. Response| SERVER
+  SERVER -->|5. Result via MCP| CLIENT
+  CLIENT -->|6. Present result| AGENT
 ```
+Algunos servidores interesantes: https://madeindigio.github.io/aidd/es/mcp.html
+
+Docker MCP Catalog (soluciones en contenedores y seguras): https://hub.docker.com/mcp
+
 
 ---
 transition: slide-left
@@ -238,7 +251,7 @@ transition: slide-left
 Por tipo de acceso:
 
 * Acceso local (requiere instalación manual): stdio
-* Acceso remoto (requiere URL): streamable-http, websocket
+* Acceso remoto (requiere URL): streamable-http, sse (server side events, deprecándose)
 
 Por funcionalidad:
 
@@ -269,10 +282,55 @@ Si no hay documentación de un proyecto, 1º guía al agente para que la genere.
 transition: slide-left
 ---
 
-# Tip, trucos y buenas prácticas
+# Prompt Engineering
+
+El Prompt Engineering es el arte de diseñar y estructurar las entradas (prompts) que se le dan a un modelo de AI para obtener las respuestas más relevantes y útiles posibles. Esto implica:
+
+1. **Claridad**: Ser claro y específico en lo que se pide al modelo. Indica qué quieres y cómo lo quieres (si tienes una idea clara).
+2. **Contexto**: Proporcionar suficiente contexto para que el modelo entienda la tarea. Seguramente tendrás en la cabeza qué ficheros son relevantes, o qué fuentes de información debe utilizar cítalas en el prompt.
+3. **Iteración**: Probar diferentes formulaciones y ajustar según sea necesario.
+
+---
+transition: slide-left
+---
+
+# Algunas técnicas de Prompt Engineering
+
+- Utilizar listas y marcadores xml para estructurar la información
+
+> Genera un código que utilice el método "use_tool" como en el siguiente ejemplo:
+> <ejemplo>
+> tool_call("get_weather", {"location": "Madrid"})
+> </ejemplo>
+
+- Repite o usa mayúsculas o exclamaciones para enfatizar puntos importantes que no deben olvidarse pero no abuses de su uso, sólamente para 1 o dos puntos clave.
+
+> Asegúrate de incluir todos los detalles relevantes en tu prompt.
+> ¡NO OLVIDES MENCIONAR LAS HERRAMIENTAS QUE QUIERES UTILIZAR!
+>
+
+- Divide las tareas complejas en pasos más pequeños o usa tools como Sequential Thinking o Todo List para que el agente desglose la tarea en pasos y los siga.
+- Inicia una nueva conversación cuando trabajes con una nueva tarea para evitar confusiones de contexto y que la AI sepa lo que está haciendo, usa tools de memoria para restaurar contexto relevante.
+
+---
+transition: slide-left
+---
+
+# Más tips, trucos y buenas prácticas
 
 1. Mantén actualizado tu custom-instructions.md durante el ciclo de vida de desarrollo, permitirá que tu agente se adapte y conozca de antemano lo más importante para trabajar en cualquier tarea.
 2. Usa un plan.md para definir las tareas a realizar y que el agente las siga.
 3. Revisa siempre de activar sólamente las tools adecuadas para trabajar con el proyecto o con la tarea/tareas actuales.
 4. Guía mediante el prompt qué flujo de herramientas aconsejas utilizar
 5. Aprovecha y genera siempre documentación adicional del trabajo realizado. Las tools de memoria son muy útiles para esto.
+
+---
+transition: fade-out
+layout: center
+---
+
+# Preguntas o dudas?
+
+Gracias por tu atención
+
+Más info en [AIDD](https://madeindigio.github.io/aidd/)

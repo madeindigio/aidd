@@ -14,3 +14,10 @@ Supongo que tienes los siguientes prerrequisitos:
 ## Mejores prácticas para Github Copilot
 
 Lee esta sección [Mejores prácticas para Github Copilot](./copilot.md) para aprender cómo usar GitHub Copilot efectivamente.
+
+## Configuración rápida de tu entorno
+
+Hemos creado un script de configuración rápida para ayudarte a configurar tu entorno de desarrollo. Este script instalará todas las dependencias necesarias y configurará tu entorno para que puedas comenzar a trabajar con los Asistentes de IA. Está preparado para Visual Studio Code, pero puedes adaptarlo a tu editor preferido.
+
+[Plantilla kickstart para configurar tu entorno de desarrollo con IA](https://github.com/madeindigio/aidd/tree/main/kickstart-template)
+
