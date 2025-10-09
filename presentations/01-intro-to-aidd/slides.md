@@ -72,6 +72,13 @@ Saber cómo se pone un ladrillo para hacer una pared ya no es tan importante com
 * Definir herramientas y procesos
 * Supervisar y revisar
 
+<!--
+Muy importante tener criterio
+Aprender a definir bien las tareas y a revisar los resultados
+Conocer bien las herramientas y sus limitaciones
+Documentarse de cualquier tecnología o librería que se vaya a utilizar
+-->
+
 ---
 transition: slide-up
 ---
@@ -115,6 +122,10 @@ Cualquier asistente AI con soporte MCP sirve para aplicar AIDD.
   - Capacidad de ejecutarse en servidores dockerizados, paralelizar desarrollos
   - Modo Dios: multiagentes. Team AI coordinados para trabajar en equipo.
 
+<!--
+Los AI para terminal están revolucionando el desarrollo automático en contenedores seguros (OpenAI, Anthropic ya tienen el suyo propio)
+-->
+
 ---
 transition: slide-left
 layout: two-cols-header
@@ -149,6 +160,10 @@ Qué modelo de AI utiliza el servicio
   - Claude Opus 4.5 (no disponible en Copilot Pro, sólo en Business)
 - Google Gemini (Pro 2.5, Fast 2.5)
 - xAI Grok (Code Fast 1)
+
+<!--
+Algunos proveedores disponen de múltiples modelos, en la actualidad Github Copilot el más polivalente y barato
+-->
 
 ---
 transition: slide-left
@@ -264,6 +279,12 @@ Las más útiles:
 * Trabajo en local: lectura y escritura de ficheros, ejecución de código y comandos shell
 * Conexión con servicios externos: consultas a bases de datos, integraciones con plataformas externas por API
 
+<!--
+N8N permite definir flujos como tool MCP para usar internamente
+
+Existe mcp para usar JIRA y Confluence, muy útiles para trabajar más rápido y de forma autónoma.
+-->
+
 ---
 transition: slide-left
 ---
@@ -333,4 +354,4 @@ layout: center
 
 Gracias por tu atención
 
-Más info en [AIDD](https://madeindigio.github.io/aidd/)
+Más info en [AIDD](https://madeindigio.github.io/aidd/) https://madeindigio.github.io/aidd/
