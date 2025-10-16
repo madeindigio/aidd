@@ -1,0 +1,62 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  // Theme configuration
+  "theme": "opencode",
+  "autoupdate": true,
+  "model": "github-copilot/gpt5-mini",
+  "small_model": "github-copilot/grok-code-fast-1",
+  "share": "disabled",
+  "instructions": [".ai/AGENTS.md"],
+  "mcp": {
+    "hyper-mcp": {
+      "type": "local",
+      "command": ["bash", ".ai/scripts/hyper-env-run.sh"],
+
+      "enabled": true
+    },
+    "mycommandmcp": {
+      "type": "local",
+      "command": [
+        "mycommandmcp",
+        "--config",
+        ".ai/mcp/mycommand-mcp.yaml"
+      ],
+      "enabled": true
+    },
+
+    "serena": {
+      "type": "local",
+      "command": [
+        "pkgx",
+        "uvx",
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "ide-assistant",
+        "--project",
+        "./"
+      ],
+      "enabled": true
+    },
+
+    "remembrances": {
+      "type": "local",
+      "command": [
+        "remembrances-mcp",
+        "--surrealdb-url",
+        "ws://localhost:8000",
+        "--ollama-url",
+        "http://localhost:11434",
+        "--ollama-model",
+        "nomic-embed-text:latest",
+        "--knowledge-base",
+        ".serena/memories",
+        "--surrealdb-start-cmd",
+        "surreal start --user root --pass root surrealkv:///www/Remembrances/programming"
+      ],
+      "enabled": true
+    }
+  }
+}

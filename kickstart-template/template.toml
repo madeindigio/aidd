@@ -11,8 +11,8 @@ copy_without_render = [
 ]
 
 post_gen_hooks = [
-  {name = "setting up Serena", path = ".ai/hooks/index-serena.sh", only_if = {name = "use_docker", value = false}},
-  {name = "setting up Kilocode", path = ".ai/hooks/kilocode-symbolic-links.sh", only_if = {name = "include_kilocode", value = true}},
+  {name = "setting up Serena", path = ".ai/scripts/index-serena.sh", only_if = {name = "use_docker", value = false}},
+  {name = "setting up Kilocode", path = ".ai/scripts/kilocode-symbolic-links.sh", only_if = {name = "include_kilocode", value = true}},
 ]
 
 [[variables]]

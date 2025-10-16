@@ -9,5 +9,16 @@
         "/^Remove-Item\\b/i": false,
         "/.*/": true
     },
-    "github.copilot.chat.newWorkspace.useContext7": true
+    "github.copilot.chat.newWorkspace.useContext7": true,
+    "chat.useAgentsMdFile": true,
+    "chat.agentsMdFilePath": ".ai/AGENTS.md",
+    "chat.modeFilesLocations": {
+        ".ai/copilot/chatmodes": true
+    },
+    "chat.instructionsFilesLocations": {
+        ".ai/copilot/instructions": true
+    },
+    "chat.promptFilesLocations": {
+        ".ai/copilot/prompts": true
+    }
 }

@@ -1,0 +1,11 @@
+# MCP configuration file
+# More info in https://github.com/sevir/mycommandmcp
+prompts:
+  # Put here your custom prompts
+tools:
+  # Put here your custom tools
+resources:
+  # Put here your custom resources
+external_configs:
+  - "https://raw.githubusercontent.com/madeindigio/aidd/refs/heads/main/mycommand-mcp/prompts/common-prompts.yaml"
+  - "https://raw.githubusercontent.com/madeindigio/aidd/refs/heads/main/mycommand-mcp/tools/developer-tools.yaml"

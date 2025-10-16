@@ -1,0 +1,18 @@
+# mycommand mcp configuration file
+# More info in https://github.com/sevir/mycommandmcp
+
+tools:
+  - name: "gitingest"
+    description: |
+      Read a git repository and return a summary of its contents. 
+      Usage: gitingest <options> <repo_url>
+      The options are:
+      -i --include <pattern>: Include files matching the pattern (can be used multiple times)
+      -e --exclude <pattern>: Exclude files matching the pattern (can be used multiple times)
+      -b --branch <branch>: Specify the branch to analyze (default: main)
+      --include-submodules: Include submodules in the analysis
+      --max-file-size <size>: Maximum file size to include (e.g., 100KB, 2MB)
+      -t --token <token>: GitHub token for private repositories
+    command: "pkgx pipx run gitingest -o -"
+    accepts_args: true
+    accept_input: true

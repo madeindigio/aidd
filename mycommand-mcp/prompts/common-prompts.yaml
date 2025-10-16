@@ -1,3 +1,6 @@
+# mycommand mcp configuration file
+# More info in https://github.com/sevir/mycommandmcp
+
 prompts:
   - name: "summarize"
     description: "Summarize a given text"
@@ -204,41 +207,3 @@ prompts:
       - Security best practices guide
 
       Perform thorough security analysis using file operations and search tools.
-
-
-tools:
-  - name: "get_date"
-    description: "Displays the current system date and time in various formats. Can show UTC time, format output, or display specific timezones, the tool accepts the same arguments of the `date` linux command"
-    command: "date"
-    path: "./"
-    accepts_args: true
-    accept_input: false
-
-  - name: "curl"
-    description: "Downloads any resource from a URL using `curl` command. Use this tool for run any `curl` command what you want"
-    command: "curl"
-    path: "/tmp"
-    accepts_args: true
-    accept_input: false
-
-  - name: "terminal"
-    description: "Call to Bash terminal, send all commands to run into input argument"
-    command: "bash"
-    path: "./"
-    accepts_args: true
-    accept_input: true
-
-
-# resources:
-#   - name: "mcp_server_prompts"
-#     description: "Specification of Prompts for MCP Servers"
-#     path: "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/refs/heads/main/docs/specification/2024-11-05/server/prompts.mdx"
-
-#   - name: "mcp_server_tools"
-#     description: "Specification of Tools for MCP Servers"
-#     path: "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/refs/heads/main/docs/specification/2024-11-05/server/tools.mdx"
-
-#   - name: "mcp_server_resources"
-#     description: "Specification of Resources for MCP Servers"
-#     path: "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/refs/heads/main/docs/specification/2024-11-05/server/resources.mdx"
-

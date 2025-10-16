@@ -9,5 +9,6 @@
         "/^Remove-Item\\b/i": false,
         "/.*/": true
     },
-    "github.copilot.chat.newWorkspace.useContext7": true
+    "github.copilot.chat.newWorkspace.useContext7": true,
+    "gitflow.disableOnRepo": true
 }
