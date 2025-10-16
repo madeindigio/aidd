@@ -58,7 +58,6 @@
 			]
 		}
 	},
-	,
 	"inputs": [
 		{
 			"type": "promptString",

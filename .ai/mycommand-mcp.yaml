@@ -1,26 +1,14 @@
-prompts:
-  - name: "summarize"
-    description: "Summarize a given text"
-    content: |
-      Please summarize the following text in 3 sentences or less.
-      Consider the main points and key details.
-      Maintain a clear and concise style.
-tools:
-  - name: "gitingest"
-    description: |
-      Read a git repository and return a summary of its contents. 
-      Usage: gitingest <options> <repo_url>
-      The options are:
-      -i --include <pattern>: Include files matching the pattern (can be used multiple times)
-      -e --exclude <pattern>: Exclude files matching the pattern (can be used multiple times)
-      -b --branch <branch>: Specify the branch to analyze (default: main)
-      --include-submodules: Include submodules in the analysis
-      --max-file-size <size>: Maximum file size to include (e.g., 100KB, 2MB)
-      -t --token <token>: GitHub token for private repositories
-    command: "pkgx pipx run gitingest -o -"
-    path: "./"
-    accepts_args: true
-    accept_input: true
+# mycommand mcp configuration file
+# More info in https://github.com/sevir/mycommandmcp
+
+#tools:
+# # uncomment to use local tools configuration
+
+#prompts:
+# # uncomment to use local prompts configuration  
+
+#resources:
+# # uncomment to use local resources configuration
 
 external_configs:
   - "https://raw.githubusercontent.com/madeindigio/aidd/refs/heads/main/mycommand-mcp/prompts/common-prompts.yaml"

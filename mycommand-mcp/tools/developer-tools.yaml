@@ -10,7 +10,8 @@ tools:
       --include-submodules: Include submodules in the analysis
       --max-file-size <size>: Maximum file size to include (e.g., 100KB, 2MB)
       -t --token <token>: GitHub token for private repositories
-    command: "pkgx pipx run gitingest -o -"
+    command: "pkgx"
     path: "./"
     accepts_args: true
     accept_input: true
+    default_args: "pipx run gitingest -o -"
