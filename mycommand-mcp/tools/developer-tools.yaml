@@ -1,6 +1,3 @@
-# mycommand mcp configuration file
-# More info in https://github.com/sevir/mycommandmcp
-
 tools:
   - name: "gitingest"
     description: |
@@ -14,5 +11,6 @@ tools:
       --max-file-size <size>: Maximum file size to include (e.g., 100KB, 2MB)
       -t --token <token>: GitHub token for private repositories
     command: "pkgx pipx run gitingest -o -"
+    path: "./"
     accepts_args: true
     accept_input: true
