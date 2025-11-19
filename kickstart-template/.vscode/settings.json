@@ -1,24 +1,23 @@
 {
-    "chat.agent.maxRequests": 200,
-    "chat.tools.terminal.autoApprove": {
-        "sudo": false,
-        "rm": false,
-        "rmdir": false,
-        "del": false,
-        "chown": false,
-        "/^Remove-Item\\b/i": false,
-        "/.*/": true
-    },
-    "github.copilot.chat.newWorkspace.useContext7": true,
-    "chat.useAgentsMdFile": true,
-    "chat.agentsMdFilePath": ".ai/AGENTS.md",
-    "chat.modeFilesLocations": {
-        ".ai/copilot/chatmodes": true
-    },
-    "chat.instructionsFilesLocations": {
-        ".ai/copilot/instructions": true
-    },
-    "chat.promptFilesLocations": {
-        ".ai/copilot/prompts": true
-    }
+  "chat.agent.maxRequests": 200,
+  "chat.tools.terminal.autoApprove": {
+    "sudo": false,
+    "rm": false,
+    "rmdir": false,
+    "del": false,
+    "chown": false,
+    "/^Remove-Item\\b/i": false,
+    "/.*/": true
+  },
+  "github.copilot.chat.newWorkspace.useContext7": true,
+  "chat.useAgentsMdFile": true,
+  "chat.modeFilesLocations": {
+    ".ai/copilot/chatmodes": true
+  },
+  "chat.instructionsFilesLocations": {
+    ".ai/copilot/instructions": true
+  },
+  "chat.promptFilesLocations": {
+    ".ai/copilot/prompts": true
+  }
 }

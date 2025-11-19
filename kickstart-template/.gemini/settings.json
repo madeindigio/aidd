@@ -1,0 +1,143 @@
+{
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "general": {
+    "vimMode": true,
+    "previewFeatures": true
+  },
+  "ui": {
+    "showMemoryUsage": true,
+    "showLineNumbers": true,
+    "showCitations": true
+  },
+  "mcpServers": {
+  {% if use_docker %}
+    "hyper-mcp": {
+      "command": "docker",
+      "args": [
+				"run",
+				"-i",
+				"--rm",
+				"-v",
+				"${PWD}.ai/mcp/hyper-mcp.yaml:/config.yaml",
+				"ghcr.io/sevir/hyper-mcp:latest",
+				"-c",
+				"/config.yaml"
+			],
+      "env": {
+        "SERPER_API_KEY": "${SERPER_API_KEY}",
+        "PERPLEXITY_API_KEY": "${SERPER_API_KEY}",
+        "GOOGLE_API_KEY": "${GOOGLE_API_KEY}",
+        "GOOGLE_SEARCH_ENGINE_ID": "${GOOGLE_SEARCH_ENGINE_ID}",
+        "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+      },
+      "cwd": "./",
+      "timeout": 30000,
+      "trust": false
+    },
+    "mycommandmcp": {
+      "command": "docker",
+			"args": [
+				"run",
+				"-i",
+				"--rm",
+				"-v${PWD}.ai/mcp/mycommand-mcp.yaml:/config.yaml",
+				"ghcr.io/sevir/mycommandmcp:latest",
+				"--config",
+				"/config.yaml"
+			],
+      "env": {},
+      "cwd": "./",
+      "timeout": 30000,
+      "trust": false
+    },
+  {% if include_serena %}
+    "serena": {
+      "command": "pkgx",
+      "args": [
+        "uvx",
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "ide-assistant",
+        "--project",
+        "./"
+      ],
+      "env": {},
+      "cwd": "./",
+      "timeout": 30000,
+      "trust": false
+    }
+  {% endif %}
+
+  {% else %}
+    "hyper-mcp": {
+      "command": "hyper-mcp",
+      "args": ["--config-file", ".ai/hyper-mcp.yaml"],
+      "env": {
+        "SERPER_API_KEY": "${SERPER_API_KEY}",
+        "PERPLEXITY_API_KEY": "${SERPER_API_KEY}",
+        "GOOGLE_API_KEY": "${GOOGLE_API_KEY}",
+        "GOOGLE_SEARCH_ENGINE_ID": "${GOOGLE_SEARCH_ENGINE_ID}",
+        "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+      },
+      "cwd": "./",
+      "timeout": 30000,
+      "trust": false
+    },
+    "mycommandmcp": {
+      "command": "mycommandmcp",
+      "args": ["--config", ".ai/mycommand-mcp.yaml"],
+      "env": {},
+      "cwd": "./",
+      "timeout": 30000,
+      "trust": false
+    },
+    "serena": {
+      "command": "pkgx",
+      "args": [
+        "uvx",
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "ide-assistant",
+        "--project",
+        "./"
+      ],
+      "env": {},
+      "cwd": "./",
+      "timeout": 30000,
+      "trust": false
+    }
+
+    {% endif %}
+    {% if include_remembrances %}
+      ,"remembrances": {
+        "command": "/www/MCP/remembrances-mcp/dist/remembrances-mcp",
+        "args": [
+          "--surrealdb-url",
+          "ws://localhost:8000",
+          "--ollama-url",
+          "http://localhost:11434",
+          "--ollama-model",
+          "nomic-embed-text:latest",
+          "--knowledge-base",
+          ".serena/memories",
+          "--surrealdb-start-cmd",
+          "surreal start --user root --pass root surrealkv:///www/Remembrances/programming"
+        ],
+        "env": {},
+        "cwd": "./",
+        "timeout": 30000,
+        "trust": false
+      }
+    {% endif %}
+  }
+}

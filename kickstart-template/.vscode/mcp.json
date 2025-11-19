@@ -9,7 +9,7 @@
 				"-i",
 				"--rm",
 				"-v",
-				"${PWD}.ai/hyper-mcp.yaml:/config.yaml",
+				"${PWD}.ai/mcp/hyper-mcp.yaml:/config.yaml",
 				"ghcr.io/sevir/hyper-mcp:latest",
 				"-c",
 				"/config.yaml"
@@ -32,7 +32,7 @@
 				"run",
 				"-i",
 				"--rm",
-				"-v${PWD}.ai/mycommand-mcp.yaml:/config.yaml",
+				"-v${PWD}.ai/mcp/mycommand-mcp.yaml:/config.yaml",
 				"ghcr.io/sevir/mycommandmcp:latest",
 				"--config",
 				"/config.yaml"
@@ -47,7 +47,7 @@
 				"--rm",
 				"-i",
 				"--network",
-				"host", 
+				"host",
 				"-v",
 				"${PWD}:/workspaces/projects",
 				"ghcr.io/oraios/serena:latest",
@@ -68,7 +68,7 @@
 			"command": "hyper-mcp",
 			"args": [
 				"--config-file",
-				".ai/hyper-mcp.yaml"
+				".ai/mcp/hyper-mcp.yaml"
 			],
 			"env": {
 				"SERPER_API_KEY": "${input:serper-api-key}",
@@ -86,7 +86,7 @@
 			"command": "mycommandmcp",
 			"args": [
 				"--config",
-				".ai/mycommand-mcp.yaml"
+				".ai/mcp/mycommand-mcp.yaml"
 			]
 		},
 {% if include_serena %}
